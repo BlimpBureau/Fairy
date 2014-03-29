@@ -13,7 +13,18 @@
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
         <link rel="stylesheet" href="css/fairy.css">
 
-        <script src="bower_components/modernizr/modernizr.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.7.1/modernizr.min.js"></script>
+        <script>window.Modernizr || document.write('<script src="bower_components/modernizr/modernizr.js"><\/script>')</script>
+
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
+        <script>window.angular || document.write('<script src="bower_components/angular/angular.min.js"><\/script>')</script>
+
+        <script src="https://cdn.firebase.com/js/client/1.0.11/firebase.js"></script>
+        <script>window.Firebase || document.write('<script src="bower_components/firebase/firebase.js"><\/script>')</script>
+
+        <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
+        <script>window.angular.module("firebase") || document.write('<script src="bower_components/angularfire/angularfire.min.js"><\/script>')</script>
+
     </head>
     <body>
       <div class="fairy-navbar navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -66,7 +77,7 @@
         </footer>
       </div> <!-- /container -->
 
-      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.min.js"></script>
       <script>window.jQuery || document.write('<script src="bower_components/jquery/dist/jquery.min.js"><\/script>')</script>
 
       <!-- Latest compiled and minified JavaScript -->
