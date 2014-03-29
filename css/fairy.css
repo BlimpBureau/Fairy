@@ -1,0 +1,15 @@
+body {
+  padding-top: 50px;
+  padding-bottom: 20px;
+}
+.fairy-navbar {
+  background-color: #e2448c;
+  border-bottom: none;
+}
+.fairy-navbar .navbar-header {
+  height: 80px;
+}
+#fairy-logo {
+  height: 60px;
+  width: auto;
+}
