@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<!--[if lt IE 7]>      <html ng-app="fairyApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html ng-app="fairyApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html ng-app="fairyApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html ng-app="fairyApp" class="no-js"> <!--<![endif]-->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title></title>
+        <title>Fairy</title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
 
@@ -18,13 +18,11 @@
 
         <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.15/angular.min.js"></script>
         <script>window.angular || document.write('<script src="bower_components/angular/angular.min.js"><\/script>')</script>
-
+        
         <script src="https://cdn.firebase.com/js/client/1.0.11/firebase.js"></script>
-        <script>window.Firebase || document.write('<script src="bower_components/firebase/firebase.js"><\/script>')</script>
-
         <script src="https://cdn.firebase.com/libs/angularfire/0.7.1/angularfire.min.js"></script>
-        <script>window.angular.module("firebase") || document.write('<script src="bower_components/angularfire/angularfire.min.js"><\/script>')</script>
-
+        
+        <script src="js/fairy.js"></script>
     </head>
     <body>
       <div class="fairy-navbar navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -51,22 +49,16 @@
       </div>
 
       <div class="container">
-        <!-- Example row of columns -->
-        <div class="row">
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+        <div id="testView" ng-controller="testController">
+          <div id="comments">
+            <div class="comment" ng-repeat="comment in comments">
+              <span><b>{{comment.from}}:</b><br> {{comment.body}}</span>
+            </div>
           </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
-         </div>
-          <div class="col-md-4">
-            <h2>Heading</h2>
-            <p>Donec sed odio dui. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Vestibulum id ligula porta felis euismod semper. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus.</p>
-            <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+
+          <div id="textWrap">
+            <textarea ng-model="newComment" ng-keydown="addComment($event)" placeholder="Write something!"></textarea>
           </div>
         </div>
 
@@ -82,7 +74,5 @@
 
       <!-- Latest compiled and minified JavaScript -->
       <script src="bootstrap/js/bootstrap.min.js"></script>
-
-      <script src="js/fairy.js"></script>
     </body>
 </html>
