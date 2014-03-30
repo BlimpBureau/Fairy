@@ -1,19 +1,5 @@
 var $fairyApp = angular.module('fairyApp', ['ngRoute', 'firebase']);
 
-function extend(base) {
-    var parts = Array.prototype.slice.call(arguments, 1);
-    parts.forEach(function (p) {
-        if (p && typeof (p) === 'object') {
-            for (var k in p) {
-                if (p.hasOwnProperty(k)) {
-                    base[k] = p[k];
-                }
-            }
-        }
-    });
-    return base;
-}
-
 // Routing
 // ----------------------------------------
 
@@ -35,15 +21,25 @@ $fairyApp.config(function ($routeProvider) {
 $fairyApp.controller("vouchersController", ["$scope", "$firebase", 
     function($scope, $firebase) {
         
+        $scope.doneLoading = function(){
+            console.log('bajskorv');
+            $("table.responsive").table();
+            $("#vouchers").show();
+            $('.partnerShareSwitch').bootstrapSwitch();
+        };
+        
         var ref = new Firebase("https://scorching-fire-7581.firebaseIO.com/");
         ref.child('partners').once('value', function(partnersSnap) {
             $scope.partners = $firebase(partnersSnap.ref());
             ref.child('vouchers').once('value', function(vouchersSnap) {
                 $scope.vouchers = $firebase(vouchersSnap.ref());
-                $("table.responsive").table();
-                $("#vouchers").show();
+                $scope.doneLoading();
             });
         });
+        
+        $scope.openAddPurchaseModal = function(e) {
+            $('#add-purchase-modal').modal('show');
+        }
     }
 ]);
 
