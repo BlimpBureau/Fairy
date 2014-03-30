@@ -1,15 +1,24 @@
-<table id="vouchers" class="table">
-    <thead>
-        <tr>
-            <th>Text</th>
-            <th>How much</th>
-            <th ng-repeat="partner in partners">{{partner.fullname}}</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr class="voucher" ng-repeat="voucher in vouchers">
-          <td>{{voucher.text}}</td>
-          <td>{{voucher.howmuch}}</td>
-        </tr>
-    </tbody>
-</table>
+<div class="table-wrapper" id="vouchers" style="display:none;">
+    <div class="table-scroll-wrapper">
+        <table cellspacing="0" class="responsive auto-on">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>How much</th>
+                    <th>Tax rate</th>
+                    <th ng-repeat="partner in partners">{{partner.fullname}}</th>
+                    <th><span class="glyphicon glyphicon-sort"></span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="voucher" ng-repeat="voucher in vouchers">
+                  <td>{{voucher.text}}</td>
+                  <td>{{voucher.howMuch}}</td>
+                  <td>{{voucher.taxRate}}</td>
+                  <td ng-repeat="partnerShare in voucher.partnerShares">{{partnerShare}}</td>
+                  <td>{{voucher.type}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
