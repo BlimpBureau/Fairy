@@ -1,7 +1,5 @@
-<div class="btn-toolbar">
-    <button class="btn btn-default" ng-click="openAddPurchaseModal()"><span class="glyphicon glyphicon-plus"></span> Add purchase</button>
-</div>
-<div class="table-wrapper" id="vouchers" style="display:none;">
+<h1 class="page-header">Purchases <button class="btn btn-default pull-right" ng-click="openAddPurchaseModal()"><span class="glyphicon glyphicon-plus"></span> Add purchase</button></h1>
+<div class="table-wrapper" id="purchases" style="display:none;">
     <div class="table-scroll-wrapper">
         <table cellspacing="0" class="responsive auto-on">
             <thead>
@@ -10,7 +8,6 @@
                     <th>How much</th>
                     <th>Tax rate</th>
                     <th ng-repeat="partner in partners">{{partner.fullname}}</th>
-                    <th><span class="glyphicon glyphicon-sort"></span></th>
                 </tr>
             </thead>
             <tbody>
@@ -19,7 +16,30 @@
                   <td>{{voucher.howMuch}}</td>
                   <td>{{voucher.taxRate}}</td>
                   <td ng-repeat="partnerShare in voucher.partnerShares">{{partnerShare}}</td>
-                  <td>{{voucher.type}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<h1 class="page-header">Revenues <button class="btn btn-default pull-right" ng-click="openAddPurchaseModal()"><span class="glyphicon glyphicon-plus"></span> Add revenue</button></h1>
+<div class="table-wrapper" id="revenues" style="display:none;">
+    <div class="table-scroll-wrapper">
+        <table cellspacing="0" class="responsive auto-on">
+            <thead>
+                <tr>
+                    <th>Text</th>
+                    <th>How much</th>
+                    <th>Tax rate</th>
+                    <th ng-repeat="partner in partners">{{partner.fullname}}</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="voucher" ng-repeat="voucher in vouchers">
+                  <td>{{voucher.text}}</td>
+                  <td>{{voucher.howMuch}}</td>
+                  <td>{{voucher.taxRate}}</td>
+                  <td ng-repeat="partnerShare in voucher.partnerShares">{{partnerShare}}</td>
                 </tr>
             </tbody>
         </table>

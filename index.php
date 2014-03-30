@@ -48,7 +48,6 @@
       <script src="bower_components/jquery/dist/jquery.min.js"></script>
       <script src="bower_components/jquery-ui/ui/minified/jquery.ui.widget.min.js"></script>
 
-      <!-- Latest compiled and minified JavaScript -->
       <script src="bootstrap/js/bootstrap.min.js"></script>
         
       <script src="bower_components/RWD-Table-Patterns/_js/rwd-table.min.js"></script>

@@ -24,8 +24,8 @@ $fairyApp.controller("vouchersController", ["$scope", "$firebase",
         $scope.doneLoading = function(){
             console.log('bajskorv');
             $("table.responsive").table();
-            $("#vouchers").show();
-            $('.partnerShareSwitch').bootstrapSwitch();
+            $("#purchases ").show();
+            $("#revenues").show();
         };
         
         var ref = new Firebase("https://scorching-fire-7581.firebaseIO.com/");
