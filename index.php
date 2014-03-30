@@ -21,7 +21,7 @@
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/angularfire.min.js"></script>
         
-        <script src="js/fairy.js"></script>
+        <script src="ng/fairy-app.js"></script>
     </head>
     <body>
       <div class="fairy-navbar navbar navbar-inverse navbar-fixed-top" role="navigation">
