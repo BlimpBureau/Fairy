@@ -7,16 +7,27 @@ var $fairyApp = angular.module('fairyApp', ['ngRoute', 'firebase']);
 //This configures the routes and associates each route with a view and a controller
 $fairyApp.config(function ($routeProvider) {
     $routeProvider
-        .when('/home',
+        .when('/vouchers',
             {
-                controller: 'testController',
-                templateUrl: '/ng/templates/test.html'
+                controller: 'vouchersController',
+                templateUrl: '/ng/templates/vouchers.html'
             })
-        .otherwise({ redirectTo: '/home' });
+        .otherwise({ redirectTo: '/vouchers' });
 });
 
 // Controllers
 // ----------------------------------------
+
+
+$fairyApp.controller("vouchersController", ["$scope", "$firebase", 
+    function($scope, $firebase) {
+        var vouchers = new Firebase("https://scorching-fire-7581.firebaseIO.com/vouchers/");
+        $scope.vouchers = $firebase(vouchers);
+        
+        var partners = new Firebase("https://scorching-fire-7581.firebaseIO.com/partners/");
+        $scope.partners = $firebase(partners);
+    }
+]);
 
 $fairyApp.controller("testController", ["$scope", "$firebase", 
     function($scope, $firebase) {

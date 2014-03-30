@@ -1,0 +1,15 @@
+<table id="vouchers" class="table">
+    <thead>
+        <tr>
+            <th>Text</th>
+            <th>How much</th>
+            <th ng-repeat="partner in partners">{{partner.fullname}}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr class="voucher" ng-repeat="voucher in vouchers">
+          <td>{{voucher.text}}</td>
+          <td>{{voucher.howmuch}}</td>
+        </tr>
+    </tbody>
+</table>
