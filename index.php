@@ -48,18 +48,9 @@
       </div>
 
       <div class="container">
-
-        <div id="testView" ng-controller="testController">
-          <div id="comments">
-            <div class="comment" ng-repeat="comment in comments">
-              <span><b>{{comment.from}}:</b><br> {{comment.body}}</span>
-            </div>
-          </div>
-
-          <div id="textWrap">
-            <textarea ng-model="newComment" ng-keydown="addComment($event)" placeholder="Write something!"></textarea>
-          </div>
-        </div>
+        
+        <!-- Placeholder for views -->
+        <div ng-view></div>
 
         <hr>
 
