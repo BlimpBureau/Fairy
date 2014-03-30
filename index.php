@@ -11,6 +11,7 @@
         <meta name="viewport" content="width=device-width">
 
         <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="bower_components/RWD-Table-Patterns/_css/rwd-table.min.css">
         <link rel="stylesheet" href="css/fairy.css">
 
         <script src="bower_components/modernizr/modernizr.js"></script>
@@ -45,8 +46,11 @@
       </div> <!-- /container -->
 
       <script src="bower_components/jquery/dist/jquery.min.js"></script>
+      <script src="bower_components/jquery-ui/ui/minified/jquery.ui.widget.min.js"></script>
 
       <!-- Latest compiled and minified JavaScript -->
       <script src="bootstrap/js/bootstrap.min.js"></script>
+        
+      <script src="bower_components/RWD-Table-Patterns/_js/rwd-table.min.js"></script>
     </body>
 </html>
