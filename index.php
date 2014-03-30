@@ -16,6 +16,7 @@
         <script src="bower_components/modernizr/modernizr.js"></script>
 
         <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-route/angular-route.min.js"></script>
         
         <script src="bower_components/firebase/firebase.js"></script>
         <script src="bower_components/angularfire/angularfire.min.js"></script>
