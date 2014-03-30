@@ -9,9 +9,10 @@
     "bootstrap": "~3.0.3",
     "angular-route": "1.2.15",
     "firebase": "~1.0.11",
-    "RWD-Table-Patterns": "git@github.com:nadangergeo/RWD-Table-Patterns.git",
+    "RWD-Table-Patterns": "https://github.com/nadangergeo/RWD-Table-Patterns.git",
     "angularfire": "~0.7.1",
-    "jquery-ui": "~1.10.4"
+    "jquery-ui": "~1.10.4",
+    "modernizr": "~2.7.2"
   },
   "devDependencies": {
     "angular-mocks": "1.2.15",
