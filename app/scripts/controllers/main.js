@@ -11,8 +11,8 @@ angular.module('fairyApp')
     $scope.doneLoading = function() {
       console.log('bajskorv');
       $('table.responsive').table();
-      $('#purchases').show();
-      $('#revenues').show();
+      $('#expenses').show();
+      $('#incomes').show();
     };
 
     var ref = new Firebase('https://scorching-fire-7581.firebaseIO.com/');
@@ -24,8 +24,8 @@ angular.module('fairyApp')
         });
     });
 
-    $scope.openAddPurchaseModal = function() {
-      $('#add-purchase-modal').modal('show');
+    $scope.openAddExpenseModal = function() {
+      $('#add-expense-modal').modal('show');
     };
   }
 ]);
