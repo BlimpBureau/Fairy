@@ -1,3 +1,5 @@
+<new-price-item partners="partners"></new-price-item>
+
 <h1 class="page-header">Expenses <button class="btn btn-default pull-right" ng-click="openAddExpenseModal()"><span class="glyphicon glyphicon-plus"></span> Add expense</button></h1>
 <div class="table-wrapper" id="expenses" style="display:none;">
     <div class="table-scroll-wrapper">
@@ -56,17 +58,7 @@
       </div>
       <div class="modal-body">
         <div class="form-group">
-            <input class="form-control" value="" placeholder="Description" ng-model="newExpense.description">
-            <br>
-            <input class="form-control" value="" placeholder="Price" ng-model="newExpense.price">
-            <br>
-            <input class="form-control" value="" placeholder="VAT % rate" ng-model="newExpense.vatRate">
-            <br>
-            <input class="form-control" value="" placeholder="VAT" ng-model="newExpense.vat">
-            <br>
-            <div class="input-group" ng-repeat="partner in partners">
-                <input type="checkbox" class="partnerShareSwitch" data-on-text="{{partner.fullname}} owns this" data-off-text="{{partner.fullname}} doesn't own this" checked data-on-color="success" data-off-color="danger" ng-model="newExpense.partner.newExpenseShare">
-            </div>
+            
         </div>
       </div>
       <div class="modal-footer">

@@ -2,11 +2,12 @@
 
 angular.module('fairyApp')
   .controller('MainCtrl', ['$scope', '$firebase', function ($scope, $firebase) {
-    $scope.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+    $scope.partners = [{
+      fullname: 'Lucas Wiener'
+    },
+    {
+      fullname: 'Nadan Gergeo'
+    }];
       
     $scope.doneLoading = function() {
       console.log('bajskorv');
