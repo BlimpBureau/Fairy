@@ -1,10 +1,32 @@
 'use strict';
 
 angular.module('fairyApp')
-  .controller('MainCtrl', function ($scope) {
+  .controller('MainCtrl', ['$scope', '$firebase', function ($scope, $firebase) {
     $scope.awesomeThings = [
       'HTML5 Boilerplate',
       'AngularJS',
       'Karma'
     ];
-  });
+      
+    $scope.doneLoading = function() {
+        console.log('bajskorv');
+        $('table.responsive').table();
+        $('#purchases').show();
+        $('#revenues').show();
+      };
+
+    var ref = new Firebase('https://scorching-fire-7581.firebaseIO.com/');
+    ref.child('partners').once('value', function(partnersSnap) {
+        $scope.partners = $firebase(partnersSnap.ref());
+        ref.child('vouchers').once('value', function(vouchersSnap) {
+            $scope.vouchers = $firebase(vouchersSnap.ref());
+            $scope.doneLoading();
+          });
+      });
+
+    $scope.openAddPurchaseModal = function() {
+        $('#add-purchase-modal').modal('show');
+      };
+    
+  }
+]);

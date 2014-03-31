@@ -2,7 +2,8 @@
 
 angular
   .module('fairyApp', [
-    'ngRoute'
+    'ngRoute',
+    'firebase'
   ])
   .config(function ($routeProvider) {
     $routeProvider
