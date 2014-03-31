@@ -9,24 +9,23 @@ angular.module('fairyApp')
     ];
       
     $scope.doneLoading = function() {
-        console.log('bajskorv');
-        $('table.responsive').table();
-        $('#purchases').show();
-        $('#revenues').show();
-      };
+      console.log('bajskorv');
+      $('table.responsive').table();
+      $('#purchases').show();
+      $('#revenues').show();
+    };
 
     var ref = new Firebase('https://scorching-fire-7581.firebaseIO.com/');
     ref.child('partners').once('value', function(partnersSnap) {
-        $scope.partners = $firebase(partnersSnap.ref());
-        ref.child('vouchers').once('value', function(vouchersSnap) {
-            $scope.vouchers = $firebase(vouchersSnap.ref());
-            $scope.doneLoading();
-          });
-      });
+      $scope.partners = $firebase(partnersSnap.ref());
+      ref.child('vouchers').once('value', function(vouchersSnap) {
+          $scope.vouchers = $firebase(vouchersSnap.ref());
+          $scope.doneLoading();
+        });
+    });
 
     $scope.openAddPurchaseModal = function() {
-        $('#add-purchase-modal').modal('show');
-      };
-    
+      $('#add-purchase-modal').modal('show');
+    };
   }
 ]);
