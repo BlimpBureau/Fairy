@@ -1,9 +1,9 @@
 'use strict';
 
 angular.module('fairyApp')
-  .directive('newPriceItem', function () {
+  .directive('newExpense', function () {
     return {
-      templateUrl: 'views/newpriceitem.html',
+      templateUrl: 'views/new-expense.html',
       restrict: 'E',
       scope: {
       	partners: '='
