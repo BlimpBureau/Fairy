@@ -3,7 +3,8 @@
 angular
   .module('fairyApp', [
     'ngRoute',
-    'firebase'
+    'firebase',
+    'checklist-model'
   ])
   .config(function ($routeProvider) {
     $routeProvider

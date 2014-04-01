@@ -10,8 +10,8 @@
 <input class="form-control" value="" placeholder="VAT" type="number" ng-model="expense.vat" ng-change="handleVatChanged()">
 <br>
 <h2>Owners</h2>
-<div class="input-group" ng-repeat="owner in expense.owners">
-  <input type="checkbox" ng-model="owner.owns" value="{{owner.partner.fullname}}"> {{owner.partner.fullname}}
+<div class="input-group" ng-repeat="partner in partners">
+  <input checklist-model="expense.owners" checklist-value="partner"> {{partner.fullname}}
 </div>
 
-<p ng-repeat="owner in expense.owners">{{owner}}</p>
+<p>{{expense.owners | json}}</p>
