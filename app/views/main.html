@@ -1,31 +1,46 @@
 <form name="newExpenseForm" ng-controller="NewExpenseFormCtrl" ng-submit="submit(newExpenseForm.$valid)" novalidate>
-  <div class="form-group" ng-class="{'has-error' : newExpenseForm.description.$invalid && newExpenseForm.description.$dirty, 'has-success' : newExpenseForm.description.$valid && newExpenseForm.description.$dirty}">
-    <label>Description</label>d
+  <div class="form-group has-feedback" ng-class="{'has-error' : newExpenseForm.description.$invalid && newExpenseForm.description.$dirty, 'has-success' : newExpenseForm.description.$valid && newExpenseForm.description.$dirty}">
+    <label class="control-label" for="description">Description</label>
     <input name="description" class="form-control" placeholder="What did you buy?" type="text" ng-model="expense.description" required>
+    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="newExpenseForm.description.$dirty && newExpenseForm.description.$valid"></span>
+    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="newExpenseForm.description.$dirty && newExpenseForm.description.$invalid"></span>
   </div>
 
-  <div class="form-group" ng-class="{'has-error' : newExpenseForm.price.$invalid && newExpenseForm.price.$dirty, 'has-success' : newExpenseForm.price.$valid && newExpenseForm.price.$dirty}">
-    <label>Price</label>
+  <div class="form-group has-feedback" ng-class="{'has-error' : newExpenseForm.price.$invalid && newExpenseForm.price.$dirty, 'has-success' : newExpenseForm.price.$valid && newExpenseForm.price.$dirty}">
+    <label class="control-label" for="price">Price</label>
     <input name="price" class="form-control" placeholder="How much did it cost?" type="number" ng-model="expense.price" required>
+    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="newExpenseForm.price.$dirty && newExpenseForm.price.$valid"></span>
+    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="newExpenseForm.price.$dirty && newExpenseForm.price.$invalid"></span>
   </div>
 
-  <div class="form-group">
-    <input type="checkbox" ng-model="expense.priceInclusiveVat"> Price is inclusive VAT
+  <div class="checkbox">
+    <label>
+      <input type="checkbox" ng-model="expense.priceInclusiveVat"> Price is inclusive vat
+    </label>
   </div>
 
-  <div class="form-group" ng-class="{'has-error' : newExpenseForm.vatRate.$invalid && newExpenseForm.vatRate.$dirty, 'has-success' : newExpenseForm.vatRate.$valid && newExpenseForm.vatRate.$dirty}">
-    <label>VAT % rate</label>
+  <div class="form-group has-feedback" ng-class="{'has-error' : newExpenseForm.vatRate.$invalid && newExpenseForm.vatRate.$dirty, 'has-success' : newExpenseForm.vatRate.$valid && newExpenseForm.vatRate.$dirty}">
+    <label class="control-label" for="vatRate">VAT % rate</label>
     <input name="vatRate" class="form-control" placeholder="What is the VAT % rate?" type="text" ng-model="expense.vatRate" required vat-rate>
+    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="newExpenseForm.vatRate.$dirty && newExpenseForm.vatRate.$valid"></span>
+    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="newExpenseForm.vatRate.$dirty && newExpenseForm.vatRate.$invalid"></span>
   </div>
 
-  <div class="form-group" ng-class="{'has-error' : newExpenseForm.vat.$invalid && newExpenseForm.vat.$dirty, 'has-success' : newExpenseForm.vat.$valid && newExpenseForm.vat.$dirty}">
-    <label>VAT</label>
+  <div class="form-group has-feedback" ng-class="{'has-error' : newExpenseForm.vat.$invalid && newExpenseForm.vat.$dirty, 'has-success' : newExpenseForm.vat.$valid && newExpenseForm.vat.$dirty}">
+    <label class="control-label" for="vat">VAT</label>
     <input name="vat" class="form-control" placeholder="What is the VAT of the expense?" type="number" ng-model="expense.vat" required>
+    <span class="glyphicon glyphicon-ok form-control-feedback" ng-show="newExpenseForm.vat.$dirty && newExpenseForm.vat.$valid"></span>
+    <span class="glyphicon glyphicon-remove form-control-feedback" ng-show="newExpenseForm.vat.$dirty && newExpenseForm.vat.$invalid"></span>
   </div>
   
-  <h2>Owners</h2>
-  <div class="input-group" ng-repeat="partner in partners">
-    <input checklist-model="expense.owners" checklist-value="partner"> {{partner.fullname}}
+  <div class="form-group" ng-class="{'has-error' : newExpenseForm.owners.$invalid && newExpenseForm.owners.$dirty, 'has-success' : newExpenseForm.owners.$valid && newExpenseForm.owners.$dirty}">
+  <p>{{newExpenseForm.owners.$valid}} {{newExpenseForm.owners.$dirty}}</p>
+    <h4>Owners</h4>
+    <div class="checkbox" ng-repeat="partner in partners">
+      <label>
+        <input name="owners" checklist-model="expense.owners" checklist-value="partner" ng-required="!expense.owners.length" owners> {{partner.fullname}}
+      </label>
+    </div>
   </div>
   <input type="submit" value="Submit">
 </form>
