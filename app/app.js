@@ -1,3 +1,5 @@
 'use strict';
 
-var app = angular.module("fairyApp", []);
+var app = angular.module("fairyApp", [
+  'expenses'
+]);
