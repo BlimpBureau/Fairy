@@ -1,10 +1,36 @@
 <!doctype html>
-<html lang="en" ng-app="fairyApp">
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   <title>Fairy</title>
+  <meta name="description" content="The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.">
+  <meta name="viewport" content="width=device-width">
+
+  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="./app.css" />
 </head>
-<body>
+<body ng-app="fairyApp">
+  <!--[if lt IE 7]>
+    <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
+
+  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <div class="container">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#"><img id="fairy-logo" src="../assets/images/fairy-logo-white-rgb.svg"></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <div class="container">
+      <p><span class="glyphicon glyphicon-heart"></span> from the Backslashforward team</p>
+    </div>
+  </div>
+
   <script src="../bower_components/angular/angular.js"></script>
   <script src="app.js"></script>
 </body>
