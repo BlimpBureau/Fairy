@@ -4,7 +4,7 @@
  * Validates a ng-model to conform to the vat rate format in a form.
  * Will set the $invalid variable to false if the input isn't a percentage between 0 and 100.
  */
-angular.module('validators.vatRate', [])
+angular.module('vat.validRate', [])
   .directive('validVatRate', function() {
     return {
       restrict: 'A',
