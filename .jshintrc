@@ -2,5 +2,6 @@
   "globalstrict": true,
   "globals": {
     "angular": false
-  }
+  },
+  "indent": 2
 }
