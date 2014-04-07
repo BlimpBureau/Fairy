@@ -4,10 +4,10 @@ var module = angular.module('expenses.create', []);
 
 module.controller('createExpenseController', function($scope) {
   $scope.expense = {
-    price: 0,
+    price: undefined,
     priceIncludesVat: false,
-    vatRate: 0,
-    vat: 0,
+    vatRate: undefined,
+    vat: undefined,
     owners: []
   };
 
@@ -25,5 +25,22 @@ module.directive('createExpense', function() {
   return {
     restrict: 'E',
     templateUrl: 'expenses/create/expenses-create.html'
+  };
+});
+
+module.directive('createExpenseForm', function() {
+  return {
+    scope: true,
+    restrict: 'A',
+    require: '^form',
+    link: function(scope, element, attrs, form) {
+      scope.isBad = function(name) {
+        return form[name].$dirty && form[name].$invalid;
+      };
+
+      scope.isGood = function(name) {
+        return form[name].$dirty && form[name].$valid;
+      };
+    }
   };
 });
