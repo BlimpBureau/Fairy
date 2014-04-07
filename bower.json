@@ -1,0 +1,14 @@
+{
+  "name": "fairy",
+  "description": "The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "angular": "1.2.x"
+  },
+  "devDependencies": {
+    "angular-mocks": "1.2.x"
+  }
+}
