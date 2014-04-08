@@ -1,0 +1,21 @@
+<h1 class="page-header">Expenses <button class="btn btn-default pull-right" data-toggle="modal" data-target="#create-expense-modal"><span class="glyphicon glyphicon-plus"></span></span> Add expense</button></h1>
+
+<div id="create-expense-modal" class="modal fade">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title">Add expense</h4>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <create-expense></create-expense>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary" id="add-save-btn">Save changes</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->

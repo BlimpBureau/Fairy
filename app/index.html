@@ -26,7 +26,7 @@
   </div>
 
   <div class="container">
-    <create-expense></create-expense>
+    <ng-include src="'expenses/expenses.html'"></ng-include>
   </div>
 
   <div class="footer">
@@ -35,6 +35,8 @@
     </div>
   </div>
 
+  <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
   <script src="../bower_components/angular/angular.js"></script>
   <script src="../bower_components/checklist-model/checklist-model.js"></script>
   <script src="../bower_components/lodash/dist/lodash.min.js"></script>
