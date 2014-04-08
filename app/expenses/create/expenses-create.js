@@ -1,11 +1,11 @@
 'use strict';
 
-var module = angular.module('expenses.create', [
+angular.module('expenses.create', [
   'vat.validRate',
   'vat.calculator'
-]);
+])
 
-module.controller('createExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator) {
+.controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator) {
   $scope.expense = {
     price: undefined,
     priceIncludesVat: false,
@@ -32,19 +32,24 @@ module.controller('createExpenseController', ['$scope', 'vatCalculator', functio
   var CHANGED_BY_USER = 'user';
   var CHANGED_BY_CONTROLLER = 'controller';
 
-  var changedBy = {
+  $scope.changedBy = {
     price: CHANGED_BY_CONTROLLER,
     vatRate: CHANGED_BY_CONTROLLER,
     vat: CHANGED_BY_CONTROLLER
   };
 
   $scope.changed = function(input) {
-    changedBy[input] = CHANGED_BY_USER;
+    $scope.changedBy[input] = CHANGED_BY_USER;
   };
+
+  function setValue(model, value) {
+    $scope.expense[model] = value;
+    $scope.changedBy[model] = CHANGED_BY_CONTROLLER;
+  }
 
   function autofill(changed, newValue) {
     function canChange(element) {
-      return !$scope.expense[element] || changedBy[element] === CHANGED_BY_CONTROLLER;
+      return !$scope.expense[element] || $scope.changedBy[element] === CHANGED_BY_CONTROLLER;
     }
 
     if(newValue) {
@@ -55,13 +60,13 @@ module.controller('createExpenseController', ['$scope', 'vatCalculator', functio
 
       if(changed !== 'vat' && vatRate && price && canChange('vat')) {
         //The changed model is not vat, there is a vatRate and a price and we can change the vat model.
-        $scope.expense.vat = vatCalculator.vatOfPrice(price, vatRate, piv);
+        setValue('vat', vatCalculator.vatOfPrice(price, vatRate, piv));
       } else if(changed !== 'vatRate' && vat && price && canChange('vatRate')) {
         //The changed model is not vatRate, there is a vat and a price and we can change the vatRate model.
-        $scope.expense.vatRate = vatCalculator.vatRateOfPrice(price, vat, piv);
+        setValue('vatRate', vatCalculator.vatRateOfPrice(price, vat, piv));
       } else if(changed !== 'price' && vatRate && vat && canChange('price')) {
         //The changed model is not price, there is a vatRate and a vat and we can change the price model.
-        $scope.expense.price = vatCalculator.priceOfVat(vat, vatRate, piv);
+        setValue('price', vatCalculator.priceOfVat(vat, vatRate, piv));
       }
     }
   }
@@ -90,25 +95,25 @@ module.controller('createExpenseController', ['$scope', 'vatCalculator', functio
     var vat = $scope.expense.vat;
 
     if(price && vatRate && vat) {
-      if(changedBy.price === CHANGED_BY_CONTROLLER) {
-        $scope.expense.price = vatCalculator.priceOfVat(vat, vatRate, piv);
-      } else if(changedBy.vatRate === CHANGED_BY_CONTROLLER) {
-        $scope.expense.vatRate = vatCalculator.vatRateOfPrice(price, vat, piv);
-      } else if(changedBy.vat === CHANGED_BY_CONTROLLER) {
-        $scope.expense.vat = vatCalculator.vatOfPrice(price, vatRate, piv);
+      if($scope.changedBy.price === CHANGED_BY_CONTROLLER) {
+        setValue('price', vatCalculator.priceOfVat(vat, vatRate, piv));
+      } else if($scope.changedBy.vatRate === CHANGED_BY_CONTROLLER) {
+        setValue('vatRate', vatCalculator.vatRateOfPrice(price, vat, piv));
+      } else if($scope.changedBy.vat === CHANGED_BY_CONTROLLER) {
+        setValue('vat', vatCalculator.vatOfPrice(price, vatRate, piv));
       }
     }
   });
-}]);
+}])
 
-module.directive('createExpense', function() {
+.directive('createExpense', function() {
   return {
     restrict: 'E',
     templateUrl: 'expenses/create/expenses-create.html'
   };
-});
+})
 
-module.directive('createExpenseForm', function() {
+.directive('createExpenseForm', function() {
   return {
     scope: true,
     restrict: 'A',
