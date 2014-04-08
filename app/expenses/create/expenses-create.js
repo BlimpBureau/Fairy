@@ -124,19 +124,3 @@ module.directive('createExpenseForm', function() {
     }
   };
 });
-
-module.directive('vatRate', function() {
-  return {
-    restrict: 'A',
-    require: 'ngModel',
-    link: function(scope, element, attrs, controller) {
-      //Add an additional parser to validate that the vat rate is valid.
-      //Push it so it runs last.
-      controller.$parsers.push(function(viewValue) {
-        if(viewValue) {
-
-        }
-      });
-    }
-  };
-});
