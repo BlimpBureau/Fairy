@@ -9,11 +9,13 @@ angular.module('form.goodBad', [])
     require: '^form',
     link: function(scope, element, attrs, form) {
       scope.isBad = function(name) {
-        return form[name].$dirty && form[name].$invalid;
+        var e = form[name];
+        return e && e.$dirty && e.$invalid;
       };
 
       scope.isGood = function(name) {
-        return form[name].$dirty && form[name].$valid;
+        var e = form[name];
+        return e && e.$dirty && e.$valid;
       };
     }
   };
