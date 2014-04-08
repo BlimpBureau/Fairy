@@ -8,8 +8,7 @@ module.exports = function(config) {
     files: [
       'bower_components/angular/angular.js',
       'bower_components/angular-mocks/angular-mocks.js',
-      'app/components/vat/*.js',
-      'app/expenses/create/*.js'
+      'app/**/*.js'
     ],
     autoWatch: true,
     frameworks: ['jasmine'],

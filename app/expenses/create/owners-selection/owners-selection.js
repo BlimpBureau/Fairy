@@ -1,7 +1,6 @@
 'use strict';
 
 angular.module('expenses.create.owners-selection', [
-  'checklist-model',
   'resources.partners'
 ])
 

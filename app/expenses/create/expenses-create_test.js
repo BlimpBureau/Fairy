@@ -19,7 +19,7 @@ describe('expenses.create', function() {
       expect(scope.expense.priceIncludesVat).toEqual(false);
       expect(scope.expense.vatRate).toBe(undefined);
       expect(scope.expense.vat).toBe(undefined);
-      expect(scope.expense.owners).toEqual([]);
+      expect(scope.expense.owners).toEqual(undefined);
 
       expect(scope.changedBy).toEqual({ price: 'controller', vatRate: 'controller', vat: 'controller' });
     });
