@@ -3,7 +3,8 @@
 angular.module('expenses.create', [
   'vat.validRate',
   'vat.calculator',
-  'form.goodBad'
+  'form.goodBad',
+  'expenses.create.owners-selection'
 ])
 
 .controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator) {
@@ -12,7 +13,7 @@ angular.module('expenses.create', [
     priceIncludesVat: false,
     vatRate: undefined,
     vat: undefined,
-    owners: []
+    owners: undefined
   };
 
   $scope.changedBy = {
