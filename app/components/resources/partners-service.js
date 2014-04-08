@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('partners', [])
+angular.module('resources.partners', [])
 
 .factory('partners', function() {
   return [

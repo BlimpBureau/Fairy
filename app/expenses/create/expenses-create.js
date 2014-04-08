@@ -7,7 +7,7 @@ angular.module('expenses.create', [
   'expenses.create.owners-selection'
 ])
 
-.controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator) {
+.controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator, partners) {
   $scope.expense = {
     price: undefined,
     priceIncludesVat: false,
@@ -21,15 +21,6 @@ angular.module('expenses.create', [
     vatRate: 'controller',
     vat: 'controller'
   };
-
-  $scope.partners = [
-    {
-      fullname: 'Lucas Wiener'
-    },
-    {
-      fullname: 'Nadan gergeo'
-    }
-  ];
 
   var CHANGED_BY_USER = 'user';
   var CHANGED_BY_CONTROLLER = 'controller';

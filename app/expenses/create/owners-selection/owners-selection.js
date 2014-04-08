@@ -2,7 +2,7 @@
 
 angular.module('expenses.create.owners-selection', [
   'checklist-model',
-  'partners'
+  'resources.partners'
 ])
 
 .directive('ownersSelection', ['partners', function(partners) {
