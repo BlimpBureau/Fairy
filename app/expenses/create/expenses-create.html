@@ -1,4 +1,4 @@
-<form ng-controller="CreateExpenseController" create-expense-form novalidate>
+<form ng-controller="CreateExpenseController" good-bad-form novalidate>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('description'), 'has-error' : isBad('description') }">
     <label class="control-label" for="description">Description</label>
     <input class="form-control" name="description" placeholder="What did you buy?" type="text" ng-model="expense.description" required>

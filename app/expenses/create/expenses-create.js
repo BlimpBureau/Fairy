@@ -2,7 +2,8 @@
 
 angular.module('expenses.create', [
   'vat.validRate',
-  'vat.calculator'
+  'vat.calculator',
+  'form.goodBad'
 ])
 
 .controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator) {
@@ -110,22 +111,5 @@ angular.module('expenses.create', [
   return {
     restrict: 'E',
     templateUrl: 'expenses/create/expenses-create.html'
-  };
-})
-
-.directive('createExpenseForm', function() {
-  return {
-    scope: true,
-    restrict: 'A',
-    require: '^form',
-    link: function(scope, element, attrs, form) {
-      scope.isBad = function(name) {
-        return form[name].$dirty && form[name].$invalid;
-      };
-
-      scope.isGood = function(name) {
-        return form[name].$dirty && form[name].$valid;
-      };
-    }
   };
 });
