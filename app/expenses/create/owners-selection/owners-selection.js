@@ -19,7 +19,6 @@ angular.module('expenses.create.owners-selection', [
       formController.$addControl(modelController);
 
       modelController.$parsers.push(function(viewValue) {
-        console.log(viewValue);
         if(!viewValue || !viewValue.length) {
           modelController.$setValidity('owners', false);
           return;
