@@ -5,6 +5,7 @@ angular.module('expenses.create', [
   'vat.calculator',
   'form.goodBad',
   'expenses.create.owners-selection',
+  'expenses.create.payer-selection',
   'resources.expenses'
 ])
 
@@ -16,6 +17,15 @@ angular.module('expenses.create', [
     vat: undefined,
     owners: undefined
   };
+
+  $scope.partners = [
+    {
+      fullname:'lucas'
+    },
+    {
+      fullname:'kuk'
+    }
+  ];
 
   $scope.submit = function(callback) {
     $scope.error = expenses.add($scope.expense);

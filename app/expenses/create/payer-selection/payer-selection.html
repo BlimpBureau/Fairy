@@ -1,0 +1,5 @@
+<div class="radio" ng-repeat="possiblePayer in possiblePayers">
+  <label>
+    <input type="radio" name="payer-radio" ng-model="$parent.selected" ng-value="possiblePayer"> {{possiblePayer.fullname}}
+  </label>
+</div>

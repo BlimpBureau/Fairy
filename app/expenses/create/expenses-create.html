@@ -32,6 +32,10 @@
     <label class="control-label">Owners</label>
     <owners-selection name="owners" ng-model="expense.owners"></owners-selection>
   </div>
+  <div class="form-group" ng-class="{ 'has-success' : isGood('payer'), 'has-error' : isBad('payer') }">
+    <label class="control-label">Who paid?</label>
+    <payer-selection name="payer" ng-model="expense.payer" required></payer-selection>
+  </div>
 </form>
 
 <div class="alert alert-danger" ng-show="error" style="margin-bottom:0px"><strong>Crap.</strong> Failed to create expense, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
