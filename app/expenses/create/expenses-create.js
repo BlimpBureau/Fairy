@@ -18,15 +18,6 @@ angular.module('expenses.create', [
     owners: undefined
   };
 
-  $scope.partners = [
-    {
-      fullname:'lucas'
-    },
-    {
-      fullname:'kuk'
-    }
-  ];
-
   $scope.submitted = false;
 
   $scope.submit = function(callback) {
@@ -35,12 +26,6 @@ angular.module('expenses.create', [
     if(!$scope.error) {
       return callback();
     }
-  };
-
-  $scope.changedBy = {
-    price: 'controller',
-    vatRate: 'controller',
-    vat: 'controller'
   };
 
   var CHANGED_BY_USER = 'user';
@@ -63,7 +48,7 @@ angular.module('expenses.create', [
 
   function autofill(changed, newValue) {
     function canChange(element) {
-      return !$scope.expense[element] || $scope.changedBy[element] === CHANGED_BY_CONTROLLER;
+      return $scope.expense[element] === undefined || $scope.changedBy[element] === CHANGED_BY_CONTROLLER;
     }
 
     if(newValue) {
