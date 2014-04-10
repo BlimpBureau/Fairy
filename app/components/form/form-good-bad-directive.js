@@ -4,7 +4,7 @@ angular.module('form.goodBad', [])
 
 .directive('goodBadForm', ['$parse', function($parse) {
   return {
-    restrict: 'A',
+    restrict: 'EA',
     require: '^form',
     link: function(scope, element, attrs, form) {
       function ignoreDirty() {

@@ -4,6 +4,7 @@ angular.module('expenses.create', [
   'vat.validRate',
   'vat.calculator',
   'form.goodBad',
+  'form.goodBadSubmit',
   'expenses.create.owners-selection',
   'expenses.create.payer-selection',
   'resources.expenses'
@@ -18,10 +19,13 @@ angular.module('expenses.create', [
     owners: undefined
   };
 
-  $scope.submitted = false;
+  $scope.userTriedSubmit = false;
 
-  $scope.submit = function(callback) {
-    $scope.submitted = true;
+  $scope.handleBadSubmit = function() {
+    $scope.userTriedSubmit = true;
+  };
+
+  $scope.createExpense = function(callback) {
     $scope.error = expenses.add($scope.expense);
     if(!$scope.error) {
       return callback();

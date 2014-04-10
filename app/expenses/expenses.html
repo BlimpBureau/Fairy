@@ -7,13 +7,15 @@
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title">Add expense</h4>
       </div>
-      <div class="modal-body">
-        <create-expense></create-expense>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary" id="add-save-btn" ng-click="submit(close)">Save changes</button>
-      </div>
+      <form novalidate>
+        <div class="modal-body">
+          <create-expense></create-expense>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <input type="submit" class="btn btn-primary" id="add-save-btn" value="Save changes" ng-click="submit(close)">
+        </div>
+      </form>
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
