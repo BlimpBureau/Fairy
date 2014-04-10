@@ -27,6 +27,20 @@ angular.module('vat.validRate', [])
             }
           }
         });
+
+        controller.$formatters.unshift(function(modelValue) {
+          if(modelValue) {
+            var number = parseFloat(modelValue);
+
+            if(number > 0 && number < 1) {
+              controller.$setValidity('vatRate', true);
+              return String(number);
+            } else {
+              controller.$setValidity('vatRate', false);
+              return undefined;
+            }
+          }
+        });
       }
     };
   });

@@ -9,7 +9,7 @@
   </div>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('price'), 'has-error' : isBad('price') }">
     <label class="control-label" for="price">Price</label>
-    <input class="form-control" name="price" placeholder="How much did it cost?" type="text" ng-model="expense.price" ng-change="changed('price')" required>
+    <input class="form-control" name="price" placeholder="How much did it cost?" type="text" ng-model="expense.price" ng-change="changed('price')" required money>
     <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('price')"></span>
     <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('price')"></span>
   </div>
@@ -20,7 +20,7 @@
   </div>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('vatRate'), 'has-error' : isBad('vatRate') }">
     <label class="control-label" for="vatRate">VAT % rate</label>
-    <input class="form-control" name="vatRate" placeholder="What is the VAT % rate?" type="text" ng-model="expense.vatRate" ng-change="changed('vatRate')" required valid-vat-rate>
+    <input class="form-control" name="vatRate" placeholder="What is the VAT % rate?" type="text" ng-model="expense.vatRate" ng-change="changed('vatRate')" required valid-vat-rate money decimals="3">
     <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vatRate')"></span>
     <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vatRate')"></span>
   </div>
