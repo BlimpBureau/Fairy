@@ -1,5 +1,7 @@
 <h1 class="page-header">Expenses <button class="btn btn-default pull-right" data-toggle="modal" data-target="#create-expense-modal"><span class="glyphicon glyphicon-plus"></span></span> Add expense</button></h1>
 
+<ng-include src="'expenses/list/expenses-list.html'"></ng-include>
+
 <div id="create-expense-modal" ng-controller="CreateExpenseController" class="modal fade" bootstrap-modal>
   <div class="modal-dialog">
     <div class="modal-content">

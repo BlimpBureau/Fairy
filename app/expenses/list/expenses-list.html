@@ -1,0 +1,24 @@
+<div class="table-responsive" ng-controller="ExpensesListController">
+  <table id="expenses-list" class="table table-bordered table-complex table-striped">
+    <thead>
+      <tr>
+        <th>Description</th>
+        <th>Price</th>
+        <th>VAT %</th>
+        <th>VAT</th>
+        <th>Owners</th>
+        <th>Paid by</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="expense in expenses">
+        <td>{{expense.description}}</td>
+        <td>{{expense.price}}</td>
+        <td>{{expense.vatRate}}</td>
+        <td>{{expense.vat}}</td>
+        <td>{{expense.owners | json}}</td>
+        <td>{{expense.payer}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
