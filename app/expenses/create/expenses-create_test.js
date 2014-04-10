@@ -15,7 +15,7 @@ describe('expenses.create', function() {
 
     function userChange(model, value) {
       scope.expense[model] = value;
-      scope.changed('user');
+      scope.changed(model);
     }
 
     function controllerChange(model, value) {
@@ -60,10 +60,10 @@ describe('expenses.create', function() {
       scope.$apply();
       autofillState(100, 0.25, 25);
 
-      userChange('vat', 0);
-      userChange('price', 0);
+      userChange('vat', undefined);
+      userChange('price', undefined);
       scope.$apply();
-      autofillState(0, 0.25, 0);
+      autofillState(undefined, 0.25, undefined);
 
       userChange('price', 200);
       scope.$apply();
@@ -79,10 +79,10 @@ describe('expenses.create', function() {
       scope.$apply();
       autofillState(100, 0.25, 25);
 
-      userChange('vatRate', 0);
-      userChange('price', 0);
+      userChange('vatRate', undefined);
+      userChange('price', undefined);
       scope.$apply();
-      autofillState(0, 0, 25);
+      autofillState(undefined, undefined, 25);
 
       userChange('price', 200);
       scope.$apply();
@@ -98,10 +98,10 @@ describe('expenses.create', function() {
       scope.$apply();
       autofillState(100, 0.25, 25);
 
-      userChange('vatRate', 0);
-      userChange('price', 0);
+      userChange('vatRate', undefined);
+      userChange('price', undefined);
       scope.$apply();
-      autofillState(0, 0, 25);
+      autofillState(undefined, undefined, 25);
 
       userChange('vatRate', 0.125);
       scope.$apply();
@@ -129,79 +129,50 @@ describe('expenses.create', function() {
       });
 
       it('should keep updating values that has been autofilled', function() {
-        scope.changed('vatRate');
-        scope.expense.price = 100;
-        scope.expense.vatRate = 0.25;
+        userChange('price', 100);
+        userChange('vatRate', 0.25);
         scope.$apply();
+        autofillState(100, 0.25, 25);
 
-        expect(scope.expense.price).toEqual(100);
-        expect(scope.expense.vatRate).toEqual(0.25);
-        expect(scope.expense.vat).toEqual(25);
-
-        scope.expense.price = 200;
+        userChange('price', 200);
         scope.$apply();
+        autofillState(200, 0.25, 50);
 
-        expect(scope.expense.price).toEqual(200);
-        expect(scope.expense.vatRate).toEqual(0.25);
-        expect(scope.expense.vat).toEqual(50);
-
-        scope.changed('vat');
-        scope.expense.vat = 25;
+        userChange('vat', 25);
         scope.$apply();
+        autofillState(200, 0.25, 25);
 
-        expect(scope.expense.price).toEqual(100);
-        expect(scope.expense.vatRate).toEqual(0.25);
-        expect(scope.expense.vat).toEqual(25);
-
-        scope.expense.vatRate = 0;
-        scope.expense.price = 200;
+        userChange('price', 200);
+        userChange('vatRate', undefined);
         scope.$apply();
+        autofillState(200, undefined, 25);
 
-        expect(scope.expense.price).toEqual(200);
-        expect(scope.expense.vatRate).toEqual(0.125);
-        expect(scope.expense.vat).toEqual(25);
-
-        scope.expense.price = 100;
+        userChange('price', 100);
         scope.$apply();
-
-        expect(scope.expense.price).toEqual(100);
-        expect(scope.expense.vatRate).toEqual(0.25);
-        expect(scope.expense.vat).toEqual(25);
+        autofillState(100, 0.25, 25);
       });
 
       describe('priceInclusiveVat checkbox', function() {
         it('should only update a controller-changed or user-empty model value if changed', function() {
-          scope.expense.price = 100;
-          scope.expense.vatRate = 0.25;
-          scope.expense.vat = 25;
-          scope.changed('vatRate');
-          scope.changed('vat');
+          controllerChange('price', 100);
+          userChange('vatRate', 0.25);
+          userChange('vat', 25);
           scope.expense.priceIncludesVat = true;
           scope.$apply();
+          autofillState(125, 0.25, 25);
 
-          expect(scope.expense.price).toEqual(125);
-          expect(scope.expense.vatRate).toEqual(0.25);
-          expect(scope.expense.vat).toEqual(25);
-
-          scope.expense.vat = 0;
-          scope.expense.price = 100;
-          scope.changed('price');
+          userChange('vat', undefined);
+          userChange('price', 100);
           scope.expense.priceIncludesVat = false;
           scope.$apply();
+          autofillState(100, 0.25, 25);
 
-          expect(scope.expense.price).toEqual(100);
-          expect(scope.expense.vatRate).toEqual(0.25);
-          expect(scope.expense.vat).toEqual(25);
-
-          scope.changed('vat');
-          scope.changed('price');
-          scope.changed('vatRate');
+          userChange('price', 100);
+          userChange('vatRate', 0.25);
+          userChange('vat', 25);
           scope.expense.priceIncludesVat = true;
           scope.$apply();
-
-          expect(scope.expense.price).toEqual(100);
-          expect(scope.expense.vatRate).toEqual(0.25);
-          expect(scope.expense.vat).toEqual(25);
+          autofillState(100, 0.25, 25);
         });
       });
     });
