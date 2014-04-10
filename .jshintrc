@@ -2,7 +2,8 @@
   "globalstrict": true,
   "globals": {
     "angular": false,
-    "_": false
+    "_": false,
+    "$": false
   },
   "indent": 2
 }

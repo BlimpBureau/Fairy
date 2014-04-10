@@ -4,16 +4,25 @@ angular.module('expenses.create', [
   'vat.validRate',
   'vat.calculator',
   'form.goodBad',
-  'expenses.create.owners-selection'
+  'expenses.create.owners-selection',
+  'resources.expenses'
 ])
 
-.controller('CreateExpenseController', ['$scope', 'vatCalculator', function($scope, vatCalculator, partners) {
+.controller('CreateExpenseController', ['$scope', 'vatCalculator', 'expenses', function($scope, vatCalculator, expenses) {
   $scope.expense = {
     price: undefined,
     priceIncludesVat: false,
     vatRate: undefined,
     vat: undefined,
     owners: undefined
+  };
+
+  $scope.submit = function(callback) {
+    expenses.add($scope.expense);
+
+    if(callback) {
+      callback();
+    }
   };
 
   $scope.changedBy = {
@@ -102,6 +111,7 @@ angular.module('expenses.create', [
 .directive('createExpense', function() {
   return {
     restrict: 'E',
-    templateUrl: 'expenses/create/expenses-create.html'
+    templateUrl: 'expenses/create/expenses-create.html',
+
   };
 });
