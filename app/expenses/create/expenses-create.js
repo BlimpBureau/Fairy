@@ -18,9 +18,8 @@ angular.module('expenses.create', [
   };
 
   $scope.submit = function(callback) {
-    expenses.add($scope.expense);
-
-    if(callback) {
+    $scope.error = expenses.add($scope.expense);
+    if(!$scope.error) {
       callback();
     }
   };

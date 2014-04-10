@@ -8,6 +8,7 @@ angular.module('resources.expenses', [])
   return {
     add: function(expense) {
       expenses.push(expense);
+      return 1;
     }
   };
 });
