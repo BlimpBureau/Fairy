@@ -9,7 +9,7 @@
   </div>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('price'), 'has-error' : isBad('price') }">
     <label class="control-label" for="price">Price</label>
-    <input class="form-control" name="price" placeholder="How much did it cost?" type="number" ng-model="expense.price" ng-change="changed('price')" required>
+    <input class="form-control" name="price" placeholder="How much did it cost?" type="text" ng-model="expense.price" ng-change="changed('price')" required>
     <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('price')"></span>
     <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('price')"></span>
   </div>
@@ -26,7 +26,7 @@
   </div>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('vat'), 'has-error' : isBad('vat') }">
     <label class="control-label" for="vat">VAT</label>
-    <input class="form-control" name="vat" placeholder="What is the VAT of the expense?" type="number" ng-model="expense.vat" ng-change="changed('vat')" required>
+    <input class="form-control" name="vat" placeholder="What is the VAT of the expense?" type="text" ng-model="expense.vat" ng-change="changed('vat')" required money>
     <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vat')"></span>
     <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vat')"></span>
   </div>

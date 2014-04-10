@@ -7,7 +7,8 @@ angular.module('expenses.create', [
   'form.goodBadSubmit',
   'expenses.create.owners-selection',
   'expenses.create.payer-selection',
-  'resources.expenses'
+  'resources.expenses',
+  'financial.money'
 ])
 
 .controller('CreateExpenseController', ['$scope', 'vatCalculator', 'expenses', function($scope, vatCalculator, expenses) {
