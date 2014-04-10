@@ -27,10 +27,13 @@ angular.module('expenses.create', [
     }
   ];
 
+  $scope.submitted = false;
+
   $scope.submit = function(callback) {
+    $scope.submitted = true;
     $scope.error = expenses.add($scope.expense);
     if(!$scope.error) {
-      callback();
+      return callback();
     }
   };
 

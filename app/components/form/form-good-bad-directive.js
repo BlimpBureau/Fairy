@@ -2,21 +2,25 @@
 
 angular.module('form.goodBad', [])
 
-.directive('goodBadForm', function() {
+.directive('goodBadForm', ['$parse', function($parse) {
   return {
-    scope: true,
     restrict: 'A',
     require: '^form',
     link: function(scope, element, attrs, form) {
+      function ignoreDirty() {
+        var ignoreDirtyGetter = $parse(attrs.goodBadForm);
+        return ignoreDirtyGetter(scope);
+      }
+
       scope.isBad = function(name) {
         var e = form[name];
-        return e && e.$dirty && e.$invalid;
+        return e && e.$invalid && (e.$dirty || ignoreDirty());
       };
 
       scope.isGood = function(name) {
         var e = form[name];
-        return e && e.$dirty && e.$valid;
+        return e && e.$valid && e.$dirty;
       };
     }
   };
-});
+}]);

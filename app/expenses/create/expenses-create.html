@@ -1,4 +1,4 @@
-<form ng-submit="createExpense()" good-bad-form novalidate>
+<form name="createExpenseForm" good-bad-form="submitted" novalidate>
   <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('description'), 'has-error' : isBad('description') }">
     <label class="control-label" for="description">Description</label>
     <input class="form-control" name="description" placeholder="What did you buy?" type="text" ng-model="expense.description" required>
@@ -30,12 +30,14 @@
   </div>
   <div class="form-group" ng-class="{ 'has-success' : isGood('owners'), 'has-error' : isBad('owners') }">
     <label class="control-label">Owners</label>
-    <owners-selection name="owners" ng-model="expense.owners"></owners-selection>
+    <owners-selection name="owners" ng-model="expense.owners" required></owners-selection>
   </div>
   <div class="form-group" ng-class="{ 'has-success' : isGood('payer'), 'has-error' : isBad('payer') }">
     <label class="control-label">Who paid?</label>
     <payer-selection name="payer" ng-model="expense.payer" required></payer-selection>
   </div>
+
+<div ng-show="isBad('price')">fitta</div>
 </form>
 
 <div class="alert alert-danger" ng-show="error" style="margin-bottom:0px"><strong>Crap.</strong> Failed to create expense, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
