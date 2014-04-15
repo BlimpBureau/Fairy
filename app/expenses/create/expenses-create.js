@@ -5,6 +5,7 @@ angular.module('expenses.create', [
   'vat.calculator',
   'form.goodBad',
   'form.goodBadSubmit',
+  'form.valid.date',
   'expenses.create.owners-selection',
   'expenses.create.payer-selection',
   'resources.expenses',
