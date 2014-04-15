@@ -10,7 +10,7 @@ angular.module('form.valid.date', [])
       function modelFormat(date) {
         function zeroFix(index) {
           if(parts[index].length == 1) {
-            parts[index] = '0'.concat(parts[index]);
+            parts[index] = '0' + parts[index];
           }
         }
 
