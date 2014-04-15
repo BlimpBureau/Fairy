@@ -41,7 +41,8 @@ module.exports = function(grunt) {
     connect: {
       options: {
         port: 8888,
-        hostname: 'localhost'
+        hostname: 'localhost',
+        livereload: false
       },
       build: {
         options: {
@@ -50,6 +51,9 @@ module.exports = function(grunt) {
       }
     },
     watch: {
+      options: {
+        livereload: false
+      },
       files: [
         'app/**/*',
         '!app/**/*_test.js',
