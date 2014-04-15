@@ -37,11 +37,35 @@ module.exports = function(grunt) {
           src: 'assets/**/*'
         }]
       }
+    },
+    connect: {
+      options: {
+        port: 8888,
+        hostname: 'localhost'
+      },
+      build: {
+        options: {
+          base: ['build', 'build/app']
+        }
+      }
+    },
+    clean: {
+      build: {
+        files: [{
+          src: 'build'
+        }]
+      }
     }
   });
 
   grunt.registerTask('build', [
     'includeSource:build',
     'copy:build'
+  ]);
+
+  grunt.registerTask('serve', [
+    'clean',
+    'build',
+    'connect:build:keepalive'
   ]);
 };
