@@ -15,9 +15,9 @@
       <tr ng-repeat="expense in expenses">
         <td>{{expense.date}}</td>
         <td>{{expense.description}}</td>
-        <td>{{expense.price}}</td>
+        <td>{{expense.price | moneyFilter}}</td>
         <td>{{expense.vatRate}}</td>
-        <td>{{expense.vat}}</td>
+        <td>{{expense.vat | moneyFilter}}</td>
         <td>{{expense.owners | json}}</td>
         <td>{{expense.payer}}</td>
       </tr>

@@ -1,7 +1,8 @@
 'use strict';
 
 angular.module('expenses.list', [
-  'resources.expenses'
+  'resources.expenses',
+  'presentation.money-filter'
 ])
 
 .controller('ExpensesListController', ['$scope', 'expenses', function($scope, expenses) {
