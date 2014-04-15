@@ -10,7 +10,8 @@
   <meta name="viewport" content="width=device-width">
 
   <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
-  <link rel="stylesheet" href="./app.css" />
+
+  <!-- include: "type": "css", "files": ["**/*.css"] -->
 </head>
 <body ng-app="fairyApp">
   <!--[if lt IE 7]>
@@ -41,25 +42,7 @@
   <script src="../bower_components/angular-route/angular-route.min.js"></script>
   <script src="../bower_components/checklist-model/checklist-model.js"></script>
   <script src="../bower_components/lodash/dist/lodash.min.js"></script>
-  <script src="app.js"></script>
-  <script src="components/bootstrap/bootstrap-modal-directive.js"></script>
-  <script src="components/resources/partners-service.js"></script>
-  <script src="components/resources/expenses-service.js"></script>
-  <script src="components/resources/company-service.js"></script>
-  <script src="components/vat/vat-calculator-service.js"></script>
-  <script src="components/vat/vat-valid-rate-directory.js"></script>
-  <script src="components/vat/vat.js"></script>
-  <script src="components/form/form-good-bad-directive.js"></script>
-  <script src="components/form/form-good-bad-submit-directive.js"></script>
-  <script src="components/form/valid/form-valid-date-directive.js"></script>
-  <script src="components/financial/money-directive.js"></script>
-  <script src="components/presentation/presentation-money-filter.js"></script>
-  <script src="expenses/expenses.js"></script>
-  <script src="expenses/create/owners-selection/owners-selection.js"></script>
-  <script src="expenses/create/payer-selection/payer-selection.js"></script>
-  <script src="expenses/create/expenses-create.js"></script>
-  <script src="expenses/list/expenses-list.js"></script>
-  <script src="incomes/incomes.js"></script>
-  <script src="dashboard/dashboard.js"></script>
+
+  <!-- include: "type": "js", "files": ["**/*.js", "!**/*_test.js"] -->
 </body>
 </html>

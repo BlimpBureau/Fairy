@@ -5,6 +5,7 @@
   "private": true,
   "license": "MIT",
   "dependencies": {
+    "jquery": "1.11.x",
     "angular": "1.2.x",
     "bootstrap": "3.1.x",
     "lodash": "~2.4.1",
@@ -12,5 +13,13 @@
   },
   "devDependencies": {
     "angular-mocks": "~1.2.16"
+  },
+  "sources": {
+    "js": [
+
+    ],
+    "css": [
+      "bower_components/bootstrap/dist/css/bootstrap.min.css"
+    ]
   }
 }
