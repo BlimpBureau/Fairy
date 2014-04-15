@@ -45,9 +45,19 @@ module.exports = function(grunt) {
       },
       build: {
         options: {
-          base: ['build', 'build/app']
+          base: ['build', 'build/app'],
         }
       }
+    },
+    watch: {
+      files: [
+        'app/**/*',
+        '!app/**/*_test.js',
+        'bower.json'
+      ],
+      tasks: [
+        'build'
+      ]
     },
     clean: {
       build: {
@@ -59,13 +69,14 @@ module.exports = function(grunt) {
   });
 
   grunt.registerTask('build', [
+    'clean:build',
     'includeSource:build',
     'copy:build'
   ]);
 
   grunt.registerTask('serve', [
-    'clean',
     'build',
-    'connect:build:keepalive'
+    'connect:build:keepalive',
+    'watch'
   ]);
 };
