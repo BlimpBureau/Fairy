@@ -80,7 +80,7 @@ module.exports = function(grunt) {
 
   grunt.registerTask('serve', [
     'build',
-    'connect:build:keepalive',
+    'connect:build',
     'watch'
   ]);
 };
