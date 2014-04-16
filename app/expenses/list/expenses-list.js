@@ -7,5 +7,4 @@ angular.module('expenses.list', [
 
 .controller('ExpensesListController', ['$scope', 'expenses', function($scope, expenses) {
   $scope.expenses = expenses.get();
-  console.log($scope.expenses);
 }]);
