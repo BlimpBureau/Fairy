@@ -1,4 +1,6 @@
 {
+  "nonbsp": true,
+  "trailing": true,
   "globalstrict": true,
   "globals": {
     "angular": false,
