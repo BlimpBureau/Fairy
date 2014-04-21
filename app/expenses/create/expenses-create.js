@@ -6,7 +6,7 @@ angular.module('expenses.create', [
   'form.goodBad',
   'form.goodBadSubmit',
   'form.valid.date',
-  'expenses.create.owners-selection',
+  'presentation.owners-selection',
   'expenses.create.payer-selection',
   'resources.expenses',
   'financial.money'

@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('expenses.create.owners-selection', [
+angular.module('presentation.owners-selection', [
   'resources.partners'
 ])
 
@@ -11,7 +11,7 @@ angular.module('expenses.create.owners-selection', [
     },
     restrict: 'E',
     require: ['ngModel', '^form'],
-    templateUrl: 'expenses/create/owners-selection/owners-selection.html',
+    templateUrl: 'components/presentation/owners-selection/owners-selection.html',
     link: function(scope, element, attrs, controllers) {
       var modelController = controllers[0];
       var formController = controllers[1];

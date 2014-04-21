@@ -6,7 +6,7 @@ angular.module('incomes.create', [
   'form.goodBad',
   'form.goodBadSubmit',
   'form.valid.date',
-  'incomes.create.owners-selection',
+  'presentation.owners-selection',
   'resources.incomes',
   'financial.money'
 ])
