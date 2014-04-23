@@ -1,0 +1,3 @@
+<ul class="nav navbar-nav" ng-controller="MenuController">
+  <li ng-repeat="menuItem in menu" ng-class="{ active : isActive(menuItem.route) }" ><a href="#{{menuItem.route}}">{{menuItem.name}}</a></li>
+</ul>

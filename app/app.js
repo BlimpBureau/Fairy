@@ -2,6 +2,7 @@
 
 angular.module("fairyApp", [
   'ngRoute',
+  'menu',
   'expenses',
   'incomes',
   'dashboard'

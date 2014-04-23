@@ -21,6 +21,12 @@ body {
   height: 80px;
 }
 
+@media(min-width:768px){
+  .navbar-nav li a {
+   line-height: 50px;
+  }
+}
+
 #fairy-logo {
     height: 60px;
     width: auto;
