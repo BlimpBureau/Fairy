@@ -9,15 +9,14 @@
     "angular": "1.2.x",
     "bootstrap": "3.1.x",
     "lodash": "~2.4.1",
-    "angular-route": "~1.2.16"
+    "angular-route": "~1.2.16",
+    "bookie": "https://github.com/backslashforward/bookie.js.git"
   },
   "devDependencies": {
     "angular-mocks": "~1.2.16"
   },
   "sources": {
-    "js": [
-
-    ],
+    "js": [],
     "css": [
       "bower_components/bootstrap/dist/css/bootstrap.min.css"
     ]

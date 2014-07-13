@@ -11,7 +11,10 @@ angular.module('menu', [])
     name: "Expenses"
   }, {
     route: "/incomes",
-    name: "Incomes"
+    name: "Incomes",
+  }, {
+    route: "/ledger",
+    name: "Ledger"
   }];
   
   $scope.isActive = function(route) {

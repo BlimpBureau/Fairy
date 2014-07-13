@@ -1,0 +1,29 @@
+<h1>Ledger</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Date</th>
+      <th>Text</th>
+      <th colspan="2" ng-repeat="account in book | bookieAccountsFilter">{{ account.name }} ({{ account.number }})</th>
+    </tr>
+    <tr>
+      <th colspan="3"></th>
+      <th ng-repeat-start="account in book | bookieAccountsFilter">Credit</th>
+      <th ng-repeat-end>Debit</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="verification in book | bookieVerificationsFilter">
+      <td>{{ verification.number }}</td>
+      <td>{{ verification.date }}</td>
+      <td>{{ verification.text }}</td>
+      <td ng-repeat-start="account in book | bookieAccountsFilter">{{ verification | bookieTransactionFilter : account : "credit" }}</td>
+      <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" }}</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    
+  </tfoot>
+</table>

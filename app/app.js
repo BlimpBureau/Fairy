@@ -5,7 +5,8 @@ angular.module("fairyApp", [
   'menu',
   'expenses',
   'incomes',
-  'dashboard'
+  'dashboard',
+  'ledger'
 ])
 
 .config(['$routeProvider', function($routeProvider) {
@@ -21,6 +22,10 @@ angular.module("fairyApp", [
     .when('/incomes', {
       templateUrl: 'incomes/incomes.html',
       controller: 'IncomesController'
+    })
+    .when('/ledger', {
+      templateUrl: 'ledger/ledger.html',
+      controller: 'LedgerController'
     })
     .otherwise({
       redirectTo: '/dashboard'
