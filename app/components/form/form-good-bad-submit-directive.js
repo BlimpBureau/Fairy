@@ -1,24 +1,24 @@
-'use strict';
+"use strict";
 
-angular.module('form.goodBadSubmit', [])
+angular.module("form.goodBadSubmit", [])
 
-.directive('goodBadSubmit', ['$parse', function($parse) {
-  return {
-    restrict: 'EA',
-    require: '^form',
-    link: function(scope, element, attr, form) {
-      var goodSubmitGetter = $parse(attr.goodSubmit);
-      var badSubmitGetter = $parse(attr.badSubmit);
-      var goodSubmit = goodSubmitGetter(scope);
-      var badSubmit = badSubmitGetter(scope);
+.directive("goodBadSubmit", ["$parse", function($parse) {
+    return {
+        restrict: "EA",
+        require: "^form",
+        link: function(scope, element, attr, form) {
+            var goodSubmitGetter = $parse(attr.goodSubmit);
+            var badSubmitGetter = $parse(attr.badSubmit);
+            var goodSubmit = goodSubmitGetter(scope);
+            var badSubmit = badSubmitGetter(scope);
 
-      scope.submit = function() {
-        if(form.$valid) {
-          goodSubmit();
-        } else {
-          badSubmit();
+            scope.submit = function() {
+                if(form.$valid) {
+                    goodSubmit();
+                } else {
+                    badSubmit();
+                }
+            };
         }
-      };
-    }
-  };
+    };
 }]);

@@ -4,48 +4,48 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  <title>Fairy</title>
-  <meta name="description" content="The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.">
-  <meta name="viewport" content="width=device-width">
+    <meta charset="utf-8">
+    <title>Fairy</title>
+    <meta name="description" content="The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.">
+    <meta name="viewport" content="width=device-width">
 
-  <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
 
-  <!-- include: "type": "css", "files": ["**/*.css"] -->
+    <!-- include: "type": "css", "files": ["**/*.css"] -->
 </head>
 <body ng-app="fairyApp">
-  <!--[if lt IE 7]>
+    <!--[if lt IE 7]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-  <![endif]-->
+    <![endif]-->
 
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#"><img id="fairy-logo" src="../assets/images/fairy-logo-white-rgb.svg"></a>
-      </div>
-      <ng-include src="'menu/menu.html'"></ng-include>
+    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#"><img id="fairy-logo" src="../assets/images/fairy-logo-white-rgb.svg"></a>
+            </div>
+            <ng-include src="'menu/menu.html'"></ng-include>
+        </div>
     </div>
-  </div>
 
-  <div class="container">
-    <div ng-view></div>
-  </div>
-
-  <div class="footer">
     <div class="container">
-      <p><span class="glyphicon glyphicon-heart"></span> from the Backslashforward team</p>
+        <div ng-view></div>
     </div>
-  </div>
 
-  <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-  <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-  <script src="../bower_components/angular/angular.js"></script>
-  <script src="../bower_components/angular-route/angular-route.min.js"></script>
-  <script src="../bower_components/checklist-model/checklist-model.js"></script>
-  <script src="../bower_components/lodash/dist/lodash.min.js"></script>
-  <script src="../bower_components/bookie/dist/bookie.js"></script>
-  <script src="../bower_components/bookie/dist/bookie-swedish-hb-ef.js"></script>
+    <div class="footer">
+        <div class="container">
+          <p><span class="glyphicon glyphicon-heart"></span> from the Backslashforward team</p>
+        </div>
+    </div>
 
-  <!-- include: "type": "js", "files": ["**/*.js", "!**/*_test.js"] -->
+    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="../bower_components/angular/angular.js"></script>
+    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <script src="../bower_components/checklist-model/checklist-model.js"></script>
+    <script src="../bower_components/lodash/dist/lodash.min.js"></script>
+    <script src="../bower_components/bookie/dist/bookie.js"></script>
+    <script src="../bower_components/bookie/dist/bookie-swedish-hb-ef.js"></script>
+
+    <!-- include: "type": "js", "files": ["**/*.js", "!**/*_test.js"] -->
 </body>
 </html>

@@ -1,14 +1,14 @@
-'use strict';
+"use strict";
 
-angular.module('resources.partners', [])
+angular.module("resources.partners", [])
 
-.factory('partners', function() {
-  return [
-    {
-      fullname: 'Lucas Wiener'
-    },
-    {
-      fullname: 'Nadan Gergeo'
-    }
-  ];
+.factory("partners", function() {
+    return [
+        {
+            fullname: "Lucas Wiener"
+        },
+        {
+            fullname: "Nadan Gergeo"
+        }
+    ];
 });

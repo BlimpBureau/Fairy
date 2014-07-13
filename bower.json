@@ -1,24 +1,24 @@
 {
-  "name": "fairy",
-  "description": "The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.",
-  "version": "0.0.0",
-  "private": true,
-  "license": "MIT",
-  "dependencies": {
-    "jquery": "1.11.x",
-    "angular": "1.2.x",
-    "bootstrap": "3.1.x",
-    "lodash": "~2.4.1",
-    "angular-route": "~1.2.16",
-    "bookie": "https://github.com/backslashforward/bookie.js.git"
-  },
-  "devDependencies": {
-    "angular-mocks": "~1.2.16"
-  },
-  "sources": {
-    "js": [],
-    "css": [
-      "bower_components/bootstrap/dist/css/bootstrap.min.css"
-    ]
-  }
+    "name": "fairy",
+    "description": "The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.",
+    "version": "0.0.0",
+    "private": true,
+    "license": "MIT",
+    "dependencies": {
+        "jquery": "1.11.x",
+        "angular": "1.2.x",
+        "bootstrap": "3.1.x",
+        "lodash": "~2.4.1",
+        "angular-route": "~1.2.16",
+        "bookie": "https://github.com/backslashforward/bookie.js.git"
+    },
+    "devDependencies": {
+        "angular-mocks": "~1.2.16"
+    },
+    "sources": {
+        "js": [],
+        "css": [
+            "bower_components/bootstrap/dist/css/bootstrap.min.css"
+        ]
+    }
 }

@@ -1,15 +1,15 @@
 /* Space out content a bit */
 body {
-  padding-top: 90px;
-  padding-bottom: 20px;
+    padding-top: 90px;
+    padding-bottom: 20px;
 }
 
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
 .footer {
-  padding-left: 15px;
-  padding-right: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 /* Custom navbar */
@@ -18,13 +18,13 @@ body {
 }
 
 .navbar .navbar-header {
-  height: 80px;
+    height: 80px;
 }
 
 @media(min-width:768px){
-  .navbar-nav li a {
-   line-height: 50px;
-  }
+    .navbar-nav li a {
+        line-height: 50px;
+    }
 }
 
 #fairy-logo {
@@ -34,19 +34,19 @@ body {
 
 /* Custom page footer */
 .footer .container {
-  padding-top: 19px;
-  color: #777;
-  border-top: 1px solid #e5e5e5;
+    padding-top: 19px;
+    color: #777;
+    border-top: 1px solid #e5e5e5;
 }
 
 
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  /* Remove the padding we set earlier */
-  .header,
-  .marketing,
-  .footer {
-    padding-left: 0;
-    padding-right: 0;
-  }
+    /* Remove the padding we set earlier */
+    .header,
+    .marketing,
+    .footer {
+        padding-left: 0;
+        padding-right: 0;
+    }
 }

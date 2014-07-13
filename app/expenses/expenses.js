@@ -1,11 +1,9 @@
-'use strict';
+"use strict";
 
-angular.module('expenses', [
-  'bootstrap.modal',
-  'expenses.create',
-  'expenses.list'
+angular.module("expenses", [
+    "bootstrap.modal",
+    "expenses.create",
+    "expenses.list"
 ])
 
-.controller('ExpensesController', function() {
-
-});
+.controller("ExpensesController", function() {});

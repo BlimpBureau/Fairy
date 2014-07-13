@@ -1,58 +1,57 @@
-
 <good-bad-submit good-submit="createIncome" bad-submit="handleBadSubmit"></good-bad-submit>
 <good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
 
 <!-- Description -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('description'), 'has-error' : isBad('description') }">
-  <label class="control-label" for="description">Description</label>
-  <input class="form-control" name="description" placeholder="How did you earn this money?" type="text" ng-model="income.description" required>
-  <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('description')"></span>
-  <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('description')"></span>
+    <label class="control-label" for="description">Description</label>
+    <input class="form-control" name="description" placeholder="How did you earn this money?" type="text" ng-model="income.description" required>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('description')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('description')"></span>
 </div>
 
 <!-- Date -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('date'), 'has-error' : isBad('date') }">
-  <label class="control-label" for="date">Date</label>
-  <input class="form-control" name="date" placeholder="When did you earn it?" type="text" ng-model="income.date" required valid-date>
-  <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('date')"></span>
-  <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('date')"></span>
+    <label class="control-label" for="date">Date</label>
+    <input class="form-control" name="date" placeholder="When did you earn it?" type="text" ng-model="income.date" required valid-date>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('date')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('date')"></span>
 </div>
 
 <!-- Amount -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('price'), 'has-error' : isBad('price') }">
-  <label class="control-label" for="price">Amount</label>
-  <input class="form-control" name="price" placeholder="How much did you make?" type="text" ng-model="income.price" ng-change="changed('price')" required money>
-  <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('price')"></span>
-  <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('price')"></span>
+    <label class="control-label" for="price">Amount</label>
+    <input class="form-control" name="price" placeholder="How much did you make?" type="text" ng-model="income.price" ng-change="changed('price')" required money>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('price')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('price')"></span>
 </div>
 
 <!-- Amount Includes Vat -->
 <div class="checkbox">
-  <label>
-    <input type="checkbox" ng-model="income.amountIncludesVat"> Amount is inclusive vat
-  </label>
+    <label>
+        <input type="checkbox" ng-model="income.amountIncludesVat"> Amount is inclusive vat
+    </label>
 </div>
 
 <!-- Vat rate -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('vatRate'), 'has-error' : isBad('vatRate') }">
-  <label class="control-label" for="vatRate">VAT % rate</label>
-  <input class="form-control" name="vatRate" placeholder="What is the VAT % rate?" type="text" ng-model="income.vatRate" ng-change="changed('vatRate')" required valid-vat-rate money decimals="3">
-  <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vatRate')"></span>
-  <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vatRate')"></span>
+    <label class="control-label" for="vatRate">VAT % rate</label>
+    <input class="form-control" name="vatRate" placeholder="What is the VAT % rate?" type="text" ng-model="income.vatRate" ng-change="changed('vatRate')" required valid-vat-rate money decimals="3">
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vatRate')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vatRate')"></span>
 </div>
 
 <!-- Vat -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('vat'), 'has-error' : isBad('vat') }">
-  <label class="control-label" for="vat">VAT</label>
-  <input class="form-control" name="vat" placeholder="What is the VAT of the amount?" type="text" ng-model="income.vat" ng-change="changed('vat')" required money>
-  <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vat')"></span>
-  <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vat')"></span>
+    <label class="control-label" for="vat">VAT</label>
+    <input class="form-control" name="vat" placeholder="What is the VAT of the amount?" type="text" ng-model="income.vat" ng-change="changed('vat')" required money>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('vat')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('vat')"></span>
 </div>
 
 <!-- Owners -->
 <div class="form-group" ng-class="{ 'has-success' : isGood('owners'), 'has-error' : isBad('owners') }">
-  <label class="control-label">Owners</label>
-  <owners-selection name="owners" ng-model="income.owners" required></owners-selection>
+    <label class="control-label">Owners</label>
+    <owners-selection name="owners" ng-model="income.owners" required></owners-selection>
 </div>
 
 <div class="alert alert-danger" ng-show="error" style="margin-bottom:0px"><strong>Crap.</strong> Failed to create income, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>

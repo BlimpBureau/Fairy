@@ -1,4 +1,4 @@
-angular.module('vat', [
-  'vat.validRate',
-  'vat.calculator'
+angular.module("vat", [
+    "vat.validRate",
+    "vat.calculator"
 ]);

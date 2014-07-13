@@ -1,7 +1,5 @@
-'use strict';
+"use strict";
 
-angular.module('dashboard', [])
+angular.module("dashboard", [])
 
-.controller('DashboardController', function() {
-
-});
+.controller("DashboardController", function() {});
