@@ -6,11 +6,11 @@
             <th>№</th>
             <th>Date</th>
             <th>Text</th>
-            <th colspan="2" ng-repeat="account in book | bookieAccountsFilter">{{ account.name }} ({{ account.number }})</th>
+            <th colspan="2" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
         </tr>
         <tr>
             <th colspan="3"></th>
-            <th ng-repeat-start="account in book | bookieAccountsFilter">Credit</th>
+            <th ng-repeat-start="account in book | bookieAccountsFilter : false">Credit</th>
             <th ng-repeat-end>Debit</th>
         </tr>
     </thead>
@@ -19,14 +19,14 @@
             <td>{{ verification.number }}</td>
             <td>{{ verification.date | dateFilter }}</td>
             <td>{{ verification.text }}</td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
+            <td ng-repeat-start="account in book | bookieAccountsFilter : false">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
             <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" | moneyFilter : false }}</td>
         </tr>
     </tbody>
     <tfoot>
         <tr>
             <td colspan="3"></td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter">{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</td>
+            <td ng-repeat-start="account in book | bookieAccountsFilter : false">{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</td>
             <td ng-repeat-end>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</td>
         </tr>
     </tfoot>

@@ -3,8 +3,40 @@
 angular.module("bookie.filters", [])
 
 .filter("bookieAccountsFilter", function() {
-    return function(book) {
-        return book.getAccounts();
+    return function(book, showEmpty) {
+        function emptyFilter(account) {
+            if(account.sumCredit() === 0 && account.sumDebit() === 0) {
+                return false;
+            }
+
+            return true;
+        }
+
+        showEmpty = showEmpty === false ? false : true;
+
+        var accounts = book.getAccounts();
+
+        var filters = [];
+
+        if(!showEmpty) {
+            filters.push(emptyFilter);
+        }
+
+        var filteredAccounts = _.filter(accounts, function(account) {
+            var good = true;
+
+            _.forEach(filters, function(filter) {
+                good = filter(account);
+            });
+
+            if(good) {
+                return account;
+            }
+
+            return false;
+        });
+
+        return filteredAccounts;
     };
 })
 
