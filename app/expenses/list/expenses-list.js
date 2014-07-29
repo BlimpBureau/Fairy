@@ -2,7 +2,7 @@
 
 angular.module("expenses.list", [
     "resources.expenses",
-    "presentation.money-filter"
+    "presentation.moneyFilter"
 ])
 
 .controller("ExpensesListController", ["$scope", "expenses", function($scope, expenses) {

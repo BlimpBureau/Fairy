@@ -3,7 +3,7 @@
 angular.module("incomes.list", [
     "resources.incomes",
     "resources.partners",
-    "presentation.money-filter"
+    "presentation.moneyFilter"
 ])
 
 .controller("IncomesListController", ["$scope", "incomes", "partners", function($scope, incomes, partners) {
