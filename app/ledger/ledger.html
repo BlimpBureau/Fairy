@@ -24,5 +24,10 @@
         </tr>
     </tbody>
     <tfoot>
+        <tr>
+            <td colspan="3"></td>
+            <td ng-repeat-start="account in book | bookieAccountsFilter">{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</td>
+            <td ng-repeat-end>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</td>
+        </tr>
     </tfoot>
 </table>
