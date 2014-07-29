@@ -17,7 +17,7 @@
     <tbody>
         <tr ng-repeat="verification in book | bookieVerificationsFilter">
             <td>{{ verification.number }}</td>
-            <td>{{ verification.date }}</td>
+            <td>{{ verification.date | dateFilter }}</td>
             <td>{{ verification.text }}</td>
             <td ng-repeat-start="account in book | bookieAccountsFilter">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
             <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" | moneyFilter : false }}</td>
