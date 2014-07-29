@@ -19,8 +19,8 @@
             <td>{{ verification.number }}</td>
             <td>{{ verification.date }}</td>
             <td>{{ verification.text }}</td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter">{{ verification | bookieTransactionFilter : account : "credit" }}</td>
-            <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" }}</td>
+            <td ng-repeat-start="account in book | bookieAccountsFilter">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
+            <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" | moneyFilter : false }}</td>
         </tr>
     </tbody>
     <tfoot>

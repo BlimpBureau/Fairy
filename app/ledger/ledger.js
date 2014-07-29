@@ -2,7 +2,8 @@
 
 angular.module("ledger", [
     "bookie.filters",
-    "bookie.book"
+    "bookie.book",
+    "presentation.moneyFilter"
 ])
 
 .controller("LedgerController", ["$scope", "book", function($scope, book) {
