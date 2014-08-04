@@ -23,7 +23,7 @@ angular.module("form.valid.date", [])
             }
 
             function isValidDate(date) {
-                var DATE_REGEXP = /(20)\d\d-\d\d*-\d\d*/;
+                var DATE_REGEXP = /^(20)\d\d-\d\d?-\d\d?$/;
                 return date && DATE_REGEXP.test(date) && !isNaN((new Date(date)).getTime());
             }
 
