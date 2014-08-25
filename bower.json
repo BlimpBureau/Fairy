@@ -7,7 +7,7 @@
     "dependencies": {
         "jquery": "1.11.x",
         "angular": "1.2.x",
-        "bootstrap": "3.1.x",
+        "bootstrap": "3.2.x",
         "lodash": "~2.4.1",
         "angular-route": "~1.2.16",
         "bookie": "https://github.com/backslashforward/bookie.js.git"
