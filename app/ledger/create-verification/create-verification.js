@@ -13,8 +13,6 @@ angular.module("verification.create", [
 ])
 
 .controller("CreateVerificationController", ["$scope", "book", function($scope, book) {
-    $scope.verification = new bookie.Verification(book);
-
     $scope.userTriedSubmit = false;
 
     $scope.book = book;
@@ -26,9 +24,21 @@ angular.module("verification.create", [
     };
 
     $scope.createVerification = function(callback) {
-        $scope.error = true; //not implemented.
+        function transact(verification, transaction, type) {
+            if(transaction[type]) {
+                verification[type](transaction.account, transaction[type]);
+            }
+        }
+
+        var verification = book.createVerification($scope.date, $scope.description);
+
+        _.forEach($scope.transactions, function(transaction) {
+            transact(verification, transaction, "credit");
+            transact(verification, transaction, "debit");
+        });
+
         if(!$scope.error) {
-            return callback();
+            return (callback || _.noop)();
         }
     };
 
