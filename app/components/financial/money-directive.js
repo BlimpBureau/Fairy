@@ -15,14 +15,19 @@ angular.module("financial.money", [])
             controller.$parsers.push(function(viewValue) {
                 if(viewValue) {
                     if(MONEY_REGEXP.test(viewValue)) {
-                        controller.$setValidity("vatRate", true);
+                        controller.$setValidity("money", true);
 
                         //Make sure any comma is converted to a dot.
                         return parseFloat(viewValue.replace(",", "."));
                     } else {
-                        controller.$setValidity("vatRate", false);
+                        controller.$setValidity("money", false);
                         return undefined;
                     }
+                }
+
+                if(!attr.required) {
+                    controller.$setValidity("money", true);
+                    return 0;
                 }
             });
 
