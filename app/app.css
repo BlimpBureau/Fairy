@@ -50,3 +50,9 @@ body {
         padding-right: 0;
     }
 }
+
+/* Push down the remove icon so it aligns with the buttons in the create-verification modal. */
+button.close.remove-verification {
+    position: relative;
+    top: 5px;
+}

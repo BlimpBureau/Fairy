@@ -1,0 +1,53 @@
+<good-bad-submit good-submit="createVerification" bad-submit="handleBadSubmit"></good-bad-submit>
+<good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
+
+<!-- Description -->
+<div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('description'), 'has-error' : isBad('description') }">
+    <label class="control-label" for="description">Description</label>
+    <input class="form-control" name="description" placeholder="What is the reason for this verification?" type="text" ng-model="description" required>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('description')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('description')"></span>
+</div>
+
+<!-- Date -->
+<div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('date'), 'has-error' : isBad('date') }">
+    <label class="control-label" for="date">Date</label>
+    <input class="form-control" name="date" placeholder="When did it happen?" type="text" ng-model="date" required valid-date>
+    <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('date')"></span>
+    <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('date')"></span>
+</div>
+
+<h4>Transactions</h4>
+<p>Enter the transactions for the verification. The verification must be balanced, so credit and debit transactions across all accounts must add up to the same amount.</p>
+
+<div class="row">
+    <div class="col-xs-5">
+        <label>Account</label>
+    </div>
+    <div class="col-xs-3">
+        <label>Credit</label>
+    </div>
+    <div class="col-xs-3">
+        <label>Debit</label>
+    </div>
+</div>
+
+<div class="row" ng-repeat="transaction in transactions">
+    <div class="col-xs-5">
+        <account-selection ng-model="transactions[$index].account"></account-selection>
+    </div>
+    <div class="col-xs-3 form-group has-feedback" ng-class="{ 'has-success' : isGood('credit' + $index), 'has-error' : isBad('credit' + $index) }">
+        <input class="form-control" name="credit{{$index}}" placeholder="Credit" type="text" ng-model="transactions[$index].credit" money dynamic-name>
+    </div>
+    <div class="col-xs-3 form-group has-feedback" ng-class="{ 'has-success' : isGood('debit' + $index), 'has-error' : isBad('debit' + $index) }">
+        <input class="form-control" name="debit{{$index}}" placeholder="Debit" type="text" ng-model="transactions[$index].debit" money dynamic-name>
+    </div>
+    <button type="button" class="close pull-left remove-verification" ng-click="remove($index)" ng-show="transactions.length > 1"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+</div>
+
+<div class="form-group">
+    <button type="button" class="btn btn-default" ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span> Add transaction</button>
+</div>
+
+<div class="alert alert-danger" ng-show="!balanced && userTriedSubmit" style="margin-bottom:0px"><strong>Not balanced.</strong> The verification must be balanced, so credit and debit transactions across all accounts must add up to the same amount.</div>
+<div class="alert alert-danger" ng-show="error" style="margin-bottom:0px"><strong>Crap.</strong> Failed to create verification, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>

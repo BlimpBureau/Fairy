@@ -4,7 +4,8 @@ angular.module("ledger", [
     "bookie.filters",
     "bookie.book",
     "presentation.moneyFilter",
-    "presentation.dateFilter"
+    "presentation.dateFilter",
+    "verification.create"
 ])
 
 .controller("LedgerController", ["$scope", "book", function($scope, book) {
