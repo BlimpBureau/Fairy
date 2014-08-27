@@ -49,5 +49,6 @@
     <button type="button" class="btn btn-default" ng-click="addTransaction()"><span class="glyphicon glyphicon-plus"></span> Add transaction</button>
 </div>
 
-<div class="alert alert-danger" ng-show="!balanced && userTriedSubmit" style="margin-bottom:0px"><strong>Not balanced.</strong> The verification must be balanced, so credit and debit transactions across all accounts must add up to the same amount.</div>
-<div class="alert alert-danger" ng-show="error" style="margin-bottom:0px"><strong>Crap.</strong> Failed to create verification, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
+<div class="alert alert-danger" ng-show="emptyTransaction && userTriedSubmit"><strong>Empty transaction.</strong> Transactions with both credit and debit set to 0 are not allowed.</div>
+<div class="alert alert-danger" ng-show="!balanced && userTriedSubmit"><strong>Not balanced.</strong> The verification must be balanced, so credit and debit transactions across all accounts must add up to the same amount.</div>
+<div class="alert alert-danger" ng-show="error"><strong>Crap.</strong> Failed to create verification, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>

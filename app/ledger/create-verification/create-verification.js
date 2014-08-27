@@ -18,6 +18,7 @@ angular.module("verification.create", [
     $scope.book = book;
     $scope.transactions = [];
     $scope.balanced = true;
+    $scope.emptyTransaction = false;
 
     $scope.handleBadSubmit = function() {
         $scope.userTriedSubmit = true;
@@ -30,7 +31,29 @@ angular.module("verification.create", [
             }
         }
 
+        function validTransactions() {
+            //If the transactions are unbalanced, ignore the submit. Error message will be shown by view.
+            if(!$scope.balanced) {
+                return false;
+            }
+
+            //No transaction is allowed to have both debit and credit set to 0.
+            if($scope.emptyTransaction) {
+                return false;
+            }
+            
+            //Everything seems to be good.
+            return true;
+        }
+
+        //Check for invalid transaction input. If errors encountered, the view will show error based on scope variables that
+        //are set by the function. Submit function should just exit early.
+        if(!validTransactions()) {
+            return;
+        }
+
         var verification = book.createVerification($scope.date, $scope.description);
+
 
         _.forEach($scope.transactions, function(transaction) {
             transact(verification, transaction, "credit");
@@ -64,6 +87,14 @@ angular.module("verification.create", [
         }
 
         $scope.balanced = bookie.isAmountsEqual(sum("credit"), sum("debit"));
+
+        $scope.emptyTransaction = false;
+        _.forEach($scope.transactions, function(transaction) {
+            if(transaction.credit === 0 && transaction.debit === 0) {
+                $scope.emptyTransaction = true;
+                return false;
+            }
+        });
     }, true);
 }])
 
