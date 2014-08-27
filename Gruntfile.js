@@ -24,8 +24,9 @@ module.exports = function(grunt) {
                     dest: "build/app",
                     src: [
                         "**/*.*",
-                        "!*_test.js",
-                        "!index.html"
+                        "!**/*_test.js",
+                        "!index.html",
+                        "!**/*.less"
                     ]
                 }, {
                     expand: false,
@@ -36,6 +37,13 @@ module.exports = function(grunt) {
                     dest: "build/",
                     src: "assets/**/*"
                 }]
+            }
+        },
+        less: {
+            build: {
+                files: {
+                    "build/app.css": "app/app.less"
+                }
             }
         },
         connect: {
@@ -74,6 +82,7 @@ module.exports = function(grunt) {
 
     grunt.registerTask("build", [
         "clean:build",
+        "less:build",
         "includeSource:build",
         "copy:build"
     ]);

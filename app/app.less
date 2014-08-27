@@ -56,3 +56,18 @@ button.close.remove-verification {
     position: relative;
     top: 5px;
 }
+
+.table.ledger {
+
+    // Ensure the content doesn't wrap
+    > thead,
+    > tbody,
+    > tfoot {
+        > tr {
+            > th,
+            > td {
+                white-space: nowrap;
+            }
+        }
+    }
+}
