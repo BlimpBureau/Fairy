@@ -13,12 +13,16 @@ angular.module("verification.create", [
 ])
 
 .controller("CreateVerificationController", ["$scope", "book", function($scope, book) {
-    $scope.userTriedSubmit = false;
+    function initScope() {
+        $scope.userTriedSubmit = false;
+        $scope.book = book;
+        $scope.balanced = true;
+        $scope.emptyTransaction = false;
 
-    $scope.book = book;
-    $scope.transactions = [];
-    $scope.balanced = true;
-    $scope.emptyTransaction = false;
+        $scope.transactions = [];
+        $scope.description = "";
+        $scope.date = "";
+    }
 
     $scope.handleBadSubmit = function() {
         $scope.userTriedSubmit = true;
@@ -61,6 +65,7 @@ angular.module("verification.create", [
         });
 
         if(!$scope.error) {
+            resetForm();
             return (callback || _.noop)();
         }
     };
@@ -77,6 +82,13 @@ angular.module("verification.create", [
         $scope.transactions.splice(index, 1);
     };
 
+    function resetForm() {
+        initScope();
+        $scope.addTransaction();
+        $scope.createVerificationForm.$setPristine();
+    }
+
+    initScope();
     $scope.addTransaction();
 
     $scope.$watch("transactions", function(newValue) {
