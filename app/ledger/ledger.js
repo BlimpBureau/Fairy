@@ -5,7 +5,8 @@ angular.module("ledger", [
     "bookie.book",
     "presentation.moneyFilter",
     "presentation.dateFilter",
-    "verification.create"
+    "verification.create",
+    "bootstrap.modal"
 ])
 
 .controller("LedgerController", ["$scope", "book", function($scope, book) {

@@ -6,13 +6,8 @@ angular.module("menu", [])
     $scope.menu = [{
         route: "/dashboard",
         name: "Dashboard"
-    }, {
-        route: "/expenses",
-        name: "Expenses"
-    }, {
-        route: "/incomes",
-        name: "Incomes"
-    }, {
+    },
+    {
         route: "/ledger",
         name: "Ledger"
     }];
