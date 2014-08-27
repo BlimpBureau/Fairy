@@ -12,7 +12,7 @@
 <!-- Date -->
 <div class="form-group has-feedback" ng-class="{ 'has-success' : isGood('date'), 'has-error' : isBad('date') }">
     <label class="control-label" for="date">Date</label>
-    <input class="form-control" name="date" placeholder="When did it happen?" type="text" ng-model="date" required valid-date>
+    <input class="form-control" name="date" placeholder="When did it happen?" type="text" ng-model="date" required date>
     <span class="glyphicon-ok glyphicon form-control-feedback" ng-show="isGood('date')"></span>
     <span class="glyphicon-remove glyphicon form-control-feedback" ng-show="isBad('date')"></span>
 </div>

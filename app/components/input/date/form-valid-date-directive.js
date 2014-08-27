@@ -1,8 +1,8 @@
 "use strict";
 
-angular.module("form.valid.date", [])
+angular.module("input.date", [])
 
-.directive("validDate", function() {
+.directive("date", function() {
     return {
         require: "ngModel",
         restrict: "A",

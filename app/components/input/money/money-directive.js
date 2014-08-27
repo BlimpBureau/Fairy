@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("financial.money", [])
+angular.module("input.money", [])
 
 .directive("money", function() {
     return {

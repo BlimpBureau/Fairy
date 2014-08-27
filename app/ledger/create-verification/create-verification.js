@@ -5,10 +5,10 @@
 angular.module("verification.create", [
     "form.goodBad",
     "form.goodBadSubmit",
-    "form.valid.date",
+    "input.date",
+    "input.money",
     "bookie.book",
     "bookie.filters",
-    "financial.money",
     "presentation.accountSelection"
 ])
 
