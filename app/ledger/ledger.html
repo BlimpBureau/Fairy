@@ -26,8 +26,8 @@
     <tfoot>
         <tr>
             <td colspan="3"></td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter : false">{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</td>
-            <td ng-repeat-end>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</td>
+            <td ng-repeat-start="account in book | bookieAccountsFilter : false"><strong>{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</strong></td>
+            <td ng-repeat-end><strong>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</strong></td>
         </tr>
     </tfoot>
 </table>
