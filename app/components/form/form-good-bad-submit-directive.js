@@ -14,9 +14,9 @@ angular.module("form.goodBadSubmit", [])
 
             scope.submit = function() {
                 if(form.$valid) {
-                    goodSubmit();
+                    goodSubmit.apply(this, arguments);
                 } else {
-                    badSubmit();
+                    badSubmit.apply(this, arguments);
                 }
             };
         }
