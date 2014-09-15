@@ -9,7 +9,6 @@
     <meta name="description" content="The company owner magic fairness fairy. Keeps track of owners share of the company by expenses and income.">
     <meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="../bower_components/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="app.css" /> <!-- app.less will be compiled to app.css when built. -->
 </head>
 <body ng-app="fairyApp">
@@ -17,24 +16,35 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+    <nav class="sidenav">
+        <ul>
+            <li>
+                <a href="#">
+                    <span class="icon icon-head"></span>
+                    <span>Nadan Gergeo</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon-bar-graph-2"></span>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="icon icon-book"></span>
+                    <span>Ledger</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
         <div class="container">
-            <div class="navbar-header">
-                <a class="navbar-brand" href="#"><img id="fairy-logo" src="../assets/images/fairy-logo-white-rgb.svg"></a>
+            <div ng-view>
             </div>
-            <ng-include src="'menu/menu.html'"></ng-include>
         </div>
-    </div>
-
-    <div class="container">
-        <div ng-view></div>
-    </div>
-
-    <div class="footer">
-        <div class="container">
-          <p><span class="glyphicon glyphicon-heart"></span> from the Backslashforward team</p>
-        </div>
-    </div>
+    </main>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>

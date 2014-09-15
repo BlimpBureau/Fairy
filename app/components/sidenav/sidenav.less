@@ -1,0 +1,69 @@
+//
+// Sidenav
+// --------------------------------------------------
+
+.sidenav {
+	// fixed position, easiest for wanted behaviour
+    position: fixed;
+
+    // Give it a z-index
+    z-index: @zindex-navbar-fixed;
+
+    // Give it 100% of window height
+    height: 100%;
+
+	background-color: #2C2E3B;
+	width: 240px;
+	padding: 20px;
+
+	ul {
+		padding: 0;
+		margin: 0 -20px;
+		list-style: none;
+
+		li {
+			display: block;
+
+			a {
+				font-weight: bold;
+				// font-size: @font-size-large;
+				letter-spacing: 0.1em;
+				text-transform: uppercase;
+				color: #E75792;
+				padding: 15px 20px;
+				display: block;
+				.transition(all 100ms ease-in);
+
+				&:hover, &:active {
+					color: #fff;
+					background-color: #E75792;
+					text-decoration: none;
+				}
+
+				.icon {
+					margin-right: 10px;
+					font-size: @font-size-large;
+				}
+			}
+		}
+	}
+}
+
+//
+// Scaffolding
+// -------------------------
+
+// Height of html and body needs to be stretched to 100%;
+html, body {
+	height: 100%;
+}
+
+body {
+	overflow: hidden;
+}
+
+main {
+	height: 100%;
+	overflow-y: auto;
+	margin-left: 240px;
+}
