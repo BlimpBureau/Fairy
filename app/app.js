@@ -4,7 +4,9 @@ angular.module("fairyApp", [
     "ngRoute",
     "menu",
     "dashboard",
-    "ledger"
+    "ledger",
+    "login",
+    "signup"
 ])
 
 .config(["$routeProvider", function($routeProvider) {
@@ -16,6 +18,14 @@ angular.module("fairyApp", [
     .when("/ledger", {
         templateUrl: "ledger/ledger.html",
         controller: "LedgerController"
+    })
+    .when("/login", {
+        templateUrl: "login/login.html",
+        controller: "LoginController"
+    })
+    .when("/signup", {
+        templateUrl: "signup/signup.html",
+        controller: "SignupController"
     })
     .otherwise({
         redirectTo: "/dashboard"

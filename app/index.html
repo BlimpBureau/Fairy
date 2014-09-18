@@ -16,7 +16,7 @@
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="sidenav">
+    <nav class="sidenav hide">
         <ul>
             <li>
                 <a href="#">
@@ -39,11 +39,7 @@
         </ul>
     </nav>
 
-    <main>
-        <div class="container">
-            <div ng-view>
-            </div>
-        </div>
+    <main ng-view class="login-view">
     </main>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
