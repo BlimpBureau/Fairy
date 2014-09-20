@@ -33,6 +33,19 @@ angular.module("fairyApp", [
     ;
 }])
 
+.controller('MainController', ['$route', '$routeParams', '$location', function($route, $routeParams, $location) {
+    this.$route = $route;
+    this.$location = $location;
+    this.$routeParams = $routeParams;
+
+    //TODO: Very temporary!
+    function getState(path) {
+        return path.slice(1, path.length);
+    }
+
+    this.state = getState(this.$location.path());
+}])
+
 //Workaround for bug #1404.
 //This will allow ngModel and ngForm directives to have dynamic name attributes (expression evaluation in name).
 //https://github.com/angular/angular.js/issues/1404

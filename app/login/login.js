@@ -2,4 +2,6 @@
 
 angular.module("login", [])
 
-.controller("LoginController", function() {});
+.controller("LoginController", ["$scope", function($scope) {
+    $scope.state = "state-login";
+}]);
