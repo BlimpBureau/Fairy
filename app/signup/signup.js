@@ -1,7 +1,6 @@
 "use strict";
 
-angular.module("signup", [])
-
-.controller("SignupController", ["$scope", function($scope) {
-    $scope.state = "state-signup";
-}]);
+angular.module("signup", [
+    "signup.user",
+    "signup.company"
+]);

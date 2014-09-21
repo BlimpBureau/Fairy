@@ -25,8 +25,15 @@ angular.module("fairyApp", [
         controller: "LoginController"
     })
     .when("/signup", {
-        templateUrl: "signup/signup.html",
-        controller: "SignupController"
+        redirectTo: "/signup-user"
+    })
+    .when("/signup-user", {
+        templateUrl: "signup/user/signup-user.html",
+        controller: "SignupUserController"
+    })
+    .when("/signup-company", {
+        templateUrl: "signup/company/signup-company.html",
+        controller: "SignupCompanyController"
     })
     .otherwise({
         redirectTo: "/dashboard"

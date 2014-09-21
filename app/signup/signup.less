@@ -2,9 +2,17 @@
 // Signup view
 // --------------------------------------------------
 
-.state-signup {
+body {
+    //Needed because a body background shines through in a vertical line between the views when animation otherwise.
+    background-color: @fairy-night-blue;    
+}
+
+.signup-style() {
+    position: absolute; //Needed to make two views animate at the same time.
+    bottom: 0px;
+    top: 0px;
+    width: 100%;
     background: @fairy-night-blue;
-    height: 100%;
 
     .container {
         .flex-display(flex);
@@ -16,3 +24,57 @@
         width: 250px;
     }
 }
+
+.state-signup-user {
+    .signup-style;
+
+    &.ng-leave {
+        .animation(slide-out-left 500ms);
+    }
+}
+
+.state-signup-company {
+    .signup-style;
+
+    &.ng-enter, &.ng-enter-active {
+        .animation(slide-in-right 500ms);
+        opacity: 1;
+    }
+}
+
+& {
+    .keyframes(slide-out-left);.-frames(@-...){
+        0% {
+            @{-}transform: translateX(0);
+        }
+
+        100% {
+            @{-}transform: translateX(-100%);
+        }
+    }
+}
+
+& {
+    .keyframes(slide-in-right);.-frames(@-...){
+        0% {
+            @{-}transform: translateX(100%);
+        }
+
+        100% {
+            @{-}transform: translateX(0);
+        }
+    }
+}
+
+& {
+    .keyframes(slide-in-bottom);.-frames(@-...){
+        0% {
+            @{-}transform: translateY(100%);
+        }
+
+        100% {
+            @{-}transform: translateY(0);
+        }
+    }
+}
+
