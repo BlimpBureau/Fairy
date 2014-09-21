@@ -2,6 +2,7 @@
 
 angular.module("fairyApp", [
     "ngRoute",
+    "ngAnimate",
     "menu",
     "dashboard",
     "ledger",
