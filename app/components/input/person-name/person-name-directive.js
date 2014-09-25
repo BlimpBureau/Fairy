@@ -18,7 +18,6 @@ angular.module("input.person-name", [])
 						return splitFullName(viewValue);
 					} else {
 						controller.$setValidity("person-name", false);
-						return false;
 					}
 				}
 			});

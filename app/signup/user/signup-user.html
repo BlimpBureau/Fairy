@@ -43,7 +43,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="password" placeholder="********" type="password">
+                        <input class="form-control" name="password" placeholder="********" type="password", ng-model="password" password>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     <span>Continue</span>
                 </button>
             </form>
-            <pre style="margin-top:30px">{{ name | json }} {{ email | json }}</pre>
+            <pre style="margin-top:30px">{{ name | json }} {{ email | json }} {{ password | json }}</pre>
         </div>
     </div>
 </div>

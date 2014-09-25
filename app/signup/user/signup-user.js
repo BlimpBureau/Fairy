@@ -2,7 +2,8 @@
 
 angular.module("signup.user", [
 	"input.person-name",
-	"input.email"
+	"input.email",
+	"input.password"
 ])
 
 .controller("SignupUserController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {
