@@ -1,7 +1,8 @@
 "use strict";
 
 angular.module("signup.user", [
-	"input.person-name"
+	"input.person-name",
+	"input.email"
 ])
 
 .controller("SignupUserController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {

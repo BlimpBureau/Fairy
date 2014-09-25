@@ -31,7 +31,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
                         </span>
-                        <input class="form-control" name="email" placeholder="tinkerbell@neverland.com" type="email">
+                        <input class="form-control" name="email" placeholder="tinkerbell@neverland.com" type="email" ng-model="email" email>
                     </div>
                 </div>
 
@@ -51,7 +51,7 @@
                     <span>Continue</span>
                 </button>
             </form>
-            <pre style="margin-top:30px">{{ name | json }}</pre>
+            <pre style="margin-top:30px">{{ name | json }} {{ email | json }}</pre>
         </div>
     </div>
 </div>

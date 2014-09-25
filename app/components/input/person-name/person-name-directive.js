@@ -16,6 +16,9 @@ angular.module("input.person-name", [])
 					if(FULL_NAME_REGEXP.test(viewValue)) {
 						controller.$setValidity("person-name", true);
 						return splitFullName(viewValue);
+					} else {
+						controller.$setValidity("person-name", false);
+						return false;
 					}
 				}
 			});
