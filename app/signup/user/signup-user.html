@@ -19,7 +19,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-head"></i>
                         </span>
-                        <input class="form-control" name="name" placeholder="Tinkerbell von Neverland" type="text">
+                        <input class="form-control" name="name" placeholder="Tinkerbell von Neverland" type="text" ng-model="name" person-name>
                     </div>
                 </div>
 
@@ -51,6 +51,7 @@
                     <span>Continue</span>
                 </button>
             </form>
+            <pre style="margin-top:30px">{{ name | json }}</pre>
         </div>
     </div>
 </div>

@@ -1,6 +1,8 @@
 "use strict";
 
-angular.module("signup.user", [])
+angular.module("signup.user", [
+	"input.person-name"
+])
 
 .controller("SignupUserController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {
     $scope.state = "state-signup-user";
