@@ -11,7 +11,10 @@
         </div>
         <div class="form-box-body">
             <form>
-                <div class="form-group form-group-name">
+                <good-bad-submit good-submit="signupUser" bad-submit="handleBadSubmit"></good-bad-submit>
+                <good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
+
+                <div class="form-group form-group-name has-feedback" ng-class="{ 'has-success' : isGood('name'), 'has-error' : isBad('name') }">
                     <label for="name">
                         Full name
                     </label>
@@ -19,7 +22,9 @@
                         <span class="input-group-addon">
                             <i class="icon icon-head"></i>
                         </span>
-                        <input class="form-control" name="name" placeholder="Tinkerbell von Neverland" type="text" ng-model="name" person-name>
+                        <input class="form-control" name="name" placeholder="Tinkerbell von Neverland" type="text" ng-model="name" person-name required>
+                        <span class="icon icon-check form-control-feedback" ng-show="isGood('name')"></span>
+                        <span class="icon icon-cross form-control-feedback" ng-show="isBad('name')"></span>
                     </div>
                 </div>
 
@@ -31,7 +36,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
                         </span>
-                        <input class="form-control" name="email" placeholder="tinkerbell@neverland.com" type="email" ng-model="email" email>
+                        <input class="form-control" name="email" placeholder="tinkerbell@neverland.com" type="email" ng-model="email" email required>
                     </div>
                 </div>
 
@@ -43,15 +48,14 @@
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="password" placeholder="********" type="password", ng-model="password" password>
+                        <input class="form-control" name="password" placeholder="********" type="password", ng-model="password" password required>
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block" ng-click="goToSignupCompany()">
+                <button class="btn btn-primary btn-block" ng-click="submit()">
                     <span>Continue</span>
                 </button>
             </form>
-            <pre style="margin-top:30px">{{ name | json }} {{ email | json }} {{ password | json }}</pre>
         </div>
     </div>
 </div>
