@@ -2,10 +2,11 @@
 
 angular.module("signup.user", [])
 
-.controller("SignupUserController", ["$scope", "$location", function($scope, $location) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {
     $scope.state = "state-signup-user";
 
     $scope.goToSignupCompany = function() {
+        // $rootScope.transition = "slide-left";
         $location.path("/signup-company");
     };
 }]);

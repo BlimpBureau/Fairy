@@ -28,7 +28,7 @@ body {
 .state-signup-user {
     .signup-style;
 
-    &.ng-leave {
+    &.slide-left.ng-leave {
         .animation(slide-out-left 500ms);
     }
 }
@@ -36,7 +36,7 @@ body {
 .state-signup-company {
     .signup-style;
 
-    &.ng-enter, &.ng-enter-active {
+    &.slide-left.ng-enter {
         .animation(slide-in-right 500ms);
         opacity: 1;
     }
@@ -65,16 +65,3 @@ body {
         }
     }
 }
-
-& {
-    .keyframes(slide-in-bottom);.-frames(@-...){
-        0% {
-            @{-}transform: translateY(100%);
-        }
-
-        100% {
-            @{-}transform: translateY(0);
-        }
-    }
-}
-
