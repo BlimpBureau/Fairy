@@ -5,10 +5,11 @@ angular.module("signup.user", [
 	"form.goodBadSubmit",
 	"input.person-name",
 	"input.email",
-	"input.password"
+	"input.password",
+	"resources.user"
 ])
 
-.controller("SignupUserController", ["$rootScope", "$scope", "$location", function($rootScope, $scope, $location) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", function($rootScope, $scope, $location, User) {
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
@@ -19,7 +20,18 @@ angular.module("signup.user", [
     	var email = $scope.email;
     	var password = $scope.password;
 
-    	goToSignupCompany();
+        var user = new User();
+        user.firstName = firstName;
+        user.lastName = lastName;
+        user.email = email;
+        user.password = password;
+
+        user.$save(function(user, responseHeaders) {
+            console.log(user, responseHeaders);
+            goToSignupCompany();
+        }, function(error) {
+            console.error(error);
+        });
     };
 
     $scope.handleBadSubmit = function() {
