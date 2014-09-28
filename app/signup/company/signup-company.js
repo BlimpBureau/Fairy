@@ -1,6 +1,10 @@
 "use strict";
 
-angular.module("signup.company", [])
+angular.module("signup.company", [
+    "form.goodBad",
+    "input.company-name",
+    "input.company-org-number"
+])
 
 .controller("SignupCompanyController", ["$scope", "$location", function($scope, $location) {
     $scope.state = "state-signup-company";
