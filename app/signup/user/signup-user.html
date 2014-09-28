@@ -53,6 +53,10 @@
                 <button class="btn btn-primary btn-block" ng-click="submit()">
                     <span>Continue</span>
                 </button>
+
+                <div class="alert alert-danger" ng-show="errorServer"><strong>Signup failed.</strong> We couldn't create your account, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
+
+                <div class="alert alert-danger" ng-show="errorEmailExists"><strong>Email already used.</strong> This email is already registered to a Fairy account. Did you <a href="#/forgot-password" class="alert-link">forget your password</a>?</div>
             </form>
         </div>
     </div>

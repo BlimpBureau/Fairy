@@ -13,6 +13,8 @@ angular.module("signup.user", [
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
+    $scope.errorServer = false;
+    $scope.errorEmailExists = false;
 
     $scope.signupUser = function() {
     	var firstName = $scope.name.firstName;
@@ -30,6 +32,14 @@ angular.module("signup.user", [
             console.log(user, responseHeaders);
             goToSignupCompany();
         }, function(error) {
+            if(error.status === 400) {
+                if(error.data.error === "email_exists") {
+                    $scope.errorEmailExists = true;
+                    return;
+                }
+            }
+
+            $scope.errorServer = true;
             console.error(error);
         });
     };
