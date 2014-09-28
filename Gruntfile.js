@@ -77,8 +77,22 @@ module.exports = function(grunt) {
                     src: "build"
                 }]
             }
+        },
+        jshint: {
+            options: {
+                jshintrc: ".jshintrc"
+            },
+            all: ["Gruntfile.js", "app/**/*.js"]
         }
     });
+
+    grunt.registerTask("default", [
+        "test"
+    ]);
+
+    grunt.registerTask("test", [
+        "jshint"
+    ]);
 
     grunt.registerTask("build", [
         "clean:build",
