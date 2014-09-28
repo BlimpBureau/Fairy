@@ -1,15 +1,17 @@
 "use strict";
 
 angular.module("signup.user", [
-	"form.goodBad",
-	"form.goodBadSubmit",
-	"input.person-name",
-	"input.email",
-	"input.password",
-	"resources.user"
+    "form.goodBad",
+    "form.goodBadSubmit",
+    "input.person-name",
+    "input.email",
+    "input.password",
+    "resources.user",
+    "misc.user-session",
+    "misc.authenticate"
 ])
 
-.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", function($rootScope, $scope, $location, User) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", "userSession", "authenticate", function($rootScope, $scope, $location, User, userSession, authenticate) {
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
@@ -17,10 +19,10 @@ angular.module("signup.user", [
     $scope.errorEmailExists = false;
 
     $scope.signupUser = function() {
-    	var firstName = $scope.name.firstName;
-    	var lastName = $scope.name.lastName;
-    	var email = $scope.email;
-    	var password = $scope.password;
+        var firstName = $scope.name.firstName;
+        var lastName = $scope.name.lastName;
+        var email = $scope.email;
+        var password = $scope.password;
 
         var user = new User();
         user.firstName = firstName;
@@ -29,8 +31,14 @@ angular.module("signup.user", [
         user.password = password;
 
         user.$save(function(user, responseHeaders) {
-            console.log(user, responseHeaders);
-            goToSignupCompany();
+            authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
+                debugger;
+                userSession.set(user, authResult.token, authResult.tokenExpires);
+                goToSignupCompany();
+            }, function(error) {
+                console.error(error);
+                $scope.errorServer = true;
+            });
         }, function(error) {
             if(error.status === 400) {
                 if(error.data.error === "email_exists") {
@@ -45,7 +53,7 @@ angular.module("signup.user", [
     };
 
     $scope.handleBadSubmit = function() {
-    	$scope.userTriedSubmit = true;
+        $scope.userTriedSubmit = true;
     };
 
     function goToSignupCompany() {
