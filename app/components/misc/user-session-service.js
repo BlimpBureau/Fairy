@@ -9,11 +9,11 @@ function UserSession() {
 }
 
 UserSession.prototype.isActive = function() {
-    return !!user;
+    return !!this.user;
 };
 
 UserSession.prototype.isAuthenticated = function() {
-    return this.isActive() && !!token;
+    return this.isActive() && !!this.token;
 };
 
 UserSession.prototype.clear = function() {

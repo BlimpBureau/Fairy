@@ -7,7 +7,7 @@ angular.module("misc.authenticate", [
 .service("authenticate", ["$http", "$q", "API_END_POINT", function($http, $q, API_END_POINT) {
     return {
         byEmailAndPassword: function(email, password) {
-            if(!email || !password) {
+            if(!email || !password) {
                 throw new Error("Email and password required to authenticate.");
             }
 
@@ -17,6 +17,7 @@ angular.module("misc.authenticate", [
                 email: email,
                 password: password
             }).then(function(response) {
+                /* jshint camelcase: false */
                 var id = response.data.user_id;
                 var token = response.data.access_token;
                 var tokenExpires = response.data.access_token_expires;

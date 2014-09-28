@@ -30,7 +30,7 @@ angular.module("signup.user", [
         user.email = email;
         user.password = password;
 
-        user.$save(function(user, responseHeaders) {
+        user.$save(function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
                 userSession.set(user, authResult.token, authResult.tokenExpires);
                 goToSignupCompany();
@@ -58,5 +58,5 @@ angular.module("signup.user", [
     function goToSignupCompany() {
         // $rootScope.transition = "slide-left";
         $location.path("/signup-company");
-    };
+    }
 }]);
