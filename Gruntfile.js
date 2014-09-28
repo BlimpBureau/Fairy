@@ -54,7 +54,7 @@ module.exports = function(grunt) {
             },
             build: {
                 options: {
-                    base: ["build", "build/app"],
+                    base: ["build", "build/app"]
                 }
             }
         },
@@ -83,6 +83,12 @@ module.exports = function(grunt) {
                 jshintrc: ".jshintrc"
             },
             all: ["Gruntfile.js", "app/**/*.js"]
+        },
+        jscs: {
+            options: {
+                config: ".jscs.json"
+            },
+            all: ["Gruntfile.js", "app/**/*.js"]
         }
     });
 
@@ -91,7 +97,8 @@ module.exports = function(grunt) {
     ]);
 
     grunt.registerTask("test", [
-        "jshint"
+        "jshint",
+        "jscs"
     ]);
 
     grunt.registerTask("build", [

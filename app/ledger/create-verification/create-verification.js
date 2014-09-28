@@ -45,7 +45,7 @@ angular.module("verification.create", [
             if($scope.emptyTransaction) {
                 return false;
             }
-            
+
             //Everything seems to be good.
             return true;
         }
@@ -57,7 +57,6 @@ angular.module("verification.create", [
         }
 
         var verification = book.createVerification($scope.date, $scope.description);
-
 
         _.forEach($scope.transactions, function(transaction) {
             transact(verification, transaction, "credit");
