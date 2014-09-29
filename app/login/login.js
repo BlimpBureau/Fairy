@@ -24,6 +24,10 @@ angular.module("login", [
             User.get({ id: authResult.id }, function(user) {
                 session.data.user = user;
 
+                if($scope.rememberMe) {
+                    session.save();
+                }
+
                 var goTo = $location.search().goTo || "";
 
                 if(!user.hasCompanies()) {
