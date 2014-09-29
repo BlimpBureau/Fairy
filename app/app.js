@@ -26,7 +26,8 @@ angular.module("fairyApp", [
     .when("/login", {
         templateUrl: "login/login.html",
         controller: "LoginController",
-        requireNoAuthenticatedSession: true
+        requireNoAuthenticatedSession: true,
+        disableSidenav: true
     })
     .when("/signup", {
         redirectTo: "/signup-user",
@@ -34,12 +35,14 @@ angular.module("fairyApp", [
     .when("/signup-user", {
         templateUrl: "signup/user/signup-user.html",
         controller: "SignupUserController",
-        requireNoAuthenticatedSession: true
+        requireNoAuthenticatedSession: true,
+        disableSidenav: true
     })
     .when("/signup-company", {
         templateUrl: "signup/company/signup-company.html",
         controller: "SignupCompanyController",
-        requireAuthenticatedSession: true
+        requireAuthenticatedSession: true,
+        disableSidenav: true
     })
     .otherwise({
         redirectTo: "/dashboard",
@@ -51,6 +54,8 @@ angular.module("fairyApp", [
 .run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
         var authenticated = session.isAuthenticated();
+
+        $rootScope.sidenav = next.disableSidenav ? false : true;
 
         if(next.requireAuthenticatedSession) {
             if(!authenticated) {

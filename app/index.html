@@ -11,12 +11,12 @@
 
     <link rel="stylesheet" href="app.css" /> <!-- app.less will be compiled to app.css when built. -->
 </head>
-<body ng-app="fairyApp">
+<body ng-app="fairyApp" ng-class="{ 'has-sidenav': sidenav !== false }">
     <!--[if lt IE 9]>
     <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
-    <nav class="sidenav hide">
+    <nav class="sidenav" ng-hide="sidenav === false">
         <ul>
             <li>
                 <a href="#">
@@ -45,7 +45,7 @@
         </ul>
     </nav>
 
-    <main ng-view class="{{ state }}" ng-class="transition">
+    <main ng-view class="{{ state }}" ng-class"transition" ng-class="{ 'next-to-sidenav': sidenav !== false }">
     </main>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
