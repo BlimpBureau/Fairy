@@ -22,8 +22,6 @@ angular.module("login", [
             userSession.set(authResult.id, authResult.token, authResult.tokenExpires);
 
             User.get({ id: authResult.id }, function(user) {
-                console.log("authenticated");
-
                 var goTo = $location.search().goTo || "";
                 $location.path("/" + goTo).search({
                     goTo: null
