@@ -17,12 +17,18 @@ angular.module("misc.token-wrap-resource-actions", [
         //Save original action with _ prefix.
         resource["_" + action] = resource[action];
 
-        resource[action] = function(data, success, error) {
-            data = angular.extend({}, data || {}, {
+        resource[action] = function(params, success, error) {
+            if(angular.isFunction(params)) {
+                error = success;
+                success = error;
+                params = {};
+            }
+
+            params = angular.extend({}, params || {}, {
                 access_token: session.token
             });
 
-            return resource["_" + action](data, success, error);
+            return resource["_" + action](params, success, error);
         };
     }
 }]);

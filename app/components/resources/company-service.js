@@ -1,9 +1,9 @@
 "use strict";
 
-angular.module("resources.company", [])
+// angular.module("resources.company", [])
 
-.factory("company", function() {
-    return {
-        fullname: "Backslashforward HB"
-    };
-});
+// .factory("company", function() {
+//     return {
+//         fullname: "Backslashforward HB"
+//     };
+// });
