@@ -11,6 +11,7 @@
         </div>
         <div class="form-box-body">
             <form>
+                <good-bad-submit good-submit="signupCompany" bad-submit="handleBadSubmit"></good-bad-submit>
                 <good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
 
                 <div class="form-group form-group-company-name">
@@ -49,9 +50,11 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block" ng-click="goToUserSignup()">
+                <button class="btn btn-primary btn-block" ng-click="submit()">
                     <span>Finish</span>
                 </button>
+
+                <div class="alert alert-danger" ng-show="errorServer"><strong>Company created failed.</strong> We couldn't create your company, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
             </form>
         </div>
     </div>
