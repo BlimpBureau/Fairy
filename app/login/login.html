@@ -9,39 +9,45 @@
         </div>
         <div class="form-box-body">
             <form>
-                <div class="form-group form-group-email">
+                <good-bad-submit good-submit="login" bad-submit="handleBadSubmit"></good-bad-submit>
+                <good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
+
+                <div class="form-group form-group-email" ng-class="{ 'valid' : isGood('email'), 'invalid' : isBad('email') }">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
                         </span>
-                        <input class="form-control" name="email" placeholder="Enter email" type="email">
+                        <input class="form-control" name="email" placeholder="Enter email" type="email" ng-model="email" email required>
                     </div>
                 </div>
 
-                <div class="form-group form-group-pw last">
+                <div class="form-group form-group-pw last" ng-class="{ 'valid' : isGood('password'), 'invalid' : isBad('password') }">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="password" placeholder="Password" type="password">
+                        <input class="form-control" name="password" placeholder="Password" type="password" ng-model="password" password required>
                     </div>
                 </div>
 
                 <div class="extra-stuff-container">
                     <div class="checkbox extra-stuff text-left">
                         <label>
-                            <input type="checkbox"> Remember me
+                            <input type="checkbox" ng-model="remember"> Remember me
                         </label>
                     </div>
 
                     <div class="extra-stuff text-right">
-                        <a class="btn-link login-forgot-pw" href="/auth/reset_passwords">Forgot password?</a>
+                        <a class="btn-link login-forgot-pw" href="#/forgot-password">Forgot password?</a>
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block">
+                <button class="btn btn-primary btn-block" ng-click="submit()">
                     <span>Sign in</span>
                 </button>
+
+                <div class="alert alert-danger" ng-show="errorServer"><strong>Sign in failed.</strong> We couldn't sign you in due to an unexpected error, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
+                <div class="alert alert-danger" ng-show="errorInvalidCredentials"><strong>Invalid credentials.</strong> Invalid email or password, please try again. Did you <a href="#/forgot-password" class="alert-link">forget your password</a>?</div>
             </form>
         </div>
     </div>

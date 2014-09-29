@@ -2,13 +2,20 @@
 
 angular.module("resources.user", [
     "ngResource",
-    "config"
+    "config",
+    "misc.user-session",
+    "misc.token-wrap-resource-actions"
 ])
 
-.factory("User", ["$resource", "API_END_POINT", function($resource, API_END_POINT) {
-    return $resource(API_END_POINT + "/users/:id", {
+.factory("User", ["$resource", "tokenWrapResourceActions", "API_END_POINT", function($resource, tokenWrapResourceActions, API_END_POINT) {
+    var User = $resource(API_END_POINT + "/users/:id", {
         id: "@id"
     });
+
+    //Wrap methods to send access token.
+    tokenWrapResourceActions.wrap(User, ["get"]);
+
+    return User;
 }])
 
 ;

@@ -32,7 +32,7 @@ angular.module("signup.user", [
 
         user.$save(function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
-                userSession.set(user, authResult.token, authResult.tokenExpires);
+                userSession.set(authResult.id, authResult.token, authResult.tokenExpires);
                 goToSignupCompany();
             }, function(error) {
                 console.error(error);

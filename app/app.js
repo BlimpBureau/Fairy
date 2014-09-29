@@ -50,10 +50,16 @@ angular.module("fairyApp", [
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
         if(next.requireAuthenticatedSession) {
             if(!userSession.isAuthenticated()) {
-                var goTo = next.originalPath.replace("/", "");
-                $location.path("/login").search({
-                    goTo: goTo
-                });
+                var REDIRECT_TO = "/login";
+                if(next.originalPath) {
+                    var goTo = next.originalPath.replace("/", "");
+                    $location.path(REDIRECT_TO).search({
+                        goTo: goTo
+                    });
+                    return;
+                }
+
+                $location.path(REDIRECT_TO);
             }
         }
     });

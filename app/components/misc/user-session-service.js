@@ -9,7 +9,7 @@ function UserSession() {
 }
 
 UserSession.prototype.isActive = function() {
-    return !!this.user;
+    return !!this.userId;
 };
 
 UserSession.prototype.isAuthenticated = function() {
@@ -17,14 +17,14 @@ UserSession.prototype.isAuthenticated = function() {
 };
 
 UserSession.prototype.clear = function() {
-    this.user = null;
+    this.userId = null;
     this.token = null;
     this.tokenExpires = null;
 };
 
-UserSession.prototype.set = function(user, token, expires) {
+UserSession.prototype.set = function(userId, token, expires) {
     this.clear();
-    this.user = user;
+    this.userId = userId || null;
     this.token = token || null;
     this.expires = expires || null;
 };
