@@ -11,6 +11,10 @@ angular.module("resources.user", [
         id: "@id"
     });
 
+    User.prototype.hasCompanies = function() {
+        return this.companies.length;
+    };
+
     //Wrap methods to send access token.
     tokenWrapResourceActions.wrap(User, ["get"]);
 

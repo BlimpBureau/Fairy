@@ -33,6 +33,7 @@ angular.module("signup.user", [
         user.$save(function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
                 session.set(authResult.id, authResult.token, authResult.tokenExpires);
+                session.data.user = user;
                 goToSignupCompany();
             }, function(error) {
                 console.error(error);
