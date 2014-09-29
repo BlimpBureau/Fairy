@@ -25,14 +25,16 @@ angular.module("fairyApp", [
     })
     .when("/login", {
         templateUrl: "login/login.html",
-        controller: "LoginController"
+        controller: "LoginController",
+        requireNoAuthenticatedSession: true
     })
     .when("/signup", {
-        redirectTo: "/signup-user"
+        redirectTo: "/signup-user",
     })
     .when("/signup-user", {
         templateUrl: "signup/user/signup-user.html",
-        controller: "SignupUserController"
+        controller: "SignupUserController",
+        requireNoAuthenticatedSession: true
     })
     .when("/signup-company", {
         templateUrl: "signup/company/signup-company.html",
@@ -48,8 +50,10 @@ angular.module("fairyApp", [
 
 .run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
+        var authenticated = session.isAuthenticated();
+
         if(next.requireAuthenticatedSession) {
-            if(!session.isAuthenticated()) {
+            if(!authenticated) {
                 var REDIRECT_TO = "/login";
                 if(next.originalPath) {
                     var goTo = next.originalPath.replace("/", "");
@@ -60,7 +64,17 @@ angular.module("fairyApp", [
                 }
 
                 $location.path(REDIRECT_TO);
+                return;
             }
+        }
+
+        if(next.requireNoAuthenticatedSession) {
+            if(authenticated) {
+                if(next.originalPath) {
+                    $location.path("/");
+                }
+            }
+            return;
         }
     });
 }])
