@@ -3,7 +3,6 @@
 angular.module("resources.user", [
     "ngResource",
     "config",
-    "misc.user-session",
     "misc.token-wrap-resource-actions"
 ])
 

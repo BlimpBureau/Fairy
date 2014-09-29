@@ -1,10 +1,10 @@
 "use strict";
 
 angular.module("misc.token-wrap-resource-actions", [
-    "misc.user-session"
+    "misc.session"
 ])
 
-.service("tokenWrapResourceActions", ["userSession", function(userSession) {
+.service("tokenWrapResourceActions", ["session", function(session) {
     return {
         wrap: function(resource, actions) {
             _.forEach(actions, function(action) {
@@ -19,7 +19,7 @@ angular.module("misc.token-wrap-resource-actions", [
 
         resource[action] = function(data, success, error) {
             data = angular.extend({}, data || {}, {
-                access_token: userSession.token
+                access_token: session.token
             });
 
             return resource["_" + action](data, success, error);

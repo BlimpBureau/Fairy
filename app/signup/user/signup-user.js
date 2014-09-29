@@ -7,11 +7,11 @@ angular.module("signup.user", [
     "input.email",
     "input.password",
     "resources.user",
-    "misc.user-session",
+    "misc.session",
     "misc.authenticate"
 ])
 
-.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", "userSession", "authenticate", function($rootScope, $scope, $location, User, userSession, authenticate) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", "session", "authenticate", function($rootScope, $scope, $location, User, session, authenticate) {
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
@@ -32,7 +32,7 @@ angular.module("signup.user", [
 
         user.$save(function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
-                userSession.set(authResult.id, authResult.token, authResult.tokenExpires);
+                session.set(authResult.id, authResult.token, authResult.tokenExpires);
                 goToSignupCompany();
             }, function(error) {
                 console.error(error);

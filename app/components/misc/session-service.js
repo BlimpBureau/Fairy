@@ -1,28 +1,29 @@
 "use strict";
 
-angular.module("misc.user-session", [])
+angular.module("misc.session", [])
 
-.service("userSession", UserSession);
+.service("session", Session);
 
-function UserSession() {
+function Session() {
     this.clear();
 }
 
-UserSession.prototype.isActive = function() {
+Session.prototype.isActive = function() {
     return !!this.userId;
 };
 
-UserSession.prototype.isAuthenticated = function() {
+Session.prototype.isAuthenticated = function() {
     return this.isActive() && !!this.token;
 };
 
-UserSession.prototype.clear = function() {
+Session.prototype.clear = function() {
     this.userId = null;
     this.token = null;
     this.tokenExpires = null;
+    this.data = {};
 };
 
-UserSession.prototype.set = function(userId, token, expires) {
+Session.prototype.set = function(userId, token, expires) {
     this.clear();
     this.userId = userId || null;
     this.token = token || null;

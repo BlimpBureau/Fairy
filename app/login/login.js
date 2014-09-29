@@ -5,12 +5,12 @@ angular.module("login", [
     "form.goodBadSubmit",
     "input.email",
     "input.password",
-    "misc.user-session",
+    "misc.session",
     "misc.authenticate",
     "resources.user"
 ])
 
-.controller("LoginController", ["$scope", "$location", "userSession", "authenticate", "User", function($scope, $location, userSession, authenticate, User) {
+.controller("LoginController", ["$scope", "$location", "session", "authenticate", "User", function($scope, $location, session, authenticate, User) {
     $scope.state = "state-login";
 
     $scope.userTriedSubmit = false;
@@ -19,7 +19,7 @@ angular.module("login", [
 
     $scope.login = function() {
         authenticate.byEmailAndPassword($scope.email, $scope.password).then(function(authResult) {
-            userSession.set(authResult.id, authResult.token, authResult.tokenExpires);
+            session.set(authResult.id, authResult.token, authResult.tokenExpires);
 
             User.get({ id: authResult.id }, function(user) {
                 var goTo = $location.search().goTo || "";

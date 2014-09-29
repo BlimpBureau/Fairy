@@ -8,7 +8,7 @@ angular.module("fairyApp", [
     "ledger",
     "login",
     "signup",
-    "misc.user-session"
+    "misc.session"
 ])
 
 .config(["$routeProvider", function($routeProvider) {
@@ -46,10 +46,10 @@ angular.module("fairyApp", [
     ;
 }])
 
-.run(["$rootScope", "$location", "userSession", function($rootScope, $location, userSession) {
+.run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
         if(next.requireAuthenticatedSession) {
-            if(!userSession.isAuthenticated()) {
+            if(!session.isAuthenticated()) {
                 var REDIRECT_TO = "/login";
                 if(next.originalPath) {
                     var goTo = next.originalPath.replace("/", "");
