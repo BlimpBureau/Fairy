@@ -7,18 +7,21 @@ angular.module("fairyApp", [
     "dashboard",
     "ledger",
     "login",
-    "signup"
+    "signup",
+    "misc.user-session"
 ])
 
 .config(["$routeProvider", function($routeProvider) {
     $routeProvider
     .when("/dashboard", {
         templateUrl: "dashboard/dashboard.html",
-        controller: "DashboardController"
+        controller: "DashboardController",
+        requireAuthenticatedSession: true
     })
     .when("/ledger", {
         templateUrl: "ledger/ledger.html",
-        controller: "LedgerController"
+        controller: "LedgerController",
+        requireAuthenticatedSession: true
     })
     .when("/login", {
         templateUrl: "login/login.html",
@@ -33,12 +36,27 @@ angular.module("fairyApp", [
     })
     .when("/signup-company", {
         templateUrl: "signup/company/signup-company.html",
-        controller: "SignupCompanyController"
+        controller: "SignupCompanyController",
+        requireAuthenticatedSession: true
     })
     .otherwise({
-        redirectTo: "/dashboard"
+        redirectTo: "/dashboard",
+        requireAuthenticatedSession: true
     })
     ;
+}])
+
+.run(["$rootScope", "$location", "userSession", function($rootScope, $location, userSession) {
+    $rootScope.$on("$routeChangeStart", function(event, next, current) {
+        if(next.requireAuthenticatedSession) {
+            if(!userSession.isAuthenticated()) {
+                var goTo = next.originalPath.replace("/", "");
+                $location.path("/login").search({
+                    goTo: goTo
+                });
+            }
+        }
+    });
 }])
 
 //Workaround for bug #1404.
