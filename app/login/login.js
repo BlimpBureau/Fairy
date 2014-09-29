@@ -24,8 +24,10 @@ angular.module("login", [
             User.get({ id: authResult.id }, function(user) {
                 console.log("authenticated");
 
-                var goTo = $location.search("goTo");
-                $location.path("/" + goTo || "");
+                var goTo = $location.search().goTo || "";
+                $location.path("/" + goTo).search({
+                    goTo: null
+                });
             }, errorHandler);
         }, function(error) {
             if(error.status === 401) {
