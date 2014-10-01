@@ -5,12 +5,10 @@ angular.module("login", [
     "form.goodBadSubmit",
     "input.email",
     "input.password",
-    "misc.session",
-    "misc.authenticate",
-    "resources.user"
+    "misc.login"
 ])
 
-.controller("LoginController", ["$scope", "$location", "session", "authenticate", "userService", function($scope, $location, session, authenticate, userService) {
+.controller("LoginController", ["$scope", "$location", "loginService", function($scope, $location, loginService) {
     $scope.state = "state-login";
 
     $scope.userTriedSubmit = false;
@@ -18,43 +16,32 @@ angular.module("login", [
     $scope.errorInvalidCredentials = false;
 
     $scope.login = function() {
-        authenticate.byEmailAndPassword($scope.email, $scope.password).then(function(authResult) {
-            session.set(authResult.id, authResult.token, authResult.tokenExpires);
+        loginService.loginByEmailAndPassword($scope.email, $scope.password, $scope.rememberMe).then(function(data) {
+            var user = data.user;
+            var company = data.company;
+            var goTo = $location.search().goTo || "";
 
-            userService.get(authResult.id).then(function(user) {
-                session.data.user = user;
-
-                if($scope.rememberMe) {
-                    session.save();
-                }
-
-                var goTo = $location.search().goTo || "";
-
-                if(!user.hasCompanies()) {
-                    goTo = "signup-company";
-                }
-
-                $location.path("/" + goTo).search({
-                    goTo: null
-                });
-            }, errorHandler);
-        }, function(error) {
-            if(error.status === 401) {
-                $scope.errorServer = false;
-                $scope.errorInvalidCredentials = true;
-                return;
+            if(!company) {
+                goTo = "signup-company";
             }
 
-            errorHandler(error);
-        });
+            $location.path("/" + goTo).search({
+                goTo: null
+            });
+        }, errorHandler);
     };
 
     $scope.handleBadSubmit = function() {
         $scope.userTriedSubmit = true;
     };
 
-
     function errorHandler(error) {
+        if(error.status === 401) {
+            $scope.errorServer = false;
+            $scope.errorInvalidCredentials = true;
+            return;
+        }
+
         console.error(error);
         $scope.errorServer = true;
     }

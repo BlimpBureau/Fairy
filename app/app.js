@@ -67,6 +67,10 @@ angular.module("fairyApp", [
 }])
 
 .run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
+    if(session.isAuthenticated()) {
+
+    }
+
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
         var authenticated = session.isAuthenticated();
 

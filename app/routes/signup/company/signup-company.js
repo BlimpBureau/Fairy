@@ -6,11 +6,10 @@ angular.module("signup.company", [
     "input.company-name",
     "input.company-org-number",
     "resources.company",
-    "resources.user",
-    "misc.session"
+    "resources.user"
 ])
 
-.controller("SignupCompanyController", ["$scope", "$location", "companyService", "userService", "session", function($scope, $location, companyService, userService, session) {
+.controller("SignupCompanyController", ["$scope", "$location", "companyService", "userService", function($scope, $location, companyService, userService) {
     $scope.state = "state-signup-company";
 
     $scope.userTriedSubmit = false;

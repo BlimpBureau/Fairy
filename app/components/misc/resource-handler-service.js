@@ -16,7 +16,7 @@ angular.module("misc.resource-handler", [
 
             angular.extend(instance, params);
 
-            var $promise = instance.$save().$promise;
+            var $promise = instance.$save();
 
             $promise.then(function(instance) {
                 this.setInstance(instance);
