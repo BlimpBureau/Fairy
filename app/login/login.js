@@ -21,7 +21,7 @@ angular.module("login", [
         authenticate.byEmailAndPassword($scope.email, $scope.password).then(function(authResult) {
             session.set(authResult.id, authResult.token, authResult.tokenExpires);
 
-            userService.get(authResult.id, function(user) {
+            userService.get(authResult.id).then(function(user) {
                 session.data.user = user;
 
                 if($scope.rememberMe) {

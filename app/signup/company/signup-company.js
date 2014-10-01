@@ -25,7 +25,7 @@ angular.module("signup.company", [
             name: name,
             type: type,
             orgNumber: orgNumber
-        }, function(company) {
+        }).then(function(company) {
             userService.get(); //Refresh user since the companies array must have been changed.
             $location.path("/");
         }, errorHandler);

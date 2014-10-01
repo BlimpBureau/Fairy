@@ -10,28 +10,20 @@ angular.module("misc.resource-handler", [
             this.resource = resource;
             this.instance = null;
         },
-        create: function(params, successCallback, errorCallback) {
+        create: function(params) {
             var instance = new this.resource();
 
             angular.extend(instance, params);
 
-            instance.$save(function(instance) {
+            var $promise = instance.$save().$promise;
+
+            $promise.then(function(instance) {
                 this.instance = instance;
-                successCallback(instance);
-            }.bind(this), errorCallback);
+            }.bind(this));
+
+            return $promise;
         },
-        get: function(id, successCallback, errorCallback) {
-            if(!_.isNumber(id)) {
-                if(_.isFunction(id)) {
-                    errorCallback = successCallback;
-                    successCallback = id;
-                    id = null;
-                }
-            }
-
-            successCallback = successCallback || _.noop;
-            errorCallback = errorCallback || _.noop;
-
+        get: function(id) {
             if(!id) {
                 if(this.instance && this.instance.id) {
                     id = this.instance.id;
@@ -42,10 +34,13 @@ angular.module("misc.resource-handler", [
                 throw new Error("id required.");
             }
 
-            this.resource.get({ id: id }, function(instance) {
+            var $promise = this.resource.get({ id: id }).$promise;
+
+            $promise.then(function(instance) {
                 this.instance = instance;
-                successCallback(instance);
-            }.bind(this), errorCallback);
+            }.bind(this));
+
+            return $promise
         }
     });
 }]);

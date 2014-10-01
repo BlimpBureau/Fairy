@@ -29,7 +29,7 @@ angular.module("signup.user", [
             lastName: lastName,
             email: email,
             password: password
-        }, function(user) {
+        }).then(function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
                 session.set(authResult.id, authResult.token, authResult.tokenExpires);
                 session.data.user = user;
