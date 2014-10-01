@@ -10,7 +10,7 @@ function Session(localStorageService) {
     this.localStorageService = localStorageService;
     this.prefix = "session_";
     this.authFields = ["userId", "token", "tokenExpires"];
-    this.clear();
+    this.init();
     this.load();
 }
 
@@ -34,7 +34,7 @@ Session.prototype.isAuthenticated = function() {
     return this.isActive() && !!this.token;
 };
 
-Session.prototype.clear = function() {
+Session.prototype.init = function() {
     this.userId = null;
     this.token = null;
     this.tokenExpires = null;
@@ -42,8 +42,13 @@ Session.prototype.clear = function() {
 };
 
 Session.prototype.set = function(userId, token, tokenExpires) {
-    this.clear();
+    this.init();
     this.userId = userId || null;
     this.token = token || null;
     this.tokenExpires = tokenExpires || null;
+};
+
+Session.prototype.clear = function() {
+    this.init();
+    this.localStorageService.clearAll();
 };

@@ -7,6 +7,7 @@ angular.module("fairyApp", [
     "dashboard",
     "ledger",
     "login",
+    "logout",
     "signup",
     "misc.session"
 ])
@@ -28,6 +29,13 @@ angular.module("fairyApp", [
         controller: "LoginController",
         requireNoAuthenticatedSession: true,
         disableSidenav: true
+    })
+    .when("/logout", {
+        resolve: {
+            logout: ["logoutService", function(logoutService) {
+                logoutService.logout();
+            }]
+        }
     })
     .when("/signup", {
         redirectTo: "/signup-user",
