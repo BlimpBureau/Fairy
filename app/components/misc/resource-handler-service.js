@@ -4,11 +4,12 @@ angular.module("misc.resource-handler", [
     "misc.class"
 ])
 
-.factory("ResourceHandler", ["Class", function(Class) {
+.factory("ResourceHandler", ["$rootScope", "Class", function($rootScope, Class) {
     return Class.extend({
-        init: function(resource) {
+        init: function(resource, events) {
             this.resource = resource;
             this.instance = null;
+            this.events = events || {};
         },
         create: function(params) {
             var instance = new this.resource();
@@ -18,7 +19,7 @@ angular.module("misc.resource-handler", [
             var $promise = instance.$save().$promise;
 
             $promise.then(function(instance) {
-                this.instance = instance;
+                this.setInstance(instance);
             }.bind(this));
 
             return $promise;
@@ -37,10 +38,18 @@ angular.module("misc.resource-handler", [
             var $promise = this.resource.get({ id: id }).$promise;
 
             $promise.then(function(instance) {
-                this.instance = instance;
+                this.setInstance(instance);
             }.bind(this));
 
             return $promise
+        },
+        setInstance: function(instance) {
+            this.instance = instance;
+
+            var eventName = this.events.changed;
+            if(eventName) {
+                $rootScope.$broadcast(eventName, this.instance);
+            }
         }
     });
 }]);

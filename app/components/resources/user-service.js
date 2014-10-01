@@ -7,7 +7,7 @@ angular.module("resources.user", [
     "misc.resource-handler"
 ])
 
-.factory("userService", ["$resource", "tokenWrapResourceActions", "ResourceHandler", "API_END_POINT", function($resource, tokenWrapResourceActions, ResourceHandler, API_END_POINT) {
+.factory("userService", ["$rootScope", "$resource", "tokenWrapResourceActions", "ResourceHandler", "API_END_POINT", function($rootScope, $resource, tokenWrapResourceActions, ResourceHandler, API_END_POINT) {
     var User = $resource(API_END_POINT + "/users/:id", {
         id: "@id"
     });
@@ -19,5 +19,7 @@ angular.module("resources.user", [
     //Wrap methods to send access token.
     tokenWrapResourceActions.wrap(User, ["get"]);
 
-    return new ResourceHandler(User);
+    return new ResourceHandler(User, {
+        changed: "user:changed"
+    });
 }]);
