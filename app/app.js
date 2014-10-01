@@ -13,19 +13,25 @@ angular.module("fairyApp", [
 ])
 
 .config(["$routeProvider", function($routeProvider) {
+    var routeBaseUrl = "routes/";
+
+    function url(path) {
+        return routeBaseUrl + "/" + path;
+    }
+
     $routeProvider
     .when("/dashboard", {
-        templateUrl: "dashboard/dashboard.html",
+        templateUrl: url("dashboard/dashboard.html"),
         controller: "DashboardController",
         requireAuthenticatedSession: true
     })
     .when("/ledger", {
-        templateUrl: "ledger/ledger.html",
+        templateUrl: url("ledger/ledger.html"),
         controller: "LedgerController",
         requireAuthenticatedSession: true
     })
     .when("/login", {
-        templateUrl: "login/login.html",
+        templateUrl: url("login/login.html"),
         controller: "LoginController",
         requireNoAuthenticatedSession: true,
         disableSidenav: true
@@ -41,13 +47,13 @@ angular.module("fairyApp", [
         redirectTo: "/signup-user",
     })
     .when("/signup-user", {
-        templateUrl: "signup/user/signup-user.html",
+        templateUrl: url("signup/user/signup-user.html"),
         controller: "SignupUserController",
         requireNoAuthenticatedSession: true,
         disableSidenav: true
     })
     .when("/signup-company", {
-        templateUrl: "signup/company/signup-company.html",
+        templateUrl: url("signup/company/signup-company.html"),
         controller: "SignupCompanyController",
         requireAuthenticatedSession: true,
         disableSidenav: true
