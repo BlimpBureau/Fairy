@@ -10,7 +10,7 @@ angular.module("signup.company", [
     "misc.session"
 ])
 
-.controller("SignupCompanyController", ["$scope", "$location", "Company", "User", "session", function($scope, $location, Company, User, session) {
+.controller("SignupCompanyController", ["$scope", "$location", "companyService", "userService", "session", function($scope, $location, companyService, userService, session) {
     $scope.state = "state-signup-company";
 
     $scope.userTriedSubmit = false;
@@ -21,20 +21,12 @@ angular.module("signup.company", [
         var type = $scope.type;
         var orgNumber = $scope.orgNumber;
 
-        var company = new Company();
-        company.name = name;
-        company.type = type;
-        company.orgNumber = orgNumber;
-
-        company.$save(function(company) {
-            session.data.company = company;
-
-            User.get({
-                id: session.userId
-            }, function(user) {
-                session.data.user = user;
-            }, errorHandler);
-
+        companyService.create({
+            name: name,
+            type: type,
+            orgNumber: orgNumber
+        }, function(company) {
+            userService.get(); //Refresh user since the companies array must have been changed.
             $location.path("/");
         }, errorHandler);
     };

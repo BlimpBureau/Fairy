@@ -10,7 +10,7 @@ angular.module("login", [
     "resources.user"
 ])
 
-.controller("LoginController", ["$scope", "$location", "session", "authenticate", "User", function($scope, $location, session, authenticate, User) {
+.controller("LoginController", ["$scope", "$location", "session", "authenticate", "userService", function($scope, $location, session, authenticate, userService) {
     $scope.state = "state-login";
 
     $scope.userTriedSubmit = false;
@@ -21,7 +21,7 @@ angular.module("login", [
         authenticate.byEmailAndPassword($scope.email, $scope.password).then(function(authResult) {
             session.set(authResult.id, authResult.token, authResult.tokenExpires);
 
-            User.get({ id: authResult.id }, function(user) {
+            userService.get(authResult.id, function(user) {
                 session.data.user = user;
 
                 if($scope.rememberMe) {

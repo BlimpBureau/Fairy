@@ -11,7 +11,7 @@ angular.module("signup.user", [
     "misc.authenticate"
 ])
 
-.controller("SignupUserController", ["$rootScope", "$scope", "$location", "User", "session", "authenticate", function($rootScope, $scope, $location, User, session, authenticate) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$location", "userService", "session", "authenticate", function($rootScope, $scope, $location, userService, session, authenticate) {
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
@@ -24,13 +24,12 @@ angular.module("signup.user", [
         var email = $scope.email;
         var password = $scope.password;
 
-        var user = new User();
-        user.firstName = firstName;
-        user.lastName = lastName;
-        user.email = email;
-        user.password = password;
-
-        user.$save(function(user) {
+        userService.create({
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            password: password
+        }, function(user) {
             authenticate.byEmailAndPassword(user.email, password).then(function(authResult) {
                 session.set(authResult.id, authResult.token, authResult.tokenExpires);
                 session.data.user = user;
