@@ -21,6 +21,11 @@ angular.module("login", [
             var company = data.company;
             var goTo = $location.search().goTo || "";
 
+            if(goTo === "logout") {
+                //This doesnt make any sense.
+                goTo = "";
+            }
+
             if(!company) {
                 goTo = "signup-company";
             }
