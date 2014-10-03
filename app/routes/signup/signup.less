@@ -25,12 +25,37 @@ body {
     }
 }
 
-.state-signup-user {
-    .signup-style;
 
-    &.slide-left.ng-leave {
+body.slide-left > .state-login {
+    &.ng-leave {
         .animation(slide-out-left 500ms);
     }
+}
+
+body.slide-right > .state-login {
+    &.ng-enter {
+        .animation(slide-in-left 500ms);
+    }
+}
+
+.state-login {
+
+}
+
+body.slide-left > .state-signup-user {
+    &.ng-enter {
+        .animation(slide-in-right 500ms);
+    }
+}
+
+body.slide-right > .state-signup-user {
+    &.ng-leave {
+        .animation(slide-out-right 500ms);
+    }
+}
+
+.state-signup-user {
+    .signup-style;
 }
 
 .state-signup-company {
@@ -55,6 +80,18 @@ body {
 }
 
 & {
+    .keyframes(slide-in-left);.-frames(@-...){
+        0% {
+            @{-}transform: translateX(-100%);
+        }
+
+        100% {
+            @{-}transform: translateX(0);
+        }
+    }
+}
+
+& {
     .keyframes(slide-in-right);.-frames(@-...){
         0% {
             @{-}transform: translateX(100%);
@@ -62,6 +99,18 @@ body {
 
         100% {
             @{-}transform: translateX(0);
+        }
+    }
+}
+
+& {
+    .keyframes(slide-out-right);.-frames(@-...){
+        0% {
+            @{-}transform: translateX(0);
+        }
+
+        100% {
+            @{-}transform: translateX(100%);
         }
     }
 }

@@ -21,6 +21,7 @@ angular.module("fairyApp", [
     }
 
     $urlRouterProvider.otherwise("/");
+    $urlRouterProvider.when("/signup", "/signup-user");
 
     $stateProvider
     .state("dashboard", {
@@ -36,7 +37,7 @@ angular.module("fairyApp", [
         requireAuthenticatedSession: true
     })
     .state("login", {
-        url: "/login/:goTo",
+        url: "/login", // /login/:goTo TODO: The :goTo breaks stuff.
         templateUrl: url("login/login.html"),
         controller: "LoginController",
         requireNoAuthenticatedSession: true,
@@ -83,6 +84,15 @@ angular.module("fairyApp", [
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         var authenticated = session.isAuthenticated();
+
+        transit("login", "signup-user", "slide-left");
+        transit("signup-user", "login", "slide-right");
+
+        function transit(from, to, transition) {
+            if(fromState.name === from && toState.name === to) {
+                $rootScope.transition = transition;
+            }
+        }
 
         if(toState.requireAuthenticatedSession) {
             if(!authenticated) {
