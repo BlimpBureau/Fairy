@@ -112,7 +112,7 @@ angular.module("verification.create", [
 .directive("createVerification", function() {
     return {
         restrict: "E",
-        templateUrl: "ledger/create-verification/create-verification.html"
+        templateUrl: "routes/ledger/create-verification/create-verification.html"
     };
 })
 
