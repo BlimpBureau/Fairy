@@ -1,36 +1,40 @@
-<h1 class="page-header">Ledger <button class="btn btn-default pull-right" data-toggle="modal" data-target="#create-verification-modal"><span class="glyphicon glyphicon-plus"></span></span> Add verification</button></h1>
+<div class="container">
+    <h1 class="page-header">Ledger <button class="btn btn-default pull-right" data-toggle="modal" data-target="#create-verification-modal"><span class="glyphicon glyphicon-plus"></span></span> Add verification</button></h1>
 
-<table class="table ledger">
-    <thead>
-        <tr>
-            <th>№</th>
-            <th>Date</th>
-            <th>Text</th>
-            <th colspan="2" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
-        </tr>
-        <tr>
-            <th colspan="3"></th>
-            <th ng-repeat-start="account in book | bookieAccountsFilter : false">Credit</th>
-            <th ng-repeat-end>Debit</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr ng-repeat="verification in book | bookieVerificationsFilter">
-            <td>{{ verification.number }}</td>
-            <td>{{ verification.date | dateFilter }}</td>
-            <td>{{ verification.text }}</td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter : false">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
-            <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" | moneyFilter : false }}</td>
-        </tr>
-    </tbody>
-    <tfoot>
-        <tr>
-            <td colspan="3"></td>
-            <td ng-repeat-start="account in book | bookieAccountsFilter : false"><strong>{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</strong></td>
-            <td ng-repeat-end><strong>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</strong></td>
-        </tr>
-    </tfoot>
-</table>
+    <div class="table-responsive">
+        <table class="table ledger table-bordered table-striped">
+            <thead>
+                <tr>
+                    <th>№</th>
+                    <th>Date</th>
+                    <th>Text</th>
+                    <th colspan="2" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
+                </tr>
+                <tr>
+                    <th colspan="3"></th>
+                    <th ng-repeat-start="account in book | bookieAccountsFilter : false">Credit</th>
+                    <th ng-repeat-end>Debit</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="verification in book | bookieVerificationsFilter">
+                    <td>{{ verification.number }}</td>
+                    <td>{{ verification.date | dateFilter }}</td>
+                    <td>{{ verification.text }}</td>
+                    <td ng-repeat-start="account in book | bookieAccountsFilter : false">{{ verification | bookieTransactionFilter : account : "credit" | moneyFilter : false }}</td>
+                    <td ng-repeat-end>{{ verification | bookieTransactionFilter : account : "debit" | moneyFilter : false }}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="3"></td>
+                    <td ng-repeat-start="account in book | bookieAccountsFilter : false"><strong>{{ sumAccountTransactions(account, "credit") | moneyFilter : false }}</strong></td>
+                    <td ng-repeat-end><strong>{{ sumAccountTransactions(account, "debit") | moneyFilter : false }}</strong></td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
 
 <div id="create-verification-modal" ng-controller="CreateVerificationController" class="modal fade" bootstrap-modal>
     <div class="modal-dialog">
