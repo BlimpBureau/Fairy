@@ -11,9 +11,7 @@ angular.module("login", [
 .controller("LoginController", ["$scope", "$location", "loginService", function($scope, $location, loginService) {
     $scope.state = "state-login";
 
-    $scope.userTriedSubmit = false;
-    $scope.errorServer = false;
-    $scope.errorInvalidCredentials = false;
+    reset();
 
     $scope.login = function() {
         loginService.loginByEmailAndPassword($scope.email, $scope.password, $scope.rememberMe).then(function(data) {
