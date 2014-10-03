@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("fairyApp", [
-    "ngRoute",
+    "ui.router",
     "ngAnimate",
     "menu",
     "sidenav",
@@ -13,92 +13,104 @@ angular.module("fairyApp", [
     "misc.session"
 ])
 
-.config(["$routeProvider", function($routeProvider) {
+.config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
     var routeBaseUrl = "routes/";
 
     function url(path) {
-        return routeBaseUrl + "/" + path;
+        return routeBaseUrl + path;
     }
 
-    $routeProvider
-    .when("/dashboard", {
+    $urlRouterProvider.otherwise("/");
+
+    $stateProvider
+    .state("dashboard", {
+        url: "/",
         templateUrl: url("dashboard/dashboard.html"),
         controller: "DashboardController",
         requireAuthenticatedSession: true
     })
-    .when("/ledger", {
+    .state("ledger", {
+        url: "/ledger",
         templateUrl: url("ledger/ledger.html"),
         controller: "LedgerController",
         requireAuthenticatedSession: true
     })
-    .when("/login", {
+    .state("login", {
+        url: "/login/:goTo",
         templateUrl: url("login/login.html"),
         controller: "LoginController",
         requireNoAuthenticatedSession: true,
         disableSidenav: true
     })
-    .when("/logout", {
-        resolve: {
-            logout: ["logoutService", function(logoutService) {
-                logoutService.logout();
-            }]
-        }
+    .state("logout", {
+        url: "/logout",
+        controller: "LogoutController",
+        disableSidenav: "inherit"
     })
-    .when("/signup", {
+    .state("signup", {
+        url: "/signup",
         redirectTo: "/signup-user",
     })
-    .when("/signup-user", {
+    .state("signup-user", {
+        url: "/signup-user",
         templateUrl: url("signup/user/signup-user.html"),
         controller: "SignupUserController",
         requireNoAuthenticatedSession: true,
         disableSidenav: true
     })
-    .when("/signup-company", {
+    .state("signup-company", {
+        url: "/signup-company",
         templateUrl: url("signup/company/signup-company.html"),
         controller: "SignupCompanyController",
         requireAuthenticatedSession: true,
         disableSidenav: true
-    })
-    .otherwise({
-        redirectTo: "/dashboard",
-        requireAuthenticatedSession: true
-    })
-    ;
+    });
 }])
 
-.run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
+.run(["$rootScope", "$state", "session", function($rootScope, $state, session) {
+    $rootScope.$on("$stateNotFound", function() {
+        console.log("not found");
+    });
+
+    $rootScope.$on('$stateChangeStart', 
+    function(event, toState, toParams, fromState, fromParams){
+        console.log(fromState.name + " -> " + toState.name);
+    })
+
     if(session.isAuthenticated()) {
 
     }
 
-    $rootScope.$on("$routeChangeStart", function(event, next, current) {
+    $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         var authenticated = session.isAuthenticated();
 
-        $rootScope.sidenav = next.disableSidenav ? false : true;
-
-        if(next.requireAuthenticatedSession) {
+        if(toState.requireAuthenticatedSession) {
             if(!authenticated) {
-                var REDIRECT_TO = "/login";
-                if(next.originalPath) {
-                    var goTo = next.originalPath.replace("/", "");
-                    $location.path(REDIRECT_TO).search({
-                        goTo: goTo
+                event.preventDefault();
+
+                var REDIRECT_TO = "login";
+                if(toState.url !== "/") {
+                    $state.go(REDIRECT_TO, {
+                        goTo: toState.name
                     });
                     return;
                 }
 
-                $location.path(REDIRECT_TO);
+                $state.go(REDIRECT_TO);
                 return;
             }
         }
 
-        if(next.requireNoAuthenticatedSession) {
+        if(toState.requireNoAuthenticatedSession) {
             if(authenticated) {
-                if(next.originalPath) {
-                    $location.path("/");
-                }
+                event.preventDefault();
+                $state.go("");
+                return;
             }
-            return;
+        }
+
+        if(toState.disableSidenav !== "inherit") {
+            $rootScope.sidenav = toState.disableSidenav ? false : true;
         }
     });
 }])

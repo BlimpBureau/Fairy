@@ -5,10 +5,11 @@ angular.module("login", [
     "form.goodBadSubmit",
     "input.email",
     "input.password",
-    "misc.login"
+    "misc.login",
+    "ui.router"
 ])
 
-.controller("LoginController", ["$scope", "$location", "loginService", function($scope, $location, loginService) {
+.controller("LoginController", ["$scope", "$state", "$stateParams", "loginService", function($scope, $state, $stateParams, loginService) {
     $scope.state = "state-login";
 
     $scope.userTriedSubmit = false;
@@ -19,20 +20,20 @@ angular.module("login", [
         loginService.loginByEmailAndPassword($scope.email, $scope.password, $scope.rememberMe).then(function(data) {
             var user = data.user;
             var company = data.company;
-            var goTo = $location.search().goTo || "";
+            var goTo = $stateParams.goTo;
 
             if(goTo === "logout") {
                 //This doesnt make any sense.
-                goTo = "";
+                goTo = false;
             }
 
             if(!company) {
                 goTo = "signup-company";
             }
 
-            $location.path("/" + goTo).search({
-                goTo: null
-            });
+            goTo = goTo || "dashboard";
+
+            $state.go(goTo);
         }, errorHandler);
     };
 

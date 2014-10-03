@@ -7,10 +7,11 @@ angular.module("signup.user", [
     "input.email",
     "input.password",
     "resources.user",
-    "misc.login"
+    "misc.login",
+    "ui.router"
 ])
 
-.controller("SignupUserController", ["$rootScope", "$scope", "$location", "userService", "loginService", function($rootScope, $scope, $location, userService, loginService) {
+.controller("SignupUserController", ["$rootScope", "$scope", "$state", "userService", "loginService", function($rootScope, $scope, $state, userService, loginService) {
     $scope.state = "state-signup-user";
 
     $scope.userTriedSubmit = false;
@@ -55,6 +56,6 @@ angular.module("signup.user", [
 
     function goToSignupCompany() {
         // $rootScope.transition = "slide-left";
-        $location.path("/signup-company");
+        $state.go("signup-company");
     }
 }]);

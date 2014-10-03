@@ -6,10 +6,11 @@ angular.module("signup.company", [
     "input.company-name",
     "input.company-org-number",
     "resources.company",
-    "resources.user"
+    "resources.user",
+    "ui.router"
 ])
 
-.controller("SignupCompanyController", ["$scope", "$location", "companyService", "userService", function($scope, $location, companyService, userService) {
+.controller("SignupCompanyController", ["$scope", "$state", "companyService", "userService", function($scope, $state, companyService, userService) {
     $scope.state = "state-signup-company";
 
     $scope.userTriedSubmit = false;
@@ -26,7 +27,7 @@ angular.module("signup.company", [
             orgNumber: orgNumber
         }).then(function(company) {
             userService.get(); //Refresh user since the companies array must have been changed.
-            $location.path("/");
+            $state.go("");
         }, errorHandler);
     };
 

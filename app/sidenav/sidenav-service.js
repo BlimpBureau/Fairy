@@ -22,11 +22,11 @@ NavbarHandler.prototype.getItems = function(all) {
     return this.showItems;
 };
 
-NavbarHandler.prototype.insert = function(method, href, text, icon, hide, alias) {
+NavbarHandler.prototype.insert = function(method, state, text, icon, hide, alias) {
     hide = hide || false;
 
     this.items.push({
-        href: href,
+        state: state,
         text: text,
         icon: icon,
         show: !hide
@@ -46,10 +46,10 @@ NavbarHandler.prototype.update = function() {
     this.showItems = _.filter(this.items, isShow);
 };
 
-NavbarHandler.prototype.changeItemByAlias = function(alias, href, text, icon, show) {
-    if(_.isObject(href)) {
-        var params = href;
-        href = params.href;
+NavbarHandler.prototype.changeItemByAlias = function(alias, state, text, icon, show) {
+    if(_.isObject(state)) {
+        var params = state;
+        state = params.state;
         text = params.text;
         icon = params.icon;
         show = params.show;
@@ -61,7 +61,7 @@ NavbarHandler.prototype.changeItemByAlias = function(alias, href, text, icon, sh
         throw new Error("Invalid alias.");
     }
 
-    item.href = href;
+    item.state = state;
     item.text = text;
     item.icon = icon;
     item.show = show;

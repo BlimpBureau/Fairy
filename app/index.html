@@ -18,13 +18,14 @@
 
     <sidenav></sidenav>
 
-    <main ng-view class="{{ state }}" ng-class"transition" ng-class="{ 'next-to-sidenav': sidenav !== false }">
+    <main ui-view class="{{ state }}" ng-class"transition" ng-class="{ 'next-to-sidenav': sidenav !== false }">
     </main>
 
     <script src="../bower_components/jquery/dist/jquery.min.js"></script>
     <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="../bower_components/angular/angular.js"></script>
-    <script src="../bower_components/angular-route/angular-route.min.js"></script>
+    <!-- <script src="../bower_components/angular-route/angular-route.min.js"></script> -->
+    <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="../bower_components/angular-animate/angular-animate.min.js"></script>
     <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
     <script src="../bower_components/angular-local-storage/angular-local-storage.min.js"></script>
