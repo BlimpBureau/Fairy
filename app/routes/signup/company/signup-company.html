@@ -1,9 +1,10 @@
 <div class="container">
     <div class="form-box">
         <div class="form-box-header">
-            <h1 class="h4">
+            <h1 class="h2">
                 Sign up
-                <small>Step 2/2: Your company info</small>
+
+                <small class="sub-note">Step 2/2: Your company info</small>
             </h1>
             <div class="alert alert-info hidden"></div>
         </div>
@@ -20,7 +21,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-head"></i>
                         </span>
-                        <input class="form-control" name="company-name" placeholder="Fairycorp" type="text" ng-model="name" company-name required>
+                        <input class="form-control input-lg" name="company-name" placeholder="Fairycorp" type="text" ng-model="name" company-name required>
                     </div>
                 </div>
 
@@ -28,7 +29,7 @@
                     <label for="company-type">
                         Company type
                     </label>
-                    <select class="form-control" name="company-type" ng-model="type" required>
+                    <select class="form-control input-lg" name="company-type" ng-model="type" required>
                       <option value="">Select company type</option>
                       <optgroup label="--------------------------------"></optgroup>
                       <option value="EF">Enskild firma</option>
@@ -44,11 +45,11 @@
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="company-org-number" placeholder="Enter organisation number" type="tel" ng-model="orgNumber" company-org-number required>
+                        <input class="form-control input-lg" name="company-org-number" placeholder="Enter organisation number" type="tel" ng-model="orgNumber" company-org-number required>
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block" ng-click="submit()">
+                <button class="btn btn-lg btn-primary btn-block" ng-click="submit()">
                     <span>Finish</span>
                 </button>
 

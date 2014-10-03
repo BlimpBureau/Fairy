@@ -1,11 +1,15 @@
 <div class="container">
     <div class="form-box">
         <div class="form-box-header">
-            <h1 class="h4">
-                Sign up or
-                <a href="#/login">Sign in</a>
+            <h1 class="h2">
+                Sign up for 
+                <a href="/">Fairy</a>
 
-                <small>Step 1/2: Your info</small>
+                <small class="sub-note text-center hide">
+                    Already registered? <a href="#/login">Sign in</a>
+                </small>
+
+                <small class="sub-note">Step 1/2: Your info</small>
             </h1>
             <div class="alert alert-info hidden"></div>
         </div>
@@ -22,7 +26,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-head"></i>
                         </span>
-                        <input class="form-control" name="name" placeholder="Tinkerbell von Neverland" type="text" ng-model="name" person-name required>
+                        <input class="form-control input-lg" name="name" placeholder="Tinkerbell von Neverland" type="text" ng-model="name" person-name required>
                     </div>
                 </div>
 
@@ -34,7 +38,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
                         </span>
-                        <input class="form-control" name="email" placeholder="tinkerbell@neverland.com" type="email" ng-model="email" email required>
+                        <input class="form-control input-lg" name="email" placeholder="tinkerbell@neverland.com" type="email" ng-model="email" email required>
                     </div>
                 </div>
 
@@ -46,11 +50,11 @@
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="password" placeholder="********" type="password", ng-model="password" password required>
+                        <input class="form-control input-lg" name="password" placeholder="********" type="password", ng-model="password" password required>
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block" ng-click="submit()">
+                <button class="btn btn-lg btn-primary btn-block" ng-click="submit()">
                     <span>Continue</span>
                 </button>
 
