@@ -40,6 +40,16 @@ angular.module("login", [
         $scope.userTriedSubmit = true;
     };
 
+    function reset() {
+        $scope.errorServer = false;
+        $scope.errorInvalidCredentials = false;
+        $scope.userTriedSubmit = false;
+    }
+
+    //TODO: Make a better solution for this?
+    $scope.$watch("email", reset);
+    $scope.$watch("password", reset);
+
     function errorHandler(error) {
         if(error.status === 401) {
             $scope.errorServer = false;

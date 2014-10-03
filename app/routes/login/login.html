@@ -12,7 +12,7 @@
                 <good-bad-submit good-submit="login" bad-submit="handleBadSubmit"></good-bad-submit>
                 <good-bad-form good-bad-form="userTriedSubmit"></good-bad-form>
 
-                <div class="form-group form-group-email" ng-class="{ 'valid' : isGood('email'), 'invalid' : isBad('email') }">
+                <div class="form-group form-group-email" ng-class="{ 'invalid' : errorInvalidCredentials }">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="form-group form-group-pw last" ng-class="{ 'valid' : isGood('password'), 'invalid' : isBad('password') }">
+                <div class="form-group form-group-pw last" ng-class="{ 'invalid' : errorInvalidCredentials }">
                     <div class="input-group">
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
@@ -47,7 +47,7 @@
                 </button>
 
                 <div class="alert alert-danger" ng-show="errorServer"><strong>Sign in failed.</strong> We couldn't sign you in due to an unexpected error, please <a href="https://github.com/backslashforward/Fairy/issues" class="alert-link">report this issue</a>.</div>
-                <div class="alert alert-danger" ng-show="errorInvalidCredentials"><strong>Invalid credentials.</strong> Invalid email or password, please try again. Did you <a href="#/forgot-password" class="alert-link">forget your password</a>?</div>
+                <!-- <div class="alert alert-danger" ng-show="errorInvalidCredentials"><strong>Invalid credentials.</strong> Invalid email or password, please try again. Did you <a href="#/forgot-password" class="alert-link">forget your password</a>?</div> -->
             </form>
         </div>
     </div>
