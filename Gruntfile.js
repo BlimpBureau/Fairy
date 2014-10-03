@@ -59,17 +59,31 @@ module.exports = function(grunt) {
             }
         },
         watch: {
-            options: {
-                livereload: false
+            js: {
+                options: {
+                    livereload: false
+                },
+                files: [
+                    "app/**/*",
+                    "!app/**/*_test.js",
+                    "!app/**/*.less",
+                    "bower.json"
+                ],
+                tasks: [
+                    "build"
+                ]
             },
-            files: [
-                "app/**/*",
-                "!app/**/*_test.js",
-                "bower.json"
-            ],
-            tasks: [
-                "build"
-            ]
+            less :{
+                options: {
+                    livereload: false
+                },
+                files: [
+                    "app/**/*.less",
+                ],
+                tasks: [
+                    "less:build"
+                ]
+            }
         },
         clean: {
             build: {
