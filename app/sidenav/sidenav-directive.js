@@ -1,10 +1,11 @@
 "use strict";
 
 angular.module("sidenav", [
-    "sidenav.handler"
+    "sidenav.handler",
+    "resources.user"
 ])
 
-.directive("sidenav", ["sidenavHandler", function(sidenavHandler) {
+.directive("sidenav", ["sidenavHandler", "userService", function(sidenavHandler, userService) {
     return {
         scope: true,
         restrict: "E",
@@ -25,7 +26,7 @@ angular.module("sidenav", [
 
             scope.items = sidenavHandler.getItems();
 
-            scope.$on("user:changed", function(event, user) {
+            userService.on("changed", function(user) {
                 var userChanges = {};
 
                 if(user) {

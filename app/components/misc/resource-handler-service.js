@@ -1,15 +1,15 @@
 "use strict";
 
 angular.module("misc.resource-handler", [
-    "misc.class"
+    "misc.event-emitter",
 ])
 
-.factory("ResourceHandler", ["$rootScope", "Class", function($rootScope, Class) {
-    return Class.extend({
+.factory("ResourceHandler", ["EventEmitter", function(EventEmitter) {
+    return EventEmitter.extend({
         init: function(resource, events) {
+            this._super();
             this.resource = resource;
             this.instance = null;
-            this.events = events || {};
         },
         create: function(params) {
             var instance = new this.resource();
@@ -45,11 +45,7 @@ angular.module("misc.resource-handler", [
         },
         setInstance: function(instance) {
             this.instance = instance;
-
-            var eventName = this.events.changed;
-            if(eventName) {
-                $rootScope.$broadcast(eventName, this.instance);
-            }
+            this.emit("changed", this.instance);
         }
     });
 }]);

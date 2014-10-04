@@ -19,7 +19,5 @@ angular.module("resources.user", [
     //Wrap methods to send access token.
     tokenWrapResourceActions.wrap(User, ["get"]);
 
-    return new ResourceHandler(User, {
-        changed: "user:changed"
-    });
+    return new ResourceHandler(User);
 }]);
