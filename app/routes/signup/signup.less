@@ -25,9 +25,6 @@ body {
     }
 }
 
-@easing-with-bounce: 1100ms cubic-bezier(.5,-0.42,.26,1.5);
-@easing-linear: 1000ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
-
 body.slide-left > .state-login {
     &.ng-leave {
         .animation(slide-out-left @easing-linear);
@@ -38,10 +35,6 @@ body.slide-right > .state-login {
     &.ng-enter {
         .animation(slide-in-left @easing-linear);
     }
-}
-
-.state-login {
-
 }
 
 body.slide-left > .state-signup-user {
@@ -66,53 +59,5 @@ body.slide-right > .state-signup-user {
     &.slide-left.ng-enter {
         .animation(slide-in-right 500ms);
         opacity: 1;
-    }
-}
-
-& {
-    .keyframes(slide-out-left);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(0);
-        }
-
-        100% {
-            @{-}transform: translateX(-100%);
-        }
-    }
-}
-
-& {
-    .keyframes(slide-in-left);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(-100%);
-        }
-
-        100% {
-            @{-}transform: translateX(0);
-        }
-    }
-}
-
-& {
-    .keyframes(slide-in-right);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(100%);
-        }
-
-        100% {
-            @{-}transform: translateX(0);
-        }
-    }
-}
-
-& {
-    .keyframes(slide-out-right);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(0);
-        }
-
-        100% {
-            @{-}transform: translateX(100%);
-        }
     }
 }
