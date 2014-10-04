@@ -4,7 +4,7 @@
 
 body {
     //Needed because a body background shines through in a vertical line between the views when animation otherwise.
-    // background-color: @fairy-night-blue;
+    background-color: @fairy-night-blue;
 }
 
 .signup-style() {
@@ -25,16 +25,18 @@ body {
     }
 }
 
+@easing-with-bounce: 1100ms cubic-bezier(.5,-0.42,.26,1.5);
+@easing-linear: 1000ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
 
 body.slide-left > .state-login {
     &.ng-leave {
-        .animation(slide-out-left 500ms);
+        .animation(slide-out-left @easing-linear);
     }
 }
 
 body.slide-right > .state-login {
     &.ng-enter {
-        .animation(slide-in-left 500ms);
+        .animation(slide-in-left @easing-linear);
     }
 }
 
@@ -44,13 +46,13 @@ body.slide-right > .state-login {
 
 body.slide-left > .state-signup-user {
     &.ng-enter {
-        .animation(slide-in-right 500ms);
+        .animation(slide-in-right @easing-linear);
     }
 }
 
 body.slide-right > .state-signup-user {
     &.ng-leave {
-        .animation(slide-out-right 500ms);
+        .animation(slide-out-right @easing-linear);
     }
 }
 
