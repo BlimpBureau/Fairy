@@ -10,7 +10,8 @@ angular.module("fairyApp", [
     "login",
     "logout",
     "signup",
-    "misc.session"
+    "misc.session",
+    "misc.login"
 ])
 
 .config(["$routeProvider", function($routeProvider) {
@@ -66,9 +67,13 @@ angular.module("fairyApp", [
     ;
 }])
 
-.run(["$rootScope", "$location", "session", function($rootScope, $location, session) {
+.run(["$rootScope", "$location", "session", "loginService", function($rootScope, $location, session, loginService) {
     if(session.isAuthenticated()) {
-
+        loginService.loginByToken(session.userId, session.token).then(function(user) {
+            console.log("Logged in.");
+        }, function(error) {
+            console.log("Failed autologin");
+        });
     }
 
     $rootScope.$on("$routeChangeStart", function(event, next, current) {
