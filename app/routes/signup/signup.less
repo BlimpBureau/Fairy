@@ -3,8 +3,10 @@
 // --------------------------------------------------
 
 body {
-    //Needed because a body background shines through in a vertical line between the views when animation otherwise.
-    // background-color: @fairy-night-blue;
+    &.login, &.signup-user, &.signup-company {
+        //Needed because a body background shines through in a vertical line between the views when animation otherwise.
+        background-color: @fairy-night-blue;        
+    }
 }
 
 .signup-style() {
@@ -25,12 +27,32 @@ body {
     }
 }
 
+body.slide-left > .state-login {
+    &.ng-leave {
+        .animation(slide-out-left @easing-linear);
+    }
+}
+
+body.slide-right > .state-login {
+    &.ng-enter {
+        .animation(slide-in-left @easing-linear);
+    }
+}
+
+body.slide-left > .state-signup-user {
+    &.ng-enter {
+        .animation(slide-in-right @easing-linear);
+    }
+}
+
+body.slide-right > .state-signup-user {
+    &.ng-leave {
+        .animation(slide-out-right @easing-linear);
+    }
+}
+
 .state-signup-user {
     .signup-style;
-
-    &.slide-left.ng-leave {
-        .animation(slide-out-left 500ms);
-    }
 }
 
 .state-signup-company {
@@ -39,29 +61,5 @@ body {
     &.slide-left.ng-enter {
         .animation(slide-in-right 500ms);
         opacity: 1;
-    }
-}
-
-& {
-    .keyframes(slide-out-left);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(0);
-        }
-
-        100% {
-            @{-}transform: translateX(-100%);
-        }
-    }
-}
-
-& {
-    .keyframes(slide-in-right);.-frames(@-...){
-        0% {
-            @{-}transform: translateX(100%);
-        }
-
-        100% {
-            @{-}transform: translateX(0);
-        }
     }
 }

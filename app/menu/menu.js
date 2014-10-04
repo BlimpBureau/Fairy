@@ -1,5 +1,7 @@
 "use strict";
 
+// LEGACY!
+
 angular.module("menu", [])
 
 .controller("MenuController", ["$scope", "$location", function($scope, $location) {

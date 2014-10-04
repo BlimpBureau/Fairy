@@ -18,11 +18,11 @@ angular.module("sidenav", [
             //     scope.items = items;
             // });
 
-            sidenavHandler.append("#/user", "", "head", true, "user");
-            sidenavHandler.append("#/dashboard", "Dashboard", "bar-graph-2");
-            sidenavHandler.append("#/ledger", "Ledger", "book");
-            sidenavHandler.append("#/settings", "Settings", "cog");
-            sidenavHandler.append("#/logout", "Sign out", "umbrella");
+            sidenavHandler.append("user", "user", "head", true, "user");
+            sidenavHandler.append("dashboard", "Dashboard", "bar-graph-2");
+            sidenavHandler.append("ledger", "Ledger", "book");
+            sidenavHandler.append("settings", "Settings", "cog");
+            sidenavHandler.append("logout", "Sign out", "umbrella");
 
             scope.items = sidenavHandler.getItems();
 

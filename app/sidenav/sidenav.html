@@ -1,7 +1,7 @@
 <nav class="sidenav" ng-hide="sidenav === false">
     <ul>
         <li ng-repeat="item in items">
-            <a href="{{ item.href }}">
+            <a ui-sref="{{ item.state }}">
                 <span class="icon icon-{{ item.icon }}"></span>
                 <span>{{ item.text }}</span>
             </a>

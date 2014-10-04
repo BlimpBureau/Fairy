@@ -1,14 +1,11 @@
 "use strict";
 
 angular.module("logout", [
-    "misc.session"
+    "misc.session",
+    "ui.router"
 ])
 
-.factory("logoutService", ["$location", "session", function($location, session) {
-    return {
-        logout: function() {
-            session.clear();
-            $location.path("/login");
-        }
-    }
+.controller("LogoutController", ["$state", "session", function($state, session) {
+    session.clear();
+    $state.go("login");
 }]);
