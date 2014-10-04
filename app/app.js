@@ -10,7 +10,8 @@ angular.module("fairyApp", [
     "login",
     "logout",
     "signup",
-    "misc.session"
+    "misc.session",
+    "transitions"
 ])
 
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
@@ -68,15 +69,10 @@ angular.module("fairyApp", [
     });
 }])
 
-.run(["$rootScope", "$state", "session", function($rootScope, $state, session) {
+.run(["$rootScope", "$state", "session", "STATE_TRANSITIONS", function($rootScope, $state, session, STATE_TRANSITIONS) {
     $rootScope.$on("$stateNotFound", function() {
         console.log("not found");
     });
-
-    $rootScope.$on('$stateChangeStart', 
-    function(event, toState, toParams, fromState, fromParams){
-        console.log(fromState.name + " -> " + toState.name);
-    })
 
     if(session.isAuthenticated()) {
 
@@ -84,15 +80,6 @@ angular.module("fairyApp", [
 
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         var authenticated = session.isAuthenticated();
-
-        transit("login", "signup-user", "slide-left");
-        transit("signup-user", "login", "slide-right");
-
-        function transit(from, to, transition) {
-            if(fromState.name === from && toState.name === to) {
-                $rootScope.transition = transition;
-            }
-        }
 
         if(toState.requireAuthenticatedSession) {
             if(!authenticated) {
@@ -121,6 +108,12 @@ angular.module("fairyApp", [
 
         if(toState.disableSidenav !== "inherit") {
             $rootScope.sidenav = toState.disableSidenav ? false : true;
+        }
+
+        if(STATE_TRANSITIONS[fromState.name]) {
+            $rootScope.transition = STATE_TRANSITIONS[fromState.name][toState.name] || "";
+        } else {
+            $rootScope.transition = "";
         }
     });
 }])
