@@ -5,13 +5,12 @@
         <table class="table ledger table-bordered table-striped" responsive-table>
             <thead>
                 <tr>
-                    <th>№</th>
-                    <th>Date</th>
-                    <th>Text</th>
+                    <th rowspan="2">#</th>
+                    <th rowspan="2">Date</th>
+                    <th rowspan="2">Text</th>
                     <th colspan="2" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
                 </tr>
                 <tr>
-                    <th colspan="3"></th>
                     <th ng-repeat-start="account in book | bookieAccountsFilter : false">Credit</th>
                     <th ng-repeat-end>Debit</th>
                 </tr>
