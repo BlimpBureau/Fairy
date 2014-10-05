@@ -39,7 +39,7 @@ angular.module("fairyApp", [
         requireAuthenticatedSession: true
     })
     .state("login", {
-        url: "/login", // /login/:goTo TODO: The :goTo breaks stuff.
+        url: "/login?goTo",
         templateUrl: url("login/login.html"),
         controller: "LoginController",
         requireNoAuthenticatedSession: true,
