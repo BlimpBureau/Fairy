@@ -67,7 +67,26 @@ angular.module("fairyApp", [
         controller: "SignupCompanyController",
         requireAuthenticatedSession: true,
         disableSidenav: true
-    });
+    })
+    .state("autologin", {
+        url: "/autologin",
+        template: "<p>Loading</p>",
+        controller: ["$rootScope", "$state", "loginService", "session", function($rootScope, $state, loginService, session) {
+            $rootScope.sidenav = false; //TODO: Should be fixed by state change event, but its not fired?
+
+            console.log("hej");
+            loginService.loginByToken(session.userId, session.token).then(function(user) {
+                console.log("Logged in.");
+                $state.go("dashboard");
+            }, function(error) {
+                console.log("Failed autologin");
+                $state.go("logout");
+            });
+        }],
+        disableSidenav: true,
+        requireAuthenticatedSession: true
+    })
+    ;
 }])
 
 .run(["$rootScope", "$state", "session", "loginService", "STATE_TRANSITIONS", function($rootScope, $state, session, loginService, STATE_TRANSITIONS) {
@@ -76,15 +95,12 @@ angular.module("fairyApp", [
     });
 
     if(session.isAuthenticated()) {
-        loginService.loginByToken(session.userId, session.token).then(function(user) {
-            console.log("Logged in.", user);
-        }, function(error) {
-            console.log("Failed autologin", error);
-        });
+        $state.go("autologin"); //TODO: Why does not stateChangeStart event gets fired from this?
     }
 
     /* jshint unused: false */
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
+        console.log("state change");
         var authenticated = session.isAuthenticated();
 
         if(toState.requireAuthenticatedSession) {
