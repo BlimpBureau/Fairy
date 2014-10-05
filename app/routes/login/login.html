@@ -1,9 +1,12 @@
 <div class="container">
     <div class="form-box">
         <div class="form-box-header">
-            <h1 class="h4">
-                Sign in or
-                <a href="#/signup">Sign up</a>
+            <h1 class="h2">
+                Sign in to Fairy
+
+                <small class="sub-note">
+                    New user? <a href="#/signup">Sign up</a>
+                </small>
             </h1>
             <div class="alert alert-info hidden"></div>
         </div>
@@ -17,7 +20,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-mail"></i>
                         </span>
-                        <input class="form-control" name="email" placeholder="Enter email" type="email" ng-model="email" email required>
+                        <input class="form-control input-lg" name="email" placeholder="Enter email" type="email" ng-model="email" email required>
                     </div>
                 </div>
 
@@ -26,7 +29,7 @@
                         <span class="input-group-addon">
                             <i class="icon icon-lock"></i>
                         </span>
-                        <input class="form-control" name="password" placeholder="Password" type="password" ng-model="password" password required>
+                        <input class="form-control input-lg" name="password" placeholder="Password" type="password" ng-model="password" password required>
                     </div>
                 </div>
 
@@ -42,7 +45,7 @@
                     </div>
                 </div>
 
-                <button class="btn btn-primary btn-block" ng-click="submit()">
+                <button class="btn btn-lg btn-primary btn-block" ng-click="submit()">
                     <span>Sign in</span>
                 </button>
 
