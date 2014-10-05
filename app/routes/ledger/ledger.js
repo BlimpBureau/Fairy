@@ -6,7 +6,8 @@ angular.module("ledger", [
     "presentation.moneyFilter",
     "presentation.dateFilter",
     "verification.create",
-    "bootstrap.modal"
+    "bootstrap.modal",
+    "presentation.responsive-table"
 ])
 
 .controller("LedgerController", ["$scope", "book", function($scope, book) {
