@@ -1,12 +1,12 @@
 "use strict";
 
 angular.module("misc.resource-handler", [
-    "misc.event-emitter",
+    "misc.event-emitter"
 ])
 
 .factory("ResourceHandler", ["EventEmitter", function(EventEmitter) {
     return EventEmitter.extend({
-        init: function(resource, events) {
+        init: function(resource) {
             this._super();
             this.resource = resource;
             this.instance = null;
@@ -41,7 +41,7 @@ angular.module("misc.resource-handler", [
                 this.setInstance(instance);
             }.bind(this));
 
-            return $promise
+            return $promise;
         },
         setInstance: function(instance) {
             this.instance = instance;

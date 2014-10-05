@@ -10,7 +10,7 @@ angular.module("sidenav", [
         scope: true,
         restrict: "E",
         templateUrl: "sidenav/sidenav.html",
-        link: function(scope, element, attr, controller) {
+        link: function(scope) {
             //TODO: Decide how to handle this.
             // scope.$watch(function() {
             //     return sidenavHandler.getItems();

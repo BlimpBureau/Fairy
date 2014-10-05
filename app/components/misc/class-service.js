@@ -62,7 +62,6 @@ angular.module("misc.class", [])
       return Class;
     }
 
-    /* jshint ignore: end */
-
     return Class;
+    /* jshint ignore: end */
 });

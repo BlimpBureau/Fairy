@@ -36,6 +36,10 @@ Login.prototype.loginByEmailAndPassword = function(username, password, remember)
 };
 
 Login.prototype.loginByToken = function(id, token) {
+    if(!id || !token) {
+        throw new Error("id and token required.");
+    }
+
     var deferred = this.$q.defer();
 
     this.loadData(id, deferred);

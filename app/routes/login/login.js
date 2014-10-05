@@ -16,7 +16,6 @@ angular.module("login", [
 
     $scope.login = function() {
         loginService.loginByEmailAndPassword($scope.email, $scope.password, $scope.rememberMe).then(function(data) {
-            var user = data.user;
             var company = data.company;
             var goTo = $stateParams.goTo;
 

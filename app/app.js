@@ -52,7 +52,7 @@ angular.module("fairyApp", [
     })
     .state("signup", {
         url: "/signup",
-        redirectTo: "/signup-user",
+        redirectTo: "/signup-user"
     })
     .state("signup-user", {
         url: "/signup-user",
@@ -77,12 +77,13 @@ angular.module("fairyApp", [
 
     if(session.isAuthenticated()) {
         loginService.loginByToken(session.userId, session.token).then(function(user) {
-            console.log("Logged in.");
+            console.log("Logged in.", user);
         }, function(error) {
-            console.log("Failed autologin");
+            console.log("Failed autologin", error);
         });
     }
 
+    /* jshint unused: false */
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         var authenticated = session.isAuthenticated();
 

@@ -30,8 +30,7 @@ angular.module("signup.user", [
             email: email,
             password: password
         }).then(function(user) {
-            loginService.loginByEmailAndPassword(user.email, password).then(function(data) {
-                var user = data.user;
+            loginService.loginByEmailAndPassword(user.email, password).then(function() {
                 goToSignupCompany();
             }, function(error) {
                 console.error(error);
