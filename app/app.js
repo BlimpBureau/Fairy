@@ -69,15 +69,24 @@ angular.module("fairyApp", [
         disableSidenav: true
     })
     .state("autologin", {
-        url: "/autologin",
+        url: "/autologin?goTo",
         template: "<p>Loading</p>",
-        controller: ["$rootScope", "$state", "loginService", "session", function($rootScope, $state, loginService, session) {
+        controller: ["$rootScope", "$state", "$stateParams", "loginService", "session", function($rootScope, $state, $stateParams, loginService, session) {
             $rootScope.sidenav = false; //TODO: Should be fixed by state change event, but its not fired?
+
+            var goTo = $stateParams.goTo;
+
+            if(goTo === "autologin" || goTo === "logout" || goTo === "login") {
+                //This doesnt make any sense.
+                goTo = false;
+            }
+
+            goTo = goTo || "dashboard";
 
             console.log("hej");
             loginService.loginByToken(session.userId, session.token).then(function(user) {
                 console.log("Logged in.");
-                $state.go("dashboard");
+                $state.go(goTo);
             }, function(error) {
                 console.log("Failed autologin");
                 $state.go("logout");
@@ -94,10 +103,6 @@ angular.module("fairyApp", [
         console.log("not found");
     });
 
-    if(session.isAuthenticated()) {
-        $state.go("autologin"); //TODO: Why does not stateChangeStart event gets fired from this?
-    }
-
     /* jshint unused: false */
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
         console.log("state change");
@@ -108,6 +113,21 @@ angular.module("fairyApp", [
                 event.preventDefault();
 
                 var REDIRECT_TO = "login";
+                if(toState.url !== "/") {
+                    $state.go(REDIRECT_TO, {
+                        goTo: toState.name
+                    });
+                    return;
+                }
+
+                $state.go(REDIRECT_TO);
+                return;
+            }
+
+            if(!loginService.isDataLoaded() && toState.name !== "autologin") {
+                event.preventDefault();
+
+                var REDIRECT_TO = "autologin";
                 if(toState.url !== "/") {
                     $state.go(REDIRECT_TO, {
                         goTo: toState.name

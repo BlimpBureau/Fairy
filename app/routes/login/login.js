@@ -6,10 +6,11 @@ angular.module("login", [
     "input.email",
     "input.password",
     "misc.login",
-    "ui.router"
+    "ui.router",
+    "misc.session"
 ])
 
-.controller("LoginController", ["$scope", "$state", "$stateParams", "loginService", function($scope, $state, $stateParams, loginService) {
+.controller("LoginController", ["$scope", "$state", "$stateParams", "session", "loginService", function($scope, $state, $stateParams, session, loginService) {
     $scope.state = "state-login";
 
     reset();

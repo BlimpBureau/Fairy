@@ -15,6 +15,7 @@ function Login($q, authenticate, session, userService, companyService) {
     this.session = session;
     this.userService = userService;
     this.companyService = companyService;
+    this.dataLoaded = false;
 }
 
 Login.$inject = ["$q", "authenticate", "session", "userService", "companyService"];
@@ -58,10 +59,15 @@ Login.prototype.loadData = function(userId, deferred) {
         var companyId = user.companies[0];
 
         this.companyService.get(companyId).then(function(company) {
+            this.dataLoaded = true;
             deferred.resolve({
                 user: user,
                 company: company
             });
-        }, deferred.reject);
+        }.bind(this), deferred.reject);
     }.bind(this), deferred.reject);
+};
+
+Login.prototype.isDataLoaded = function() {
+    return this.dataLoaded;
 };
