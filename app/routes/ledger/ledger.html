@@ -5,10 +5,10 @@
         <table class="table ledger table-bordered table-striped" responsive-table>
             <thead>
                 <tr>
-                    <th rowspan="2">#</th>
-                    <th rowspan="2">Date</th>
-                    <th rowspan="2">Text</th>
-                    <th colspan="2" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
+                    <th rowspan="2" data-priority="1">#</th>
+                    <th rowspan="2" data-priority="1">Date</th>
+                    <th rowspan="2" data-priority="1">Text</th>
+                    <th colspan="2" data-priority="1" ng-repeat="account in book | bookieAccountsFilter : false">{{ account.name }} ({{ account.number }})</th>
                 </tr>
                 <tr>
                     <th ng-repeat-start="account in book | bookieAccountsFilter : false">Credit</th>

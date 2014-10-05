@@ -12,6 +12,10 @@ angular.module("presentation.responsive-table", [])
                     return;
                 }
 
+                element.parent().responsiveTable({
+                    pattern: "priority-columns"
+                });
+
                 console.log("Inited responsive table");
 
                 element.data("inited", true);        
