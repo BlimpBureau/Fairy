@@ -18,11 +18,11 @@ angular.module("autologin", [
 
     goTo = goTo || "dashboard";
 
-    loginService.loginByToken(session.userId, session.token).then(function(user) {
+    loginService.loginByToken(session.userId, session.token).then(function() {
         console.log("Logged in.");
         $state.go(goTo);
     }, function(error) {
-        console.log("Failed autologin");
+        console.error("Failed autologin", error);
         $state.go("logout");
     });
 }])
