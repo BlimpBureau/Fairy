@@ -30,13 +30,15 @@ angular.module("fairyApp", [
         url: "/",
         templateUrl: url("dashboard/dashboard.html"),
         controller: "DashboardController",
-        requireAuthenticatedSession: true
+        requireAuthenticatedSession: true,
+        requireDataLoaded: true
     })
     .state("ledger", {
         url: "/ledger",
         templateUrl: url("ledger/ledger.html"),
         controller: "LedgerController",
-        requireAuthenticatedSession: true
+        requireAuthenticatedSession: true,
+        requireDataLoaded: true
     })
     .state("login", {
         url: "/login?goTo",
@@ -105,37 +107,45 @@ angular.module("fairyApp", [
 
     /* jshint unused: false */
     $rootScope.$on("$stateChangeStart", function(event, toState, toParams, fromState, fromParams) {
-        console.log("state change");
+        function logRedirect(to) {
+            console.log("state redirect: " + fromState.name + " -> " + toState.name + " -> " + to);
+        }
+
+        var redirectTo;
         var authenticated = session.isAuthenticated();
 
         if(toState.requireAuthenticatedSession) {
             if(!authenticated) {
                 event.preventDefault();
 
-                var REDIRECT_TO = "login";
+                redirectTo = "login";
                 if(toState.url !== "/") {
-                    $state.go(REDIRECT_TO, {
+                    logRedirect(redirectTo);
+                    $state.go(redirectTo, {
                         goTo: toState.name
                     });
                     return;
                 }
 
-                $state.go(REDIRECT_TO);
+                logRedirect(redirectTo);
+                $state.go(redirectTo);
                 return;
             }
 
-            if(!loginService.isDataLoaded() && toState.name !== "autologin") {
+            if(toState.requireDataLoaded && !loginService.isDataLoaded()) {
                 event.preventDefault();
 
-                var REDIRECT_TO = "autologin";
+                redirectTo = "autologin";
                 if(toState.url !== "/") {
-                    $state.go(REDIRECT_TO, {
+                    logRedirect(redirectTo);
+                    $state.go(redirectTo, {
                         goTo: toState.name
                     });
                     return;
                 }
 
-                $state.go(REDIRECT_TO);
+                logRedirect(redirectTo);
+                $state.go(redirectTo);
                 return;
             }
         }
@@ -143,7 +153,9 @@ angular.module("fairyApp", [
         if(toState.requireNoAuthenticatedSession) {
             if(authenticated) {
                 event.preventDefault();
-                $state.go("/");
+                redirectTo = "dashboard";
+                logRedirect(redirectTo);
+                $state.go(redirectTo);
                 return;
             }
         }
@@ -159,6 +171,8 @@ angular.module("fairyApp", [
         }
 
         $rootScope.state = toState.name;
+
+        console.log("state transition: " + fromState.name + " -> " + toState.name);
     });
 }])
 

@@ -27,7 +27,7 @@ angular.module("signup.company", [
             orgNumber: orgNumber
         }).then(function() {
             userService.get(); //Refresh user since the companies array must have been changed.
-            $state.go("");
+            $state.go("dashboard");
         }, errorHandler);
     };
 
