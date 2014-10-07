@@ -12,7 +12,8 @@ angular.module("fairyApp", [
     "signup",
     "misc.session",
     "misc.login",
-    "transitions"
+    "transitions",
+    "autologin"
 ])
 
 .config(["$stateProvider", "$urlRouterProvider", function($stateProvider, $urlRouterProvider) {
@@ -72,28 +73,8 @@ angular.module("fairyApp", [
     })
     .state("autologin", {
         url: "/autologin?goTo",
-        template: "<p>Loading</p>",
-        controller: ["$rootScope", "$state", "$stateParams", "loginService", "session", function($rootScope, $state, $stateParams, loginService, session) {
-            $rootScope.sidenav = false; //TODO: Should be fixed by state change event, but its not fired?
-
-            var goTo = $stateParams.goTo;
-
-            if(goTo === "autologin" || goTo === "logout" || goTo === "login") {
-                //This doesnt make any sense.
-                goTo = false;
-            }
-
-            goTo = goTo || "dashboard";
-
-            console.log("hej");
-            loginService.loginByToken(session.userId, session.token).then(function(user) {
-                console.log("Logged in.");
-                $state.go(goTo);
-            }, function(error) {
-                console.log("Failed autologin");
-                $state.go("logout");
-            });
-        }],
+        templateUrl: url("autologin/autologin.html"),
+        controller: "AutologinController",
         disableSidenav: true,
         requireAuthenticatedSession: true
     })
