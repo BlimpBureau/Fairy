@@ -1,4 +1,13 @@
 <nav class="sidenav" ng-hide="sidenav === false">
+    <div class="sidenav-top">
+        <div class="sidenav-top-image">
+            <img src="/assets/images/backslashforward_logo.png">
+        </div>
+        <div class="session-info">
+            <span class="companyname">Backslashforward</span>
+            <span class="username">Nadan Gergeo</span>
+        </div>
+    </div>
     <ul>
         <li ng-repeat="item in items">
             <a ui-sref="{{ item.state }}">

@@ -16,6 +16,44 @@
 	width: 240px;
 	padding: 20px;
 
+	.sidenav-top {
+		background-color: @fairy-turquoise;
+		margin-right: -20px;
+		margin-left: -20px;
+		margin-top: -20px;
+		margin-bottom: 15px;
+		.box-shadow(-3px 0px 8px rgba(0, 0, 0, 0.25));
+		// border-bottom: 2px solid @fairy-night-blue-darker;
+
+		padding: 25px 15px 24px 15px;
+		.flex-display(flex);
+		.align-items(center);
+
+		.sidenav-top-image {
+			.flex(0.24);
+			text-align: center;
+
+			img {
+				width: 50px;
+				height: 50px;
+				background-color: #fff;
+				border-radius: 50%;
+			}
+		}
+
+		.session-info {
+			color: #fff;
+			.flex(0.76);
+			padding-left: 15px;
+			letter-spacing: 0.02em;
+
+			.companyname {
+				text-transform: uppercase;
+				font-weight: bold;
+			}
+		}
+	} 
+
 	ul {
 		padding: 0;
 		margin: 0 -20px;
@@ -27,7 +65,7 @@
 			a {
 				font-weight: bold;
 				// font-size: @font-size-large;
-				letter-spacing: 0.1em;
+				letter-spacing: 0.02em;
 				text-transform: uppercase;
 				color: @fairy-pink;
 				padding: 15px 20px;
